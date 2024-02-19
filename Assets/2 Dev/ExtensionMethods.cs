@@ -43,6 +43,12 @@ public static class ExtensionMethods
     {
         spriteRenderer.transform.position = Format.ComputePosition(relativePosition);
     }
+
+    public static void SetPositionFromScreenPosition(this SpriteRenderer spriteRenderer, Vector2 screenPos)
+    {
+        spriteRenderer.transform.position = Format.ComputePositionFromScreenPosition(screenPos);
+    }
+
     /// <summary>
     /// Move the SpriteRenderer given a relative delta vector
     /// </summary>

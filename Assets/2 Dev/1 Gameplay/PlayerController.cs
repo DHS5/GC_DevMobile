@@ -2,69 +2,43 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float speed = 4f;
-    [SerializeField] float smoothness = 0.1f;
-    [SerializeField] float leanAngle = 15f;
-    [SerializeField] float leanSpeed = 5f;
+    [Header("Player")]
+    [SerializeField] private Sprite sprite;
+    [SerializeField] private float relativeSize = 1;
+    [SerializeField] private Vector2 relativeStartPosition = new Vector2(0, -0.5f);
 
-    [SerializeField] GameObject model;
+    [Header("References")]
+    [SerializeField] private InputReader inputReader;
 
-    [Header("Camera Bounds")]
-    [SerializeField]
-    Transform cameraFollow;
 
-    [SerializeField] float minX = -3f;
-    [SerializeField] float maxX = 3f;
-    [SerializeField] float minY = -1f;
-    [SerializeField] float maxY = 1.4f;
-    private SpriteRenderer spriteRenderer;
-
-    InputReader input;
-
-    Vector3 currentVelocity;
-    Vector3 targetPosition;
+    private SpriteRenderer _spriteRenderer;
 
     void Start()
     {
-        spriteRenderer = Pool.GetSpriteRenderer();
-        input = GetComponent<InputReader>();
+        _spriteRenderer = Pool.GetSpriteRenderer();
+        _spriteRenderer.sprite = sprite;
+        _spriteRenderer.SetRelativeSize(relativeSize, 1);
+        _spriteRenderer.SetRelativePosition(relativeStartPosition);
     }
 
-    void Update()
+    private void OnEnable()
     {
-        /*
-        Touch touch = Input.GetTouch(0);
+        inputReader.OnMove += OnMove;
+        inputReader.OnFire += OnFire;
+    }
+    private void OnDisable()
+    {
+        inputReader.OnMove -= OnMove;
+        inputReader.OnFire -= OnFire;
+    }
 
-        targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 10f));
+    private void OnMove(Vector2 screenPosition)
+    {
+        _spriteRenderer.SetPositionFromScreenPosition(screenPosition);
+    }
 
-        spriteRenderer.Move(targetPosition);
-        */
-    
-        // DEBUG - to play on pc
-        // ---------------------
-        targetPosition += new Vector3(input.Move.x, input.Move.y, 0f) * (speed * Time.deltaTime);
+    private void OnFire()
+    {
 
-        // Calculate the min and max X and Y positions for the player based on the camera view
-        var minPlayerX = cameraFollow.position.x + minX;
-        var maxPlayerX = cameraFollow.position.x + maxX;
-        var minPlayerY = cameraFollow.position.y + minY;
-        var maxPlayerY = cameraFollow.position.y + maxY;
-
-        // Clamp the player's position to the camera view
-        targetPosition.x = Mathf.Clamp(targetPosition.x, minPlayerX, maxPlayerX);
-        targetPosition.y = Mathf.Clamp(targetPosition.y, minPlayerY, maxPlayerY);
-
-        // Lerp the player's position to the target position
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothness);
-
-        // Calculate the rotation effect
-        var targetRotationAngle = -input.Move.x * leanAngle;
-
-        var currentYRotation = transform.localEulerAngles.y;
-        var newYRotation = Mathf.LerpAngle(currentYRotation, targetRotationAngle, leanSpeed * Time.deltaTime);
-
-        // Apply the rotation effect
-        transform.localEulerAngles = new Vector3(0f, newYRotation, 0f);
-        // ---------------------
     }
 }
