@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(Vector2 screenPosition)
     {
+        // todo check collision when 
         _spriteRenderer.SetPositionFromScreenPosition(screenPosition);
     }
 }
