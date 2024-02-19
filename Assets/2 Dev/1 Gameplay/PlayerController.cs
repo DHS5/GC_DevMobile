@@ -10,8 +10,9 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     [SerializeField] private InputReader inputReader;
 
+    [Space(5f)]
 
-    private SpriteRenderer _spriteRenderer;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     void Start()
     {
