@@ -62,12 +62,14 @@ public class Pool : MonoBehaviour
 
     [Header("SpriteRenderer Pool")]
     [SerializeField] private List<SpriteRenderer> pooledSpriteRenderers;
+    [SerializeField][Range(1, 10)] private int srPoolRefillLimit = 5;
+    [SerializeField][Range(1, 100)] private int srPoolRefillCapacity = 10;
 
     #endregion
 
     #region Initialization
 
-    private static Stack<SpriteRenderer> _spriteRendererStack;
+    private static Stack<SpriteRenderer> _spriteRendererStack = new();
 
     private void Init()
     {
@@ -89,7 +91,9 @@ public class Pool : MonoBehaviour
     {
         if (_spriteRendererStack.Count > 0)
         {
-            return _spriteRendererStack.Pop();
+            SpriteRenderer sr = _spriteRendererStack.Pop();
+            EvaluateSpriteRendererStack();
+            return sr;
         }
         else
         {
@@ -105,6 +109,16 @@ public class Pool : MonoBehaviour
             _spriteRendererStack.Push(spriteRenderer);
         }
     }
+
+    private static void EvaluateSpriteRendererStack()
+    {
+        if (Exist() && _spriteRendererStack.Count <= I.srPoolRefillLimit)
+        {
+
+            Debug.Log("Increase Sprite Renderer pool capacity by " + I.srPoolRefillCapacity);
+        }
+    }
+    //private static 
 
     #endregion
 }

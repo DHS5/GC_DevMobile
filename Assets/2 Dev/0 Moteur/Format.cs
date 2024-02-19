@@ -35,8 +35,7 @@ public class Format : MonoBehaviour
 
     #region Static Members
 
-    public static Resolution Resolution => Screen.currentResolution;
-
+    public static Vector2 Resolution { get; private set; }
 
     public static float Ratio { get; private set; }
     public static float ReferenceRatio { get; private set; }
@@ -53,20 +52,24 @@ public class Format : MonoBehaviour
 
     private void Init()
     {
-        ReferenceRatio = referenceResolution.x / referenceResolution.y;
-        Ratio = Resolution.width / Resolution.height;
+        Resolution = new Vector2(Screen.width, Screen.height);
 
-        ResolutionDelta = new Vector2(Resolution.width / referenceResolution.x, Resolution.height / referenceResolution.y);
+        ReferenceRatio = referenceResolution.x / referenceResolution.y;
+        Ratio = Resolution.x / Resolution.y;
+
+        ResolutionDelta = new Vector2(Resolution.x / referenceResolution.x, Resolution.y / referenceResolution.y);
         ScaleFactor = Mathf.Min(ResolutionDelta.x, ResolutionDelta.y);
 
         ScreenBounds = new Vector2(referenceBounds.x * ResolutionDelta.x, referenceBounds.y * ResolutionDelta.y);
         DemiBounds = new Vector2(ScreenBounds.x / 2, ScreenBounds.y / 2);
 
-        Debug.Log("Ratio : " + Ratio + "\n" +
+        Debug.Log("Resolution : " + Resolution + "\n" +
+            "Screen : width = " + Screen.width + " height = " + Screen.height + "\n" +
+            "Ratio : " + Ratio + "\n" +
             "Resolution Delta : " + ResolutionDelta + "\n" +
             "Scale Factor : " + ScaleFactor + "\n" +
             "Screen Bounds : " + ScreenBounds);
-    } 
+    }
 
     #endregion
 
