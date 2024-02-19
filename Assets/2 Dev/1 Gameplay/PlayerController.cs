@@ -2,32 +2,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float speed = 4f;
-    [SerializeField] float smoothness = 0.1f;
-    [SerializeField] float leanAngle = 15f;
-    [SerializeField] float leanSpeed = 5f;
-
-    [SerializeField] GameObject model;
-
-    [Header("Camera Bounds")]
-    [SerializeField]
-    Transform cameraFollow;
-
-    [SerializeField] float minX = -3f;
-    [SerializeField] float maxX = 3f;
-    [SerializeField] float minY = -1f;
-    [SerializeField] float maxY = 1.4f;
-    private SpriteRenderer spriteRenderer;
+    [Header("Player")]
+    [SerializeField] private Sprite sprite;
+    [SerializeField] private float relativeSize = 1;
+    [SerializeField] private Vector2 relativeStartPosition = new Vector2(0, -0.5f);
 
     [Header("References")]
     [SerializeField] private InputReader inputReader;
 
-    Vector3 currentVelocity;
-    Vector3 targetPosition;
+
+    private SpriteRenderer _spriteRenderer;
 
     void Start()
     {
-        spriteRenderer = Pool.GetSpriteRenderer();
+        _spriteRenderer = Pool.GetSpriteRenderer();
+        _spriteRenderer.sprite = sprite;
+        _spriteRenderer.SetRelativeSize(relativeSize, 1);
+        _spriteRenderer.SetRelativePosition(relativeStartPosition);
     }
 
     private void OnEnable()
@@ -43,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(Vector2 screenPosition)
     {
-        spriteRenderer.SetPositionFromScreenPosition(screenPosition);
+        _spriteRenderer.SetPositionFromScreenPosition(screenPosition);
     }
 
     private void OnFire()

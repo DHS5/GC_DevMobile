@@ -46,16 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d463f236b526f02438dcd8dcdf1b38fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  smoothness: 0.1
-  leanAngle: 15
-  leanSpeed: 5
-  model: {fileID: 0}
-  cameraFollow: {fileID: 0}
-  minX: -3
-  maxX: 3
-  minY: -1
-  maxY: 1.4
+  sprite: {fileID: 21300000, guid: dc00713e535618041b2b1fd6b16662c6, type: 3}
+  relativeSize: 1
+  relativeStartPosition: {x: 0, y: -0.5}
   inputReader: {fileID: -4035836479837671531}
 --- !u!114 &-4035836479837671531
 MonoBehaviour:
