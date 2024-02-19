@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private InputReader inputReader;
+    [SerializeField] private Weapon weapon;
 
     [Space(5f)]
 
@@ -25,21 +26,15 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         inputReader.OnMove += OnMove;
-        inputReader.OnFire += OnFire;
     }
     private void OnDisable()
     {
         inputReader.OnMove -= OnMove;
-        inputReader.OnFire -= OnFire;
     }
 
     private void OnMove(Vector2 screenPosition)
     {
+        // todo check collision when 
         _spriteRenderer.SetPositionFromScreenPosition(screenPosition);
-    }
-
-    private void OnFire()
-    {
-
     }
 }
