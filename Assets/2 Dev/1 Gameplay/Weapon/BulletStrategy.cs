@@ -2,7 +2,8 @@
 
 namespace _2_Dev._1_Gameplay.Weapon
 {
-    public class Bullet : ScriptableObject
+    [CreateAssetMenu(fileName = "Bullet Strategy", menuName = "Strategy/Bullet")]
+    public class BulletStrategy : ScriptableObject
     {
         [SerializeField] int damage = 10;
         [SerializeField] float fireRate = 0.5f;
@@ -10,10 +11,6 @@ namespace _2_Dev._1_Gameplay.Weapon
 
         public int Damage => damage;
         public float FireRate => fireRate;
-
-        public virtual void Initialize()
-        {
-            // no-op
-        }
+        public Sprite Sprite => sprite;
     }
 }

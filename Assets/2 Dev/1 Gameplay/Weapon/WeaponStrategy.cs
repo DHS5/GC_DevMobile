@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Strategy pattern - enables object to alter his behavior dynamically
+[CreateAssetMenu(fileName = "Weapon Strategy", menuName = "Strategy/Weapon")]
 public abstract class WeaponStrategy : ScriptableObject
 {
-    [SerializeField] int damage = 10;
-    [SerializeField] float fireRate = 0.5f;
-    [SerializeField] protected float projectileSpeed = 10f;
-    [SerializeField] protected float projectileLifetime = 4f;
-    [SerializeField] protected GameObject projectilePrefab;
+    [SerializeField] private float fireRate = 0.5f;
+    [SerializeField] private int bulletCount = 1;
 
-    public int Damage => damage;
     public float FireRate => fireRate;
+    public int BulletCount => bulletCount;
 
-    public virtual void Initialize()
+    /*
+    public override void Fire(Transform firePoint, LayerMask layer)
     {
-        // no-op
-    }
+        for (int i = 0; i < 3; i++)
+        {
+            var projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            projectile.transform.SetParent(firePoint);
+            projectile.transform.Rotate(0f, spreadAngle * (i - 1), 0f);
+            projectile.layer = layer;
 
-    public abstract void Fire(Transform firePoint, LayerMask layer);
+            var projectileComponent = projectile.GetComponent<Projectile>();
+            projectileComponent.SetSpeed(projectileSpeed);
+
+            Destroy(projectile, projectileLifetime);
+        }
+    }
+    */
 }

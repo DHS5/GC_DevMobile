@@ -1,20 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using _2_Dev._1_Gameplay.Weapon;
 using UnityEngine;
-using Utilities;
 
-public abstract class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
-    [SerializeField] protected WeaponStrategy weaponStrategy;
     [SerializeField] protected Transform firePoint;
+
+    protected WeaponStrategy _weaponStrategy;
+    protected BulletStrategy _bulletStrategy;
 
     protected int Layer => gameObject.layer;
 
-    void Start() => weaponStrategy.Initialize();
-
-    public void SetWeaponStrategy(WeaponStrategy strategy)
+    public void SetStrategy(WeaponStrategy weaponStrategy, BulletStrategy bulletStrategy)
     {
-        weaponStrategy = strategy;
-        weaponStrategy.Initialize();
+        _weaponStrategy = weaponStrategy;
+        _bulletStrategy = bulletStrategy;
+    }
+
+    public void Shoot()
+    {
+
     }
 }

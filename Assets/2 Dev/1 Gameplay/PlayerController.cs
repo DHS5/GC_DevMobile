@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private InputReader inputReader;
+    [SerializeField] private Weapon weapon;
 
     [Space(5f)]
 

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] GameObject muzzlePrefab;

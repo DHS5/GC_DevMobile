@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4513703884920508342}
   - component: {fileID: -2973363544518285161}
-  - component: {fileID: 3839272654151520122}
+  - component: {fileID: 2678183460265705488}
   - component: {fileID: -4035836479837671531}
   - component: {fileID: 6133885561203782738}
   - component: {fileID: -5950200177345061106}
@@ -85,8 +85,9 @@ MonoBehaviour:
   relativeSize: 1
   relativeStartPosition: {x: 0, y: -0.5}
   inputReader: {fileID: -4035836479837671531}
+  weapon: {fileID: 2678183460265705488}
   _spriteRenderer: {fileID: 0}
---- !u!114 &3839272654151520122
+--- !u!114 &2678183460265705488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,13 +96,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7715831211876101469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ae237e736224d04ca22e32518de2a41, type: 3}
+  m_Script: {fileID: 11500000, guid: 93470c191f4387d4384fc044fdad8039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStrategy: {fileID: 11400000, guid: 03ac1462e727a9e48ae7cec5d9ce6d02, type: 2}
+  weaponStrategy: {fileID: 0}
   firePoint: {fileID: 4404711213172806170}
-  layer: 0
-  input: {fileID: -4035836479837671531}
 --- !u!114 &-4035836479837671531
 MonoBehaviour:
   m_ObjectHideFlags: 0

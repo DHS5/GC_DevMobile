@@ -10,7 +10,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float spawnInterval = 2f;
 
     List<SplineContainer> splines;
-    EnemyFactory enemyFactory;
 
     float spawnTimer;
     int enemiesSpawned;
@@ -20,7 +19,6 @@ public class EnemySpawner : MonoBehaviour
         splines = new List<SplineContainer>(GetComponentsInChildren<SplineContainer>());
     }
 
-    void Start() => enemyFactory = new EnemyFactory();
 
     void Update()
     {
@@ -39,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
         SplineContainer spline = splines[Random.Range(0, splines.Count)];
 
         // TODO: Possible optimization - pool enemies
-        enemyFactory.CreateEnemy(enemyType, spline);
+        
         enemiesSpawned++;
     }
 }
