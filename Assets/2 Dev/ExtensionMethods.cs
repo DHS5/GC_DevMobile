@@ -43,6 +43,12 @@ public static class ExtensionMethods
     {
         spriteRenderer.transform.position = Format.ComputePosition(relativePosition);
     }
+
+    public static void MoveTo(this SpriteRenderer spriteRenderer, Vector3 worldPos)
+    {
+        spriteRenderer.transform.position = Format.ComputePosition(worldPos.x, worldPos.y);
+    }
+
     /// <summary>
     /// Move the SpriteRenderer given a relative delta vector
     /// </summary>
