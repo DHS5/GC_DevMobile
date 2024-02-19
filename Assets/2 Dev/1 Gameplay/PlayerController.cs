@@ -30,16 +30,15 @@ public class PlayerController : MonoBehaviour
         input = GetComponent<InputReader>();
     }
 
-
-
     void Update()
     {
+        /*
         Touch touch = Input.GetTouch(0);
 
         targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 10f));
 
         spriteRenderer.Move(targetPosition);
-
+        */
     
         // DEBUG - to play on pc
         // ---------------------
