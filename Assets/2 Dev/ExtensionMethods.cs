@@ -44,9 +44,9 @@ public static class ExtensionMethods
         spriteRenderer.transform.position = Format.ComputePosition(relativePosition);
     }
 
-    public static void MoveTo(this SpriteRenderer spriteRenderer, Vector3 worldPos)
+    public static void SetPositionFromScreenPosition(this SpriteRenderer spriteRenderer, Vector2 screenPos)
     {
-        spriteRenderer.transform.position = Format.ComputePosition(worldPos.x, worldPos.y);
+        spriteRenderer.transform.position = Format.ComputePositionFromScreenPosition(screenPos);
     }
 
     /// <summary>

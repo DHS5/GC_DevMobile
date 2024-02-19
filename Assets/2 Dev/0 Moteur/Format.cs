@@ -96,6 +96,10 @@ public class Format : MonoBehaviour
     {
         return new Vector3(relativeX * DemiBounds.x, relativeY * DemiBounds.y, 0);
     }
+    public static Vector3 ComputePositionFromScreenPosition(Vector2 screenPosition)
+    {
+        return ComputePosition(new Vector2(Mathf.InverseLerp(0, Resolution.x, screenPosition.x), Mathf.InverseLerp(0, Resolution.y, screenPosition.y)));
+    }
 
     #endregion
 }

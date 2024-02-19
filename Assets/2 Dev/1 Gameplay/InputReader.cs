@@ -1,22 +1,33 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerInput))]
+public class InputReader : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private PlayerInput playerInput;
 
-    [RequireComponent(typeof(PlayerInput))]
-    public class InputReader : MonoBehaviour
+    public event Action<Vector2> OnMove;
+    public event Action OnFire;
+
+    private void OnEnable()
     {
-        // NOTE: Make sure to set the Player Input component to C# events
-        PlayerInput playerInput;
-        InputAction moveAction;
-        InputAction fireAction;
-
-        public Vector2 Move => moveAction.ReadValue<Vector2>();
-        public bool Fire => fireAction.ReadValue<float>() > 0f;
-
-        void Start()
-        {
-            playerInput = GetComponent<PlayerInput>();
-            moveAction = playerInput.actions["Move"];
-            fireAction = playerInput.actions["Fire"];
-        }
+        playerInput.actions["Move"].performed += OnInputMove;
+        playerInput.actions["Fire"].performed += OnInputFire;
     }
+    private void OnDisable()
+    {
+        playerInput.actions["Move"].performed -= OnInputMove;
+        playerInput.actions["Fire"].performed -= OnInputFire;
+    }
+
+    private void OnInputMove(InputAction.CallbackContext context)
+    {
+        OnMove?.Invoke(context.ReadValue<Vector2>());
+    }
+    private void OnInputFire(InputAction.CallbackContext context)
+    {
+        OnFire?.Invoke();
+    }
+}
