@@ -7,9 +7,8 @@ public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] protected WeaponStrategy weaponStrategy;
     [SerializeField] protected Transform firePoint;
-    [SerializeField, Layer] protected int layer;
 
-    void OnValidate() => layer = gameObject.layer;
+    protected int Layer => gameObject.layer;
 
     void Start() => weaponStrategy.Initialize();
 

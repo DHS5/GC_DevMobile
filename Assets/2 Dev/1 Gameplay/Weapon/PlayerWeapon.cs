@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerWeapon : Weapon
 {
-    [SerializeField] InputReader input;
     float fireTimer;
 
     void Update()
@@ -14,7 +13,7 @@ public class PlayerWeapon : Weapon
 
         if (fireTimer >= weaponStrategy.FireRate)
         {
-            weaponStrategy.Fire(firePoint, layer);
+            weaponStrategy.Fire(firePoint, Layer);
             fireTimer = 0f;
         }
     }

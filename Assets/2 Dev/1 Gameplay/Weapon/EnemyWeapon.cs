@@ -12,7 +12,7 @@ public class EnemyWeapon : Weapon
 
         if (fireTimer >= weaponStrategy.FireRate)
         {
-            weaponStrategy.Fire(firePoint, layer);
+            weaponStrategy.Fire(firePoint, Layer);
             fireTimer = 0f;
         }
     }
