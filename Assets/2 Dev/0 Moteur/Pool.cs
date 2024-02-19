@@ -62,6 +62,7 @@ public class Pool : MonoBehaviour
 
     [Header("SpriteRenderer Pool")]
     [SerializeField] private List<SpriteRenderer> pooledSpriteRenderers;
+    [SerializeField][Range(1, 100000)] private int srPoolBaseCapacity = 10000;
     [SerializeField][Range(1, 10)] private int srPoolRefillLimit = 5;
     [SerializeField][Range(1, 100)] private int srPoolRefillCapacity = 10;
 
@@ -81,6 +82,8 @@ public class Pool : MonoBehaviour
                 _spriteRendererStack.Push(psr);
             }
         }
+        int numberToCreate = srPoolBaseCapacity - pooledSpriteRenderers.Count;
+        if (numberToCreate > 0) CreateNewSpriteRenderers(numberToCreate);
     }
 
     #endregion
@@ -114,11 +117,21 @@ public class Pool : MonoBehaviour
     {
         if (Exist() && _spriteRendererStack.Count <= I.srPoolRefillLimit)
         {
-
+            CreateNewSpriteRenderers(I.srPoolRefillCapacity);
             Debug.Log("Increase Sprite Renderer pool capacity by " + I.srPoolRefillCapacity);
         }
     }
-    //private static 
+    private static void CreateNewSpriteRenderers(int amount)
+    {
+        SpriteRenderer sr;
+        Vector3 poolPos = I.poolPosition.position;
+        for (int i = 0; i < amount; i++)
+        {
+            sr = Instantiate(I.pooledSpriteRenderers[0], I.pooledSpriteRenderers[0].transform.parent);
+            sr.transform.position = poolPos;
+            _spriteRendererStack.Push(sr);
+        }
+    }
 
     #endregion
 }

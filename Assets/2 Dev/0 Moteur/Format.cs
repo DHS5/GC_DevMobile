@@ -54,7 +54,7 @@ public class Format : MonoBehaviour
     private void Init()
     {
         Resolution = new Vector2(Screen.width, Screen.height);
-
+        
         ReferenceRatio = (float)referenceResolution.x / referenceResolution.y;
         Ratio = Resolution.x / Resolution.y;
         RatioDiff = Ratio / ReferenceRatio;
