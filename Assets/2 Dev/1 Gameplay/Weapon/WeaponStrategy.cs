@@ -7,8 +7,10 @@ public abstract class WeaponStrategy : ScriptableObject
 {
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private int bulletCount = 1;
+    [SerializeField] private float spreadAngle = 5f;
 
     public float FireRate => fireRate;
+    public float SpreadAngle => spreadAngle;
     public int BulletCount => bulletCount;
 
     /*

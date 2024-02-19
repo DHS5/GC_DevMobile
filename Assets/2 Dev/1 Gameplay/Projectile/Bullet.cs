@@ -1,12 +1,71 @@
+using _2_Dev._1_Gameplay.Weapon;
 using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float speed;
-    [SerializeField] GameObject muzzlePrefab;
-    [SerializeField] GameObject hitPrefab;
+    #region Global Members
 
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    private BulletStrategy _strategy;
+    private Vector3 _startDirection;
+    private Weapon _shooter;
+    private float _startTime;
+
+    public bool IsActive { get; private set; }
+
+    #endregion
+
+    #region Static Accessor
+
+    public static Bullet Get() => Pool.GetBullet();
+
+    #endregion
+
+    public void Init(Vector3 pos, Vector3 dir, BulletStrategy strategy, Weapon shooter)
+    {
+        IsActive = true;
+
+        transform.position = pos;
+        _startDirection = dir;
+        _strategy = strategy;
+        _shooter = shooter;
+        _startTime = Time.time;
+
+        BulletManager.Register(this);
+    }
+
+    public void OnUpdate(float time)
+    {
+        float lifetime = time - _startTime;
+
+        if (lifetime >= _strategy.Lifetime)
+        {
+            Dispose();
+            return;
+        }
+
+        // Update Position and Rotation here
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (IsActive)
+        {
+            // Search for damageable, check if is Player etc...
+        }
+    }
+
+    private void Dispose()
+    {
+        IsActive = false;
+        BulletManager.Unregister(this);
+
+        Pool.DisposeBullet(this);
+    }
+
+    /*
     Transform parent;
 
     public void SetSpeed(float speed) => this.speed = speed;
@@ -47,13 +106,13 @@ public class Bullet : MonoBehaviour
             DestroyParticleSystem(hitVFX);
         }
 
-        /*
+        
         var plane = collision.gameObject.GetComponent<Plane>();
         if (plane != null)
         {
             plane.TakeDamage(10);
         }
-        */
+        
 
         Destroy(gameObject);
     }
@@ -67,4 +126,5 @@ public class Bullet : MonoBehaviour
         }
         Destroy(vfx, ps.main.duration);
     }
+*/
 }

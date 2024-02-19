@@ -23,9 +23,14 @@ public class SplineManager : MonoBehaviour
 
     #endregion
 
+    #region Global Members
+
+    [SerializeField] private EnumValues<EnemyPath, SplineContainer> splinePaths;
+
+    #endregion
+
     public static SplineContainer GetSplineContainer(EnemyPath path)
     {
-        Debug.Log("TODO: enum values");
-        return null;
+        return I.splinePaths.Get(path);
     }
 }

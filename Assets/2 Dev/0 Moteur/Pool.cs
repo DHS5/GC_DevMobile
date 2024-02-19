@@ -12,11 +12,11 @@ public class Pool : MonoBehaviour
     {
         Vector3 poolPos = poolPosition.position;
 
-        if (pooledSpriteRenderers.IsValid())
+        if (pooledBullets.IsValid())
         {
-            foreach (var sr in pooledSpriteRenderers)
+            foreach (var bullet in pooledBullets)
             {
-                sr.transform.position = poolPos;
+                bullet.transform.position = poolPos;
             }
         }
     }
@@ -60,76 +60,76 @@ public class Pool : MonoBehaviour
     [Header("Pool")]
     [SerializeField] private Transform poolPosition;
 
-    [Header("SpriteRenderer Pool")]
-    [SerializeField] private List<SpriteRenderer> pooledSpriteRenderers;
-    [SerializeField][Range(1, 100000)] private int srPoolBaseCapacity = 10000;
-    [SerializeField][Range(1, 10)] private int srPoolRefillLimit = 5;
-    [SerializeField][Range(1, 100)] private int srPoolRefillCapacity = 10;
+    [Header("Bullet Pool")]
+    [SerializeField] private List<Bullet> pooledBullets;
+    [SerializeField][Range(1, 100000)] private int bulletPoolBaseCapacity = 10000;
+    [SerializeField][Range(1, 10)] private int bulletPoolRefillLimit = 5;
+    [SerializeField][Range(1, 100)] private int bulletPoolRefillCapacity = 10;
 
     #endregion
 
     #region Initialization
 
-    private static Stack<SpriteRenderer> _spriteRendererStack = new();
+    private static Stack<Bullet> _bulletStack = new();
 
     private void Init()
     {
         // Stack Sprite Renderer
-        if (pooledSpriteRenderers.IsValid())
+        if (pooledBullets.IsValid())
         {
-            foreach (var psr in pooledSpriteRenderers)
+            foreach (var bullet in pooledBullets)
             {
-                _spriteRendererStack.Push(psr);
+                _bulletStack.Push(bullet);
             }
         }
-        int numberToCreate = srPoolBaseCapacity - pooledSpriteRenderers.Count;
-        if (numberToCreate > 0) CreateNewSpriteRenderers(numberToCreate);
+        int numberToCreate = bulletPoolBaseCapacity - pooledBullets.Count;
+        if (numberToCreate > 0) CreateNewBullets(numberToCreate);
     }
 
     #endregion
 
     #region Pooling
 
-    public static SpriteRenderer GetSpriteRenderer()
+    public static Bullet GetBullet()
     {
-        if (_spriteRendererStack.Count > 0)
+        if (_bulletStack.Count > 0)
         {
-            SpriteRenderer sr = _spriteRendererStack.Pop();
-            EvaluateSpriteRendererStack();
-            return sr;
+            Bullet bullet = _bulletStack.Pop();
+            EvaluateBulletStack();
+            return bullet;
         }
         else
         {
-            Debug.LogError("Sprite Renderer Stack empty");
+            Debug.LogError("Bullet Stack empty");
             return null;
         }
     }
-    public static void DisposeSpriteRenderer(SpriteRenderer spriteRenderer)
+    public static void DisposeBullet(Bullet bullet)
     {
-        if (Exist() && spriteRenderer != null)
+        if (Exist() && bullet != null)
         {
-            spriteRenderer.transform.position = I.poolPosition.position;
-            _spriteRendererStack.Push(spriteRenderer);
+            bullet.transform.position = I.poolPosition.position;
+            _bulletStack.Push(bullet);
         }
     }
 
-    private static void EvaluateSpriteRendererStack()
+    private static void EvaluateBulletStack()
     {
-        if (Exist() && _spriteRendererStack.Count <= I.srPoolRefillLimit)
+        if (Exist() && _bulletStack.Count <= I.bulletPoolRefillLimit)
         {
-            CreateNewSpriteRenderers(I.srPoolRefillCapacity);
-            Debug.Log("Increase Sprite Renderer pool capacity by " + I.srPoolRefillCapacity);
+            CreateNewBullets(I.bulletPoolRefillCapacity);
+            Debug.Log("Increase Bullet pool capacity by " + I.bulletPoolRefillCapacity);
         }
     }
-    private static void CreateNewSpriteRenderers(int amount)
+    private static void CreateNewBullets(int amount)
     {
-        SpriteRenderer sr;
+        Bullet bullet;
         Vector3 poolPos = I.poolPosition.position;
         for (int i = 0; i < amount; i++)
         {
-            sr = Instantiate(I.pooledSpriteRenderers[0], I.pooledSpriteRenderers[0].transform.parent);
-            sr.transform.position = poolPos;
-            _spriteRendererStack.Push(sr);
+            bullet = Instantiate(I.pooledBullets[0], I.pooledBullets[0].transform.parent);
+            bullet.transform.position = poolPos;
+            _bulletStack.Push(bullet);
         }
     }
 

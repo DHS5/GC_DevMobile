@@ -10,17 +10,14 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     [SerializeField] private InputReader inputReader;
     [SerializeField] private Weapon weapon;
-
-    [Space(5f)]
-
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     void Start()
     {
-        _spriteRenderer = Pool.GetSpriteRenderer();
-        _spriteRenderer.sprite = sprite;
-        _spriteRenderer.SetRelativeSize(relativeSize, 1);
-        _spriteRenderer.SetRelativePosition(relativeStartPosition);
+        //_spriteRenderer = Pool.GetSpriteRenderer();
+        spriteRenderer.sprite = sprite;
+        spriteRenderer.SetRelativeSize(relativeSize, 1);
+        spriteRenderer.SetRelativePosition(relativeStartPosition);
     }
 
     private void OnEnable()
@@ -35,6 +32,6 @@ public class PlayerController : MonoBehaviour
     private void OnMove(Vector2 screenPosition)
     {
         // todo check collision when 
-        _spriteRenderer.SetPositionFromScreenPosition(screenPosition);
+        spriteRenderer.SetPositionFromScreenPosition(screenPosition);
     }
 }

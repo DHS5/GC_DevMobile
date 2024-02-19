@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UpdateManager : MonoBehaviour
 {
-    public static event Action<int, float> OnUpdate;
+    public static event Action<int, float, float> OnUpdate;
     public static event Action OnLateUpdate;
     public static event Action OnFixedUpdate;
 
@@ -18,8 +18,9 @@ public class UpdateManager : MonoBehaviour
     {
         FrameIndex++;
         float deltaTime = Time.deltaTime;
+        float time = Time.time;
 
-        OnUpdate?.Invoke(FrameIndex, deltaTime);
+        OnUpdate?.Invoke(FrameIndex, deltaTime, time);
     }
 
     private void LateUpdate()
