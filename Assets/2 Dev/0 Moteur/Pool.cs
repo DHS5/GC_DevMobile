@@ -49,6 +49,8 @@ public class Pool : MonoBehaviour
             return;
         }
         I = this;
+
+        Init();
     }
 
     #endregion

@@ -61,7 +61,12 @@ public class Format : MonoBehaviour
 
         ScreenBounds = new Vector2(referenceBounds.x * ResolutionDelta.x, referenceBounds.y * ResolutionDelta.y);
         DemiBounds = new Vector2(ScreenBounds.x / 2, ScreenBounds.y / 2);
-    }
+
+        Debug.Log("Ratio : " + Ratio + "\n" +
+            "Resolution Delta : " + ResolutionDelta + "\n" +
+            "Scale Factor : " + ScaleFactor + "\n" +
+            "Screen Bounds : " + ScreenBounds);
+    } 
 
     #endregion
 
