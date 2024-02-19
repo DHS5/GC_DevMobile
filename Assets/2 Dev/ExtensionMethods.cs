@@ -4,6 +4,15 @@ using UnityEngine;
 
 public static class ExtensionMethods
 {
+    #region Collections
+
+    public static bool IsValid(this IList list)
+    {
+        return list != null && list.Count > 0;
+    }
+
+    #endregion
+
     #region Vectors
 
     public static Vector3 ToVector3(this Vector2 vector2)
