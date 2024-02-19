@@ -11,5 +11,23 @@ public static class ExtensionMethods
 
     }
 
+    public static void SetRelativePosition(this SpriteRenderer spriteRenderer, Vector2 relativePosition)
+    {
+
+    }
+
+    public static void Move(this SpriteRenderer spriteRenderer, Vector2 relativeDelta)
+    {
+
+    }
+    public static void MoveX(this SpriteRenderer spriteRenderer, float relativeXDelta)
+    {
+
+    }
+    public static void MoveY(this SpriteRenderer spriteRenderer, float relativeYDelta)
+    {
+
+    }
+
     #endregion
 }
