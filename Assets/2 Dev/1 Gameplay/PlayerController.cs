@@ -25,21 +25,14 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         inputReader.OnMove += OnMove;
-        inputReader.OnFire += OnFire;
     }
     private void OnDisable()
     {
         inputReader.OnMove -= OnMove;
-        inputReader.OnFire -= OnFire;
     }
 
     private void OnMove(Vector2 screenPosition)
     {
         _spriteRenderer.SetPositionFromScreenPosition(screenPosition);
-    }
-
-    private void OnFire()
-    {
-
     }
 }
