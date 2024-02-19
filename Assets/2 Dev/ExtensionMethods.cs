@@ -6,9 +6,9 @@ public static class ExtensionMethods
 {
     #region Sprite Renderer
 
-    public static void SetRelativeSize(this SpriteRenderer spriteRenderer, Vector2 relativeSize)
+    public static void SetRelativeSize(this SpriteRenderer spriteRenderer, float relativeSize, float ratio)
     {
-
+        spriteRenderer.transform.localScale = Format.ComputeSize(relativeSize, ratio);
     }
 
     public static void SetRelativePosition(this SpriteRenderer spriteRenderer, Vector2 relativePosition)
