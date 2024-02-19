@@ -77,9 +77,13 @@ public class Format : MonoBehaviour
 
     #region Position
 
-    public static Vector2 ComputePosition(Vector2 relativePosition)
+    public static Vector3 ComputePosition(Vector2 relativePosition)
     {
-        return new Vector2(relativePosition.x * DemiBounds.x, relativePosition.y * DemiBounds.y);
+        return new Vector3(relativePosition.x * DemiBounds.x, relativePosition.y * DemiBounds.y, 0);
+    }
+    public static Vector3 ComputePosition(float relativeX, float relativeY)
+    {
+        return new Vector3(relativeX * DemiBounds.x, relativeY * DemiBounds.y, 0);
     }
 
     #endregion
