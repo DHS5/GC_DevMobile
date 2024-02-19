@@ -39,6 +39,7 @@ public class Format : MonoBehaviour
 
     public static float Ratio { get; private set; }
     public static float ReferenceRatio { get; private set; }
+    public static float RatioDiff { get; private set; }
     
     public static Vector2 ResolutionDelta { get; private set; }
     public static float ScaleFactor { get; private set; }
@@ -54,18 +55,20 @@ public class Format : MonoBehaviour
     {
         Resolution = new Vector2(Screen.width, Screen.height);
 
-        ReferenceRatio = referenceResolution.x / referenceResolution.y;
+        ReferenceRatio = (float)referenceResolution.x / referenceResolution.y;
         Ratio = Resolution.x / Resolution.y;
+        RatioDiff = Ratio / ReferenceRatio;
 
         ResolutionDelta = new Vector2(Resolution.x / referenceResolution.x, Resolution.y / referenceResolution.y);
         ScaleFactor = Mathf.Min(ResolutionDelta.x, ResolutionDelta.y);
 
-        ScreenBounds = new Vector2(referenceBounds.x * ResolutionDelta.x, referenceBounds.y * ResolutionDelta.y);
+        ScreenBounds = new Vector2(referenceBounds.x * RatioDiff, referenceBounds.y);
         DemiBounds = new Vector2(ScreenBounds.x / 2, ScreenBounds.y / 2);
 
         Debug.Log("Resolution : " + Resolution + "\n" +
             "Screen : width = " + Screen.width + " height = " + Screen.height + "\n" +
             "Ratio : " + Ratio + "\n" +
+            "Ratio Diff : " + RatioDiff + "\n" +
             "Resolution Delta : " + ResolutionDelta + "\n" +
             "Scale Factor : " + ScaleFactor + "\n" +
             "Screen Bounds : " + ScreenBounds);
