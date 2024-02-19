@@ -53,6 +53,9 @@ public class Format : MonoBehaviour
 
     private void Init()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+
         Resolution = new Vector2(Screen.width, Screen.height);
         
         ReferenceRatio = (float)referenceResolution.x / referenceResolution.y;

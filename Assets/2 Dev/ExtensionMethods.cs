@@ -43,7 +43,11 @@ public static class ExtensionMethods
     {
         spriteRenderer.transform.position = Format.ComputePosition(relativePosition);
     }
-
+    /// <summary>
+    /// Set the position of the SpriteRenderer given a Screen Position
+    /// </summary>
+    /// <param name="spriteRenderer"></param>
+    /// <param name="screenPos"></param>
     public static void SetPositionFromScreenPosition(this SpriteRenderer spriteRenderer, Vector2 screenPos)
     {
         spriteRenderer.transform.position = Format.ComputePositionFromScreenPosition(screenPos);
