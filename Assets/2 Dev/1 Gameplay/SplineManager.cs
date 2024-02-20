@@ -4,6 +4,7 @@ using UnityEngine.Splines;
 public enum EnemyPath
 {
     FIRST,
+    SECOND,
 }
 
 public class SplineManager : MonoBehaviour

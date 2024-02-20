@@ -104,7 +104,7 @@ public class Format : MonoBehaviour
     }
     public static Vector3 ComputePositionFromScreenPosition(Vector2 screenPosition)
     {
-        return ComputeNormalizedPosition(new Vector2(Mathf.InverseLerp(0, Resolution.x, screenPosition.x), Mathf.InverseLerp(0, Resolution.y, screenPosition.y)));
+        return ComputeNormalizedPosition(new Vector2(screenPosition.x / Resolution.x, screenPosition.y / Resolution.y));
     }
     public static Vector3 ComputeDeltaFromScreenDelta(Vector2 screenDelta)
     {
@@ -123,8 +123,8 @@ public class Format : MonoBehaviour
         bool xNeg = basePos.x < 0;
         float absY = Mathf.Abs(basePos.y);
         bool yNeg = basePos.y < 0;
-        float x = Mathf.InverseLerp(0, RefDemiBounds.x, absX) * (xNeg ? -1f : 1f);
-        float y = Mathf.InverseLerp(0, RefDemiBounds.y, absY) * (yNeg ? -1f : 1f);
+        float x = absX / RefDemiBounds.x * (xNeg ? -1f : 1f);
+        float y = absY / RefDemiBounds.y * (yNeg ? -1f : 1f);
 
         return new Vector2(x, y);
     }

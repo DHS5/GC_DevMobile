@@ -35,12 +35,15 @@ public class Enemy : PoolableObject
 
     public void Init(EnemyType enemyType)
     {
+        EnemyManager.Register(this);
+
         _enemyType = enemyType;
         IsActive = true;
 
         if (enemyType.Movement == EnemyMovement.PATH)
         {
             splineAnimate.Container = SplineManager.GetSplineContainer(enemyType.Path);
+            splineAnimate.Restart(true);
         }
         else
         {
@@ -52,7 +55,7 @@ public class Enemy : PoolableObject
     public void Dispose()
     {
         IsActive = false;
-
+        EnemyManager.Unregister(this);
 
         Pool.Dispose<Enemy>(this, Pool.PoolableType.ENEMY);
     }
