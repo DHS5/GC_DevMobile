@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880063fe9451b39408e8cf5e33093139, type: 3}
   m_Name: StaticQuadruple
   m_EditorClassIdentifier: 
-  movement: 1
+  movement: 0
+  fixedRelativePosition: {x: 0, y: 0.5}
   path: 0
   weaponStrategy: {fileID: 11400000, guid: 73624b507e50f994583920c929631b59, type: 2}
   bulletStrategy: {fileID: 11400000, guid: cee788d1fcd78b34f9892ab55626b157, type: 2}
