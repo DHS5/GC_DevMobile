@@ -32,6 +32,6 @@ public class PlayerController : MonoBehaviour
     private void OnMove(Vector2 screenDelta)
     {
         //Debug.Log(screenDelta + " " + UnityEngine.InputSystem.Touchscreen.)
-        spriteRenderer.transform.MoveClamp(Format.ComputeRelativeDeltaFromScreenDelta(screenDelta));
+        transform.MoveClamp(Format.ComputeRelativeDeltaFromScreenDelta(screenDelta));
     }
 }
