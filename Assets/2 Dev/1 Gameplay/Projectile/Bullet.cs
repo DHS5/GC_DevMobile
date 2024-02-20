@@ -37,7 +37,7 @@ public class Bullet : PoolableObject
         BulletManager.Register(this);
     }
 
-    public void OnUpdate(float time)
+    public void OnUpdate(float deltaTime, float time)
     {
         float lifetime = time - _startTime;
 
@@ -46,7 +46,10 @@ public class Bullet : PoolableObject
             Dispose();
         }
 
-        // Update Position and Rotation here
+        float normalizedLifetime = lifetime / _strategy.Lifetime;
+
+        transform.Rotate(Vector3.forward, deltaTime * _strategy.CurrentRotation(normalizedLifetime));
+        transform.Move(transform.forward * deltaTime * _strategy.CurrentSpeed(normalizedLifetime));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

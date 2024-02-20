@@ -52,7 +52,7 @@ public static class BulletManager
     {
         foreach (var bullet in _bullets)
         {
-            bullet.OnUpdate(time);
+            bullet.OnUpdate(deltaTime, time);
         }
     }
 
