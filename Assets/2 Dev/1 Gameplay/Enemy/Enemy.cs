@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 
-public class Enemy : MonoBehaviour
+public class Enemy : PoolableObject
 {
     [SerializeField] private SplineAnimate splineAnimate;
     [SerializeField] private Weapon weapon;

@@ -2,8 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public class PoolableObject : MonoBehaviour { }
+
 public class Pool : MonoBehaviour
 {
+    public enum PoolableType
+    {
+        BULLET = 0,
+        ENEMY = 1,
+
+    }
+
     #region Editor
 
 #if UNITY_EDITOR
@@ -89,6 +99,65 @@ public class Pool : MonoBehaviour
     #endregion
 
     #region Pooling
+
+    public static T Get<T>(PoolableType type) where T : PoolableObject
+    {
+        if (GetStackCount(type) > 0)
+        {
+            T poolable = Pop<T>(type);
+            EvaluateStack(type);
+            return poolable;
+        }
+
+        Debug.LogError("Stack empty");
+        return null;
+    }
+
+    private static int GetStackCount(PoolableType type)
+    {
+        switch (type)
+        {
+            case PoolableType.BULLET: return _bulletStack.Count;
+        }
+        return 0;
+    }
+
+    private static T Pop<T>(PoolableType type) where T : PoolableObject
+    {
+        switch (type)
+        {
+            case PoolableType.BULLET: return _bulletStack.Pop() as T;
+        }
+        return null;
+    }
+
+    private static void EvaluateStack(PoolableType type)
+    {
+        if (Exist())
+        {
+            switch (type)
+            {
+                case PoolableType.BULLET:
+                    {
+                        if (_bulletStack.Count <= I.bulletPoolRefillLimit)
+                        {
+                            CreateNewPoolables<Bullet>(type, I.bulletPoolRefillCapacity);
+                        }
+                        break;
+                    }
+            }
+        }
+    }
+
+    private static void CreateNewPoolables<T>(PoolableType type, int amount)
+    {
+
+    }
+
+    private static void Dispose<T>(T poolable, PoolableType type) where T : PoolableObject
+    {
+
+    }
 
     public static Bullet GetBullet()
     {

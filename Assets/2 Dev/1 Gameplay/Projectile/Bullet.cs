@@ -2,7 +2,7 @@ using _2_Dev._1_Gameplay.Weapon;
 using System;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : PoolableObject
 {
     #region Global Members
 
