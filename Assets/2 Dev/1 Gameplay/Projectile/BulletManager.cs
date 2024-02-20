@@ -67,10 +67,12 @@ public static class BulletManager
     {
         if (!_hasBullets && _bullets.Count > 0)
         {
+            _hasBullets = true;
             OnStartUpdate();
         }
         else if (_hasBullets && _bullets.Count == 0)
         {
+            _hasBullets = false;
             OnEndUpdate();
         }
     }

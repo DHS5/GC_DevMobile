@@ -48,10 +48,11 @@ public class Bullet : PoolableObject
         }
 
         float normalizedLifetime = lifetime / _strategy.Lifetime;
-        Debug.Log(normalizedLifetime + "  " + transform.up);
 
+        float speed = deltaTime * _strategy.CurrentSpeed(normalizedLifetime);
+        //Debug.Log(speed + " " + _strategy.CurrentSpeed(normalizedLifetime));
         transform.Rotate(Vector3.forward, deltaTime * _strategy.CurrentRotation(normalizedLifetime));
-        transform.Move(transform.up * (deltaTime * _strategy.CurrentSpeed(normalizedLifetime)));
+        transform.Move(transform.up * (speed));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
