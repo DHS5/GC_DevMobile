@@ -18,13 +18,19 @@ public class Weapon : MonoBehaviour
         _bulletStrategy = bulletStrategy;
     }
 
-    public bool IsReadyToFire(float time)
+    private bool IsReadyToFire(float time)
     {
         return time - _lastFireTime >= _weaponStrategy.FireRate;
     }
 
+    public void Shoot()
+    {
+        Shoot(Time.time);
+    }
     public void Shoot(float time)
     {
+        if (!IsReadyToFire(time)) return;
+
         Bullet[] bullets = new Bullet[_weaponStrategy.BulletCount];
         Vector3 firePos = firePoint.position;
         Vector3 fireRight = firePoint.right;
