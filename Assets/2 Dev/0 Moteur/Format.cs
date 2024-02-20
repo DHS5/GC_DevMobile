@@ -106,12 +106,11 @@ public class Format : MonoBehaviour
     {
         return ComputeNormalizedPosition(new Vector2(screenPosition.x / Resolution.x, screenPosition.y / Resolution.y));
     }
-    public static Vector3 ComputeDeltaFromScreenDelta(Vector2 screenDelta)
+    public static Vector3 ComputeRelativeDeltaFromScreenDelta(Vector2 screenDelta)
     {
         float deltaX = screenDelta.x / Resolution.x;
         float deltaY = screenDelta.y / Resolution.y;
-        Vector3 result = new Vector3(deltaX * ScreenBounds.x, deltaY * ScreenBounds.y, 0);
-        return result;
+        return new Vector2(deltaX * 2, deltaY * 2);
     }
     public static Vector3 ComputeNormalizedPosition(Vector2 normalizedPosition)
     {
