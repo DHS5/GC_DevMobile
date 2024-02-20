@@ -106,9 +106,13 @@ public class Format : MonoBehaviour
     {
         return ComputeNormalizedPosition(new Vector2(Mathf.InverseLerp(0, Resolution.x, screenPosition.x), Mathf.InverseLerp(0, Resolution.y, screenPosition.y)));
     }
-    public static Vector2 ComputeRelativeDeltaFromScreenDelta(Vector2 screenDelta)
+    public static Vector3 ComputeDeltaFromScreenDelta(Vector2 screenDelta)
     {
-        return new Vector2(screenDelta.x / Resolution.x, screenDelta.y / Resolution.y);
+        float deltaX = screenDelta.x / Resolution.x;
+        float deltaY = screenDelta.y / Resolution.y;
+        Vector3 result = new Vector3(deltaX * ScreenBounds.x, deltaY * ScreenBounds.y, 0);
+        Debug.Log("Screen delta " + screenDelta + " delta X " + deltaX + " delta Y " + deltaY + " " + result);
+        return result;
     }
     public static Vector3 ComputeNormalizedPosition(Vector2 normalizedPosition)
     {
@@ -130,10 +134,6 @@ public class Format : MonoBehaviour
         if (RatioDiff == 1) return basePosition;
         return ComputePosition(GetReferenceRelativePosition(basePosition));
     }
-    //public static Vector3 ComputeRelativePositionFromWorld(Vector3 worldPos)
-    //{
-    //    return new Vector3(Mathf.InverseLerp(-DemiBounds.x, DemiBounds.x, worldPos.x), Mathf.InverseLerp(-DemiBounds.y, DemiBounds.y, worldPos.y), 0);
-    //}
 
     #endregion
 }

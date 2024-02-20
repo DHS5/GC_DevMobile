@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
         inputReader.OnMove -= OnMove;
     }
 
-    private void OnMove(Vector2 screenPosition)
+    private void OnMove(Vector2 screenDelta)
     {
-        spriteRenderer.transform.Move(Format.ComputeRelativeDeltaFromScreenDelta(screenPosition));
+        spriteRenderer.transform.position += Format.ComputeDeltaFromScreenDelta(screenDelta);
     }
 }

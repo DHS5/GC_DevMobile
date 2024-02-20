@@ -49,9 +49,7 @@ public class SplineManager : MonoBehaviour
             for (int i = 0; i < knots.Length; i++)
             {
                 knot = knots[i];
-                Debug.Log("Base pos " + knot.Position);
                 knot.Position = Format.ComputeCorrectPosition(knot.Position);
-                Debug.Log("New pos " + knot.Position);
                 spline.Spline.SetKnot(i, knot);
             }
         }
