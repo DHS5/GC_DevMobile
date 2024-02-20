@@ -101,7 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8eda6322702a045a719de632eb1f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 2678183460265705488}
   maxHealth: 100
+  health: 0
 --- !u!114 &2678183460265705488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93470c191f4387d4384fc044fdad8039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
+  isPlayer: 1
   firePoint: {fileID: 4404711213172806170}
 --- !u!114 &-4035836479837671531
 MonoBehaviour:
