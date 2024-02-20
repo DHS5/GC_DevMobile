@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using _2_Dev._1_Gameplay;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Splines;
 
-public class Enemy : PoolableObject
+public class Enemy : PoolableObject, IDamageable
 {
     public enum EnemyMovement
     {
@@ -15,6 +17,7 @@ public class Enemy : PoolableObject
 
     [SerializeField] private SplineAnimate splineAnimate;
     [SerializeField] private Weapon weapon;
+    [SerializeField] private float health;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private EnemyType _enemyType;
@@ -75,6 +78,15 @@ public class Enemy : PoolableObject
         if (weapon != null && weapon.IsReadyToFire(time))
         {
             weapon.Shoot(time);
+        }
+    }
+    
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Dispose();
         }
     }
 }
