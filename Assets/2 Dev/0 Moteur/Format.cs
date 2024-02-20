@@ -98,6 +98,11 @@ public class Format : MonoBehaviour
     {
         return new Vector3(relativePosition.x * DemiBounds.x, relativePosition.y * DemiBounds.y, 0);
     }
+    
+    public static Vector3 ComputePositionClamped(Vector2 relativePosition)
+    {
+        return new Vector3(Mathf.Clamp(relativePosition.x * DemiBounds.x, -DemiBounds.x, DemiBounds.x), Mathf.Clamp(relativePosition.y * DemiBounds.y, -DemiBounds.y, DemiBounds.y), 0);
+    }
     public static Vector3 ComputePosition(float relativeX, float relativeY)
     {
         return new Vector3(relativeX * DemiBounds.x, relativeY * DemiBounds.y, 0);
@@ -106,7 +111,7 @@ public class Format : MonoBehaviour
     {
         return ComputeNormalizedPosition(new Vector2(screenPosition.x / Resolution.x, screenPosition.y / Resolution.y));
     }
-    public static Vector3 ComputeRelativeDeltaFromScreenDelta(Vector2 screenDelta)
+    public static Vector2 ComputeRelativeDeltaFromScreenDelta(Vector2 screenDelta)
     {
         float deltaX = screenDelta.x / Resolution.x;
         float deltaY = screenDelta.y / Resolution.y;

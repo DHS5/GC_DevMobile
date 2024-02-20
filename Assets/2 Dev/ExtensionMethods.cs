@@ -62,6 +62,11 @@ public static class ExtensionMethods
     {
         transform.position += Format.ComputePosition(relativeDelta);
     }
+    
+    public static void MoveClamp(this Transform transform, Vector2 relativeDelta)
+    {
+        transform.position = Format.ComputePositionClamped(relativeDelta);
+    }
     public static void MoveX(this Transform transform, float relativeXDelta)
     {
         transform.position += Format.ComputePosition(relativeXDelta, 0);
