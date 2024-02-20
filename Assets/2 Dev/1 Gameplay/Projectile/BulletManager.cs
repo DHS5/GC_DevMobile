@@ -6,6 +6,8 @@ public static class BulletManager
 {
     #region Registration
 
+    public static bool IsActive { get; private set; }
+
     private static List<Bullet> _bullets = new();
     private static bool _hasBullets = false;
 
@@ -14,7 +16,14 @@ public static class BulletManager
 
     public static void Register(Bullet bullet)
     {
-        _toRegister.Add(bullet);
+        if (IsActive)
+            _toRegister.Add(bullet);
+
+        else if (!_bullets.Contains(bullet))
+        {
+            _bullets.Add(bullet);
+            OnBulletsChange();
+        }
     }
     public static void Unregister(Bullet bullet)
     {
@@ -33,7 +42,6 @@ public static class BulletManager
                 if (!_bullets.Contains(b))
                 {
                     _bullets.Add(b);
-
                 }
             }
         }
@@ -74,9 +82,11 @@ public static class BulletManager
     private static void OnStartUpdate()
     {
         UpdateManager.OnUpdate += OnUpdate;
+        IsActive = true;
     }
     private static void OnEndUpdate()
     {
+        IsActive = false;
         UpdateManager.OnUpdate -= OnUpdate;
     }
 
