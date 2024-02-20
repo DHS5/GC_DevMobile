@@ -34,11 +34,24 @@ public class SplineManager : MonoBehaviour
         return I.splinePaths.Get(path);
     }
 
+    private void Start()
+    {
+        ResizeSplines();
+    }
+
     public void ResizeSplines()
     {
-        //foreach (var spline in splinePaths)
-        //{
-        //
-        //}
+        BezierKnot[] knots;
+        BezierKnot knot;
+        foreach (var spline in splinePaths)
+        {
+            knots = spline.Spline.ToArray();
+            for (int i = 0; i < knots.Length; i++)
+            {
+                knot = knots[i];
+                knot.Position = Format.ComputeCorrectPosition(knot.Position);
+                spline.Spline.SetKnot(i, knot);
+            }
+        }
     }
 }
