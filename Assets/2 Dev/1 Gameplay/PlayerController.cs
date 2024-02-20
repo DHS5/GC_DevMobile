@@ -31,9 +31,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(Vector2 screenPosition)
     {
-        
-        
-        
-        spriteRenderer.transform.SetPositionFromScreenPosition(screenPosition);
+        spriteRenderer.transform.Move(screenPosition);
     }
 }
