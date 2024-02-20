@@ -275,6 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splineAnimate: {fileID: -699907380606048640}
   weapon: {fileID: 3811435687658015615}
+  spriteRenderer: {fileID: 576059724892709016}
 --- !u!114 &-8656855210085184753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Target: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_LoopMode: 1
   m_Method: 1
   m_Duration: 1
