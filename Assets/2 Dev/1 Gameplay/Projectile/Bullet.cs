@@ -41,6 +41,7 @@ public class Bullet : PoolableObject
         BulletManager.Register(this);
     }
 
+    // Fixed Update ?
     public void OnUpdate(float deltaTime, float time)
     {
         float lifetime = time - _startTime;
