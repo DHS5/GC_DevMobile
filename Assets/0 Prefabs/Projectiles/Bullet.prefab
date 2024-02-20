@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a799cf0dcdfb8be4ea5f3b97960215c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletTransform: {fileID: 256085891747511265}
   spriteRenderer: {fileID: 7472076760092533439}
   boxCollider: {fileID: 4851535820192293109}
 --- !u!212 &7472076760092533439

@@ -19,7 +19,7 @@ public static class BulletManager
         if (IsActive)
             _toRegister.Add(bullet);
 
-        else if (!_bullets.Contains(bullet))
+        else
         {
             _bullets.Add(bullet);
             OnBulletsChange();
@@ -39,10 +39,7 @@ public static class BulletManager
             change = true;
             foreach (var b in _toRegister)
             {
-                if (!_bullets.Contains(b))
-                {
-                    _bullets.Add(b);
-                }
+                _bullets.Add(b);
             }
         }
         if (_toUnregister.IsValid())

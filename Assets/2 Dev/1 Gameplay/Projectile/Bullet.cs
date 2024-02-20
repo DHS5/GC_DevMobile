@@ -7,6 +7,7 @@ public class Bullet : PoolableObject
 {
     #region Global Members
 
+    [SerializeField] private Transform bulletTransform;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D boxCollider;
 
@@ -28,8 +29,8 @@ public class Bullet : PoolableObject
     {
         IsActive = true;
 
-        transform.position = pos;
-        transform.up = dir;
+        bulletTransform.position = pos;
+        bulletTransform.up = dir;
         _strategy = strategy;
         _shooter = shooter;
         _startTime = Time.time;
@@ -54,10 +55,10 @@ public class Bullet : PoolableObject
 
         float rotateSpeed = deltaTime * _strategy.CurrentRotation(normalizedLifetime);
         if (rotateSpeed != 0)
-            transform.Rotate(Vector3.forward, rotateSpeed);
+            bulletTransform.Rotate(Vector3.forward, rotateSpeed);
         float moveSpeed = deltaTime * _strategy.CurrentSpeed(normalizedLifetime);
         if (moveSpeed != 0)
-            transform.Move(transform.up * moveSpeed);
+            bulletTransform.Move(bulletTransform.up * moveSpeed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
