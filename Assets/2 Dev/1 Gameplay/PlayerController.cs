@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
     {
         //_spriteRenderer = Pool.GetSpriteRenderer();
         spriteRenderer.sprite = sprite;
-        spriteRenderer.SetRelativeSize(relativeSize, 1);
-        spriteRenderer.SetRelativePosition(relativeStartPosition);
+        spriteRenderer.transform.SetRelativeSize(relativeSize, 1);
+        spriteRenderer.transform.SetRelativePosition(relativeStartPosition);
     }
 
     private void OnEnable()
@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(Vector2 screenPosition)
     {
-        // todo check collision when 
-        spriteRenderer.SetPositionFromScreenPosition(screenPosition);
+        spriteRenderer.transform.Move(screenPosition);
     }
 }

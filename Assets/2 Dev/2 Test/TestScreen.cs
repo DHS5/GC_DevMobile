@@ -16,18 +16,18 @@ namespace _2_Dev._2_Test
         
         private void Start()
         {            
-            TL_Point.SetRelativePosition(new Vector2(-1, 1));
-            TR_Point.SetRelativePosition(new Vector2(1, 1)); 
-            BL_Point.SetRelativePosition(new Vector2(-1, -1));
-            BR_Point.SetRelativePosition(new Vector2(1, -1));
+            TL_Point.transform.SetRelativePosition(new Vector2(-1, 1));
+            TR_Point.transform.SetRelativePosition(new Vector2(1, 1)); 
+            BL_Point.transform.SetRelativePosition(new Vector2(-1, -1));
+            BR_Point.transform.SetRelativePosition(new Vector2(1, -1));
             
-            centerPoint.SetRelativePosition(Vector2.zero);
+            centerPoint.transform.SetRelativePosition(Vector2.zero);
             
             pointList = new[] {TL_Point, TR_Point, BL_Point, BR_Point, centerPoint};
             
             foreach (var point in pointList)
             {
-                point.SetRelativeSize(1f, 1);
+                point.transform.SetRelativeSize(1f, 1);
             }
         }
     }

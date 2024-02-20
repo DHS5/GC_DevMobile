@@ -27,48 +27,48 @@ public static class ExtensionMethods
     /// <summary>
     /// Set the relative size (scale) of the SpriteRenderer
     /// </summary>
-    /// <param name="spriteRenderer"></param>
+    /// <param name="transform"></param>
     /// <param name="relativeSize">Value > 0 relative to reference resolution</param>
     /// <param name="ratio"></param>
-    public static void SetRelativeSize(this SpriteRenderer spriteRenderer, float relativeSize, float ratio)
+    public static void SetRelativeSize(this Transform transform, float relativeSize, float ratio)
     {
-        spriteRenderer.transform.localScale = Format.ComputeSize(relativeSize, ratio);
+        transform.localScale = Format.ComputeSize(relativeSize, ratio);
     }
     /// <summary>
     /// Set the relative position of the SpriteRenderer
     /// </summary>
-    /// <param name="spriteRenderer"></param>
+    /// <param name="transform"></param>
     /// <param name="relativePosition">Values between -1 and 1 (min/max of the screen)</param>
-    public static void SetRelativePosition(this SpriteRenderer spriteRenderer, Vector2 relativePosition)
+    public static void SetRelativePosition(this Transform transform, Vector2 relativePosition)
     {
-        spriteRenderer.transform.position = Format.ComputePosition(relativePosition);
+        transform.position = Format.ComputePosition(relativePosition);
     }
     /// <summary>
     /// Set the position of the SpriteRenderer given a Screen Position
     /// </summary>
-    /// <param name="spriteRenderer"></param>
+    /// <param name="transform"></param>
     /// <param name="screenPos"></param>
-    public static void SetPositionFromScreenPosition(this SpriteRenderer spriteRenderer, Vector2 screenPos)
+    public static void SetPositionFromScreenPosition(this Transform transform, Vector2 screenPos)
     {
-        spriteRenderer.transform.position = Format.ComputePositionFromScreenPosition(screenPos);
+        transform.position = Format.ComputePositionFromScreenPosition(screenPos);
     }
 
     /// <summary>
     /// Move the SpriteRenderer given a relative delta vector
     /// </summary>
-    /// <param name="spriteRenderer"></param>
+    /// <param name="transform"></param>
     /// <param name="relativeDelta">Values between -1 and 1 (min/max of the screen)</param>
-    public static void Move(this SpriteRenderer spriteRenderer, Vector2 relativeDelta)
+    public static void Move(this Transform transform, Vector2 relativeDelta)
     {
-        spriteRenderer.transform.position += Format.ComputePosition(relativeDelta);
+        transform.position += Format.ComputePosition(relativeDelta);
     }
-    public static void MoveX(this SpriteRenderer spriteRenderer, float relativeXDelta)
+    public static void MoveX(this Transform transform, float relativeXDelta)
     {
-        spriteRenderer.transform.position += Format.ComputePosition(relativeXDelta, 0);
+        transform.position += Format.ComputePosition(relativeXDelta, 0);
     }
-    public static void MoveY(this SpriteRenderer spriteRenderer, float relativeYDelta)
+    public static void MoveY(this Transform transform, float relativeYDelta)
     {
-        spriteRenderer.transform.position += Format.ComputePosition(0, relativeYDelta);
+        transform.position += Format.ComputePosition(0, relativeYDelta);
     }
 
     #endregion

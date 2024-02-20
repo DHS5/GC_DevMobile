@@ -2,7 +2,7 @@ using _2_Dev._1_Gameplay.Weapon;
 using System;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : PoolableObject
 {
     #region Global Members
 
@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
 
     #region Static Accessor
 
-    public static Bullet Get() => Pool.GetBullet();
+    public static Bullet Get() => Pool.Get<Bullet>(Pool.PoolableType.BULLET);
 
     #endregion
 
@@ -62,7 +62,7 @@ public class Bullet : MonoBehaviour
         IsActive = false;
         BulletManager.Unregister(this);
 
-        Pool.DisposeBullet(this);
+        Pool.Dispose(this, Pool.PoolableType.BULLET);
     }
 
     /*
