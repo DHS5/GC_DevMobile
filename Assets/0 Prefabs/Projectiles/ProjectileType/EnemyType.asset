@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 279f893774a2fee4aa0a3793ed62d808, type: 3}
-  m_Name: BulletSingleShot
+  m_Script: {fileID: 11500000, guid: 880063fe9451b39408e8cf5e33093139, type: 3}
+  m_Name: EnemyType
   m_EditorClassIdentifier: 
-  damage: 10
-  fireRate: 0.5
-  projectileSpeed: 10
-  projectileLifetime: 4
-  projectilePrefab: {fileID: 4538786320529059225, guid: da6306ef2037b3d4abd53585451d60b2, type: 3}
+  path: 0
+  weaponStrategy: {fileID: 0}
+  bulletStrategy: {fileID: 0}
