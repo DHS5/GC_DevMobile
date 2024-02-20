@@ -62,7 +62,7 @@ public class Enemy : PoolableObject, IDamageable
         IsActive = false;
         EnemyManager.Unregister(this);
 
-        Pool.Dispose<Enemy>(this, Pool.PoolableType.ENEMY);
+        Pool.Dispose(this, Pool.PoolableType.ENEMY);
     }
 
 
@@ -80,7 +80,7 @@ public class Enemy : PoolableObject, IDamageable
 
     private void OnStaticUpdate(float time)
     {
-        if (weapon != null && weapon.IsReadyToFire(time))
+        if (weapon != null)
         {
             weapon.Shoot(time);
         }
