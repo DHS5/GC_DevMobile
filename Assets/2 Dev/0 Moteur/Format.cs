@@ -45,6 +45,7 @@ public class Format : MonoBehaviour
     public static float ScaleFactor { get; private set; }
 
     public static Vector2 ScreenBounds { get; private set; }
+    public static Vector2 RefDemiBounds { get; private set; }
     public static Vector2 DemiBounds { get; private set; }
 
     #endregion
@@ -64,6 +65,8 @@ public class Format : MonoBehaviour
 
         ResolutionDelta = new Vector2(Resolution.x / referenceResolution.x, Resolution.y / referenceResolution.y);
         ScaleFactor = Mathf.Min(ResolutionDelta.x, ResolutionDelta.y);
+
+        RefDemiBounds = new Vector2(referenceBounds.x / 2, referenceBounds.y / 2);
 
         ScreenBounds = new Vector2(referenceBounds.x * RatioDiff, referenceBounds.y);
         DemiBounds = new Vector2(ScreenBounds.x / 2, ScreenBounds.y / 2);
@@ -110,6 +113,22 @@ public class Format : MonoBehaviour
     public static Vector3 ComputeNormalizedPosition(Vector2 normalizedPosition)
     {
         return new Vector3(normalizedPosition.x * ScreenBounds.x - DemiBounds.x, normalizedPosition.y * ScreenBounds.y - DemiBounds.y, 0);
+    }
+    public static Vector2 GetReferenceRelativePosition(Vector3 basePos)
+    {
+        float absX = Mathf.Abs(basePos.x);
+        bool xNeg = basePos.x < 0;
+        float absY = Mathf.Abs(basePos.y);
+        bool yNeg = basePos.y < 0;
+        float x = Mathf.InverseLerp(0, RefDemiBounds.x, absX) * (xNeg ? -1f : 1f);
+        float y = Mathf.InverseLerp(0, RefDemiBounds.y, absY) * (yNeg ? -1f : 1f);
+
+        return new Vector2(x, y);
+    }
+    public static Vector3 ComputeCorrectPosition(Vector3 basePosition)
+    {
+        if (RatioDiff == 1) return basePosition;
+        return ComputePosition(GetReferenceRelativePosition(basePosition));
     }
     //public static Vector3 ComputeRelativePositionFromWorld(Vector3 worldPos)
     //{

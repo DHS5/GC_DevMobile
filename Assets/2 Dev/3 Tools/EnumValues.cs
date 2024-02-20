@@ -8,11 +8,23 @@ using UnityEditor;
 #endif
 
 [Serializable]
-public class EnumValues<T, U> where T : System.Enum
+public class EnumValues<T, U> : IEnumerable<U> where T : System.Enum
 {
     [SerializeField] private U[] enumValues;
 
     public U Get(T enumValue) => enumValues[Convert.ToInt32(enumValue)];
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return enumValues.GetEnumerator();
+    }
+    public IEnumerator<U> GetEnumerator()
+    {
+        for (int i = 0; i < enumValues.Length; i++)
+        {
+            yield return enumValues[i];
+        }
+    }
 }
 
 #if UNITY_EDITOR
