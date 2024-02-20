@@ -68,10 +68,12 @@ public static class EnemyManager
     {
         if (!_hasEnemy && _enemies.Count > 0)
         {
+            _hasEnemy = true;
             OnStartUpdate();
         }
         else if (_hasEnemy && _enemies.Count == 0)
         {
+            _hasEnemy = false;
             OnEndUpdate();
         }
     }

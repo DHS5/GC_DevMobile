@@ -522,6 +522,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2821150183833283573, guid: 3baed3a3b76a9814d8f8deb26d5f7dba, type: 3}
+      propertyPath: bulletPoolBaseCapacity
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 4169328411215562731, guid: 3baed3a3b76a9814d8f8deb26d5f7dba, type: 3}
       propertyPath: m_Name
       value: Pool

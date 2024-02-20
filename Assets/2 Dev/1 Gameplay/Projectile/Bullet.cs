@@ -8,6 +8,7 @@ public class Bullet : PoolableObject
     #region Global Members
 
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private BoxCollider2D boxCollider;
 
     private BulletStrategy _strategy;
     private Weapon _shooter;
@@ -34,6 +35,7 @@ public class Bullet : PoolableObject
         _startTime = Time.time;
         
         spriteRenderer.sprite = _strategy.Sprite;
+        boxCollider.enabled = true;
 
         BulletManager.Register(this);
     }
@@ -49,15 +51,16 @@ public class Bullet : PoolableObject
 
         float normalizedLifetime = lifetime / _strategy.Lifetime;
 
-        float speed = deltaTime * _strategy.CurrentSpeed(normalizedLifetime);
-        //Debug.Log(speed + " " + _strategy.CurrentSpeed(normalizedLifetime));
         transform.Rotate(Vector3.forward, deltaTime * _strategy.CurrentRotation(normalizedLifetime));
-        transform.Move(transform.up * (speed));
+        transform.Move(transform.up * (deltaTime * _strategy.CurrentSpeed(normalizedLifetime)));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!IsActive) return;
+
+        Debug.Log("collide with " + collision.gameObject);
+
         var damageable = collision.gameObject.GetComponent<IDamageable>();
         if(damageable != null)
         {
@@ -67,72 +70,10 @@ public class Bullet : PoolableObject
 
     private void Dispose()
     {
+        boxCollider.enabled = false;
         IsActive = false;
         BulletManager.Unregister(this);
 
         Pool.Dispose(this, Pool.PoolableType.BULLET);
     }
-
-    /*
-    Transform parent;
-
-    public void SetSpeed(float speed) => this.speed = speed;
-    public void SetParent(Transform parent) => this.parent = parent;
-
-    public Action Callback;
-
-    void Start()
-    {
-        if (muzzlePrefab != null)
-        {
-            // instantiate muzzle flash
-            var muzzleVFX = Instantiate(muzzlePrefab, transform.position, Quaternion.identity);
-            muzzleVFX.transform.forward = gameObject.transform.forward;
-            muzzleVFX.transform.SetParent(parent);
-
-            DestroyParticleSystem(muzzleVFX);
-
-        }
-    }
-
-    void Update()
-    {
-        transform.SetParent(null);
-        transform.position += transform.forward * (speed * Time.deltaTime);
-
-        Callback?.Invoke();
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (hitPrefab != null)
-        {
-            // destroy particle system
-            ContactPoint contact = collision.contacts[0];
-            var hitVFX = Instantiate(hitPrefab, contact.point, Quaternion.identity);
-
-            DestroyParticleSystem(hitVFX);
-        }
-
-        
-        var plane = collision.gameObject.GetComponent<Plane>();
-        if (plane != null)
-        {
-            plane.TakeDamage(10);
-        }
-        
-
-        Destroy(gameObject);
-    }
-
-    void DestroyParticleSystem(GameObject vfx)
-    {
-        var ps = vfx.GetComponent<ParticleSystem>();
-        if (ps == null)
-        {
-            ps = vfx.GetComponentInChildren<ParticleSystem>();
-        }
-        Destroy(vfx, ps.main.duration);
-    }
-*/
 }

@@ -47,20 +47,23 @@ public class WaveManager : MonoBehaviour
     {
         WaveContent wave = waves[currentWave];
         EnemiesToSpawn[] enemyWave = wave.GetEnemiesSpawnList();
-        Sequence[] spawnSequences = new Sequence[enemyWave.Length];
-        float interval;
 
         if (enemyWave.Length > 0)
         {
+            Sequence[] spawnSequences = new Sequence[enemyWave.Length];
+            float interval;
+            EnemyType enemyType;
+
             for (int i = 0; i < enemyWave.Length; i++)
             {
                 if (enemyWave[i].quantity > 0)
                 {
                     spawnSequences[i] = DOTween.Sequence();
                     interval = enemyWave[i].duration / enemyWave[i].quantity;
+                    enemyType = enemyWave[i].enemyType;
                     for (int j = 0; j < enemyWave[i].quantity; j++)
                     {
-                        spawnSequences[i].AppendCallback(() => Enemy.Spawn(enemyWave[i].enemyType));
+                        spawnSequences[i].AppendCallback(() => Enemy.Spawn(enemyType));
                         spawnSequences[i].AppendInterval(interval);
                     }
                 }
