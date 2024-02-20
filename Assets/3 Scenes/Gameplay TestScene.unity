@@ -287,9 +287,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1049651853}
-  mapPrefab: {fileID: 6895528077331486359, guid: 7bd748a32b4b2ba48bdb2f5db6f0e248, type: 3}
+  mapPrefab: {fileID: 338788178733945127, guid: 51f15bfd8d474e84ea8bae354dd7bea3, type: 3}
   speed: 2
-  mapHeight: 20
+  mapHeight: 0
 --- !u!1 &312885978
 GameObject:
   m_ObjectHideFlags: 0
