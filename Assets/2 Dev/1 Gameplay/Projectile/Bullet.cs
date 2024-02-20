@@ -10,7 +10,6 @@ public class Bullet : PoolableObject
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private BulletStrategy _strategy;
-    private Vector3 _startDirection;
     private Weapon _shooter;
     private float _startTime;
 
@@ -29,7 +28,7 @@ public class Bullet : PoolableObject
         IsActive = true;
 
         transform.position = pos;
-        _startDirection = dir;
+        transform.up = dir;
         _strategy = strategy;
         _shooter = shooter;
         _startTime = Time.time;
@@ -49,9 +48,10 @@ public class Bullet : PoolableObject
         }
 
         float normalizedLifetime = lifetime / _strategy.Lifetime;
+        Debug.Log(normalizedLifetime + "  " + transform.up);
 
         transform.Rotate(Vector3.forward, deltaTime * _strategy.CurrentRotation(normalizedLifetime));
-        transform.Move(transform.forward * (deltaTime * _strategy.CurrentSpeed(normalizedLifetime)));
+        transform.Move(transform.up * (deltaTime * _strategy.CurrentSpeed(normalizedLifetime)));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

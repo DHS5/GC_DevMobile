@@ -6,6 +6,8 @@ public static class EnemyManager
 {
     #region Registration
 
+    public static bool IsActive { get; private set; }
+
     private static List<Enemy> _enemies = new();
     private static bool _hasEnemy = false;
 
@@ -14,7 +16,14 @@ public static class EnemyManager
 
     public static void Register(Enemy enemy)
     {
-        _toRegister.Add(enemy);
+        if (IsActive)
+            _toRegister.Add(enemy);
+
+        else if (!_enemies.Contains(enemy))
+        {
+            _enemies.Add(enemy);
+            OnEnemiesChange();
+        }
     }
     public static void Unregister(Enemy enemy)
     {
@@ -74,9 +83,11 @@ public static class EnemyManager
     private static void OnStartUpdate()
     {
         UpdateManager.OnUpdate += OnUpdate;
+        IsActive = true;
     }
     private static void OnEndUpdate()
     {
+        IsActive = false;
         UpdateManager.OnUpdate -= OnUpdate;
     }
 

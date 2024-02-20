@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WeaponStaticQuadruple 1
   m_EditorClassIdentifier: 
   fireRate: 0.5
-  bulletCount: 4
+  bulletCount: 1
   spreadAngle: 90

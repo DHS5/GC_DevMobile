@@ -38,7 +38,7 @@ public class Weapon : MonoBehaviour
         for (int i = 0; i < bullets.Length; i++)
         {
             bullets[i] = Bullet.Get();
-            bullets[i].Init(firePos, Vector3.Slerp(fireRight, -fireRight, (i + 1) / (bullets.Length + 1)), _bulletStrategy, this);
+            bullets[i].Init(firePos, firePoint.up, _bulletStrategy, this);//Vector3.Slerp(fireRight, -fireRight, (i + 1) / (bullets.Length + 1))
         }
 
         _lastFireTime = time;
