@@ -1,4 +1,5 @@
 using _2_Dev._1_Gameplay;
+using DG.Tweening;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
@@ -8,12 +9,23 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] int maxHealth;
     [SerializeField] private float health;
     
+    [SerializeField] private float relativeSize = 1;
+    [SerializeField] private Vector2 relativeStartPosition = new Vector2(0, -0.5f);
+    
     protected virtual void Awake() => health = maxHealth;
     
     protected void Die()
     {
         GameManager.Instance.GameOver();
     }
+    
+    void Start()
+    {
+        transform.SetRelativeSize(relativeSize, 1);
+        transform.SetRelativePosition(relativeStartPosition);
+    }
+    
+    
     
     public void AddHealth(int amount)
     {
