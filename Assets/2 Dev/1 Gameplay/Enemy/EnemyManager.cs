@@ -9,18 +9,50 @@ public class EnemyManager : MonoBehaviour
     private static List<Enemy> _enemies = new();
     private static bool _hasEnemy = false;
 
+    private static List<Enemy> _toRegister = new();
+    private static List<Enemy> _toUnregister = new();
+
     public static void Register(Enemy enemy)
     {
-        if (!_enemies.Contains(enemy))
-        {
-            _enemies.Add(enemy);
-            OnEnemiesChange();
-        }
+        _toRegister.Add(enemy);
     }
     public static void Unregister(Enemy enemy)
     {
-        if (_enemies.Remove(enemy))
+        _toUnregister.Add(enemy);
+    }
+
+    private static void DoRegistrations()
+    {
+        bool change = false;
+
+        if (_toRegister.IsValid())
+        {
+            change = true;
+            foreach (var e in _toRegister)
+            {
+                if (!_enemies.Contains(e))
+                {
+                    _enemies.Add(e);
+
+                }
+            }
+        }
+        if (_toUnregister.IsValid())
+        {
+            change = true;
+            foreach (var b in _toUnregister)
+            {
+                _enemies.Remove(b);
+            }
+        }
+
+        if (change)
+        {
             OnEnemiesChange();
+
+            _toRegister.Clear();
+            _toUnregister.Clear();
+        }
     }
 
     private static void OnEnemiesChange()
@@ -54,6 +86,8 @@ public class EnemyManager : MonoBehaviour
         {
             enemy.OnUpdate(deltaTime, time);
         }
+
+        DoRegistrations();
     }
 
     #endregion
