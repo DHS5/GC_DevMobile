@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ public class WaveManager : MonoBehaviour
     [System.Serializable]
     public struct EnemiesToSpawn
     {
+        public float duration;
         public int quantity;
         public EnemyType enemyType;
     }
@@ -27,34 +29,39 @@ public class WaveManager : MonoBehaviour
 
     [SerializeField] [NonReorderable] private WaveContent[] waves;
 
-    public int currentWave = -1;
+    public int currentWave = 0;
+    private Tween _waveSpawnTween;
 
     private void Start()
     {
-        StartCoroutine(WaveCooldown());
-    }
-
-    void SpawnWave()
-    {
-        EnemiesToSpawn[] enemyWave = waves[currentWave].GetEnemiesSpawnList();
-        {
-            for (int i = 0; i < enemyWave.Length; i++)
-            {
-                for (int j = 0; j < enemyWave[i].quantity; j++)
-                {
-                    Enemy.Spawn(enemyWave[i].enemyType);
-                }
-            }
-
-            if (currentWave < waves.Length - 1)
-                StartCoroutine(WaveCooldown());
-        }
-    }
-
-    IEnumerator WaveCooldown()
-    {
-        currentWave++;
-        yield return new WaitForSeconds(waves[currentWave].waveDuration);
         SpawnWave();
+    }
+
+    private void SpawnWave()
+    {
+        WaveContent wave = waves[currentWave];
+        EnemiesToSpawn[] enemyWave = wave.GetEnemiesSpawnList();
+        Sequence[] spawnSequences = new Sequence[enemyWave.Length];
+        float interval;
+
+        for (int i = 0; i < enemyWave.Length; i++)
+        {
+            spawnSequences[i] = DOTween.Sequence();
+            interval = enemyWave[i].duration / enemyWave[i].quantity;
+            for (int j = 0; j < enemyWave[i].quantity; j++)
+            {
+                spawnSequences[i].AppendCallback(() => Enemy.Spawn(enemyWave[i].enemyType));
+                spawnSequences[i].AppendInterval(interval);
+            }
+        }
+
+        currentWave++;
+        if (currentWave < waves.Length)
+            _waveSpawnTween = DOVirtual.DelayedCall(wave.waveDuration, SpawnWave);
+    }
+
+    public void OnGameOver()
+    {
+        _waveSpawnTween.Kill();
     }
 }
