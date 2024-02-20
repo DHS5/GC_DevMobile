@@ -9,7 +9,7 @@ public class WaveManager : MonoBehaviour
     public struct EnemiesToSpawn
     {
         public int quantity;
-        public GameObject enemy;
+        public EnemyType enemyType;
     }
     
     [System.Serializable]
@@ -36,16 +36,14 @@ public class WaveManager : MonoBehaviour
 
     void SpawnWave()
     {
-        int currentEnemy = 0;
+        EnemiesToSpawn[] enemyWave = waves[currentWave].GetEnemiesSpawnList();
         {
-            for (int i = 0; i < waves[currentWave].GetEnemiesSpawnList().Length; i++)
+            for (int i = 0; i < enemyWave.Length; i++)
             {
-                for (int j = 0; j < waves[currentWave].GetEnemiesSpawnList()[currentEnemy].quantity; j++)
+                for (int j = 0; j < enemyWave[i].quantity; j++)
                 {
-                    Debug.Log("Enemy Spawn : " + waves[currentWave].GetEnemiesSpawnList()[i].enemy);
+                    Enemy.Spawn(enemyWave[i].enemyType);
                 }
-
-                currentEnemy++;
             }
 
             if (currentWave < waves.Length - 1)

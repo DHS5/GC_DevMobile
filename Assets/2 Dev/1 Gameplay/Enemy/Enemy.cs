@@ -29,9 +29,11 @@ public class Enemy : PoolableObject, IDamageable
 
     #region Static Accessor
 
-    public Enemy Get()
+    public static Enemy Spawn(EnemyType type)
     {
-        return Pool.Get<Enemy>(Pool.PoolableType.ENEMY);
+        Enemy e = Pool.Get<Enemy>(Pool.PoolableType.ENEMY);
+        e.Init(type);
+        return e;
     }
 
     #endregion
