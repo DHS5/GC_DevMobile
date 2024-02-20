@@ -1,7 +1,4 @@
 using DG.Tweening;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -35,6 +32,15 @@ public class WaveManager : MonoBehaviour
     private void Start()
     {
         SpawnWave();
+    }
+
+    private void OnEnable()
+    {
+        GameManager.OnGameOver += OnGameOver;
+    }
+    private void OnDisable()
+    {
+        GameManager.OnGameOver -= OnGameOver;
     }
 
     private void SpawnWave()

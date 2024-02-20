@@ -15,8 +15,8 @@ public class MapDuplication : MonoBehaviour
         Vector3 secondMapPosition = new Vector3(player.position.x, player.position.y + mapHeight, player.position.z);
 
         // create the maps
-        maps[0] = Instantiate(mapPrefab, player.position, Quaternion.identity);
-        maps[1] = Instantiate(mapPrefab, secondMapPosition, Quaternion.identity);
+        maps[0] = Instantiate(mapPrefab, player.position + Vector3.forward, Quaternion.identity);
+        maps[1] = Instantiate(mapPrefab, secondMapPosition + Vector3.forward, Quaternion.identity);
     }
 
     void Update()
