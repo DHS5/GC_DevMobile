@@ -6,8 +6,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected bool isPlayer;
     [SerializeField] protected Transform firePoint;
 
-    protected WeaponStrategy _weaponStrategy;
-    protected BulletStrategy _bulletStrategy;
+    [SerializeField] protected WeaponStrategy _weaponStrategy;
+    [SerializeField] protected BulletStrategy _bulletStrategy;
     protected float _lastFireTime;
 
     public bool IsPlayer => isPlayer;
