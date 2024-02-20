@@ -9,18 +9,50 @@ public static class BulletManager
     private static List<Bullet> _bullets = new();
     private static bool _hasBullets = false;
 
+    private static List<Bullet> _toRegister = new();
+    private static List<Bullet> _toUnregister = new();
+
     public static void Register(Bullet bullet)
     {
-        if (!_bullets.Contains(bullet))
-        {
-            _bullets.Add(bullet);
-            OnBulletsChange();
-        }
+        _toRegister.Add(bullet);
     }
     public static void Unregister(Bullet bullet)
     {
-        if (_bullets.Remove(bullet))
+        _toUnregister.Add(bullet);
+    }
+
+    private static void DoRegistrations()
+    {
+        bool change = false;
+
+        if (_toRegister.IsValid())
+        {
+            change = true;
+            foreach (var b in _toRegister)
+            {
+                if (!_bullets.Contains(b))
+                {
+                    _bullets.Add(b);
+
+                }
+            }
+        }
+        if (_toUnregister.IsValid())
+        {
+            change = true;
+            foreach (var b in _toUnregister)
+            {
+                _bullets.Remove(b);
+            }
+        }
+
+        if (change)
+        {
             OnBulletsChange();
+
+            _toRegister.Clear();
+            _toUnregister.Clear();
+        }
     }
 
     private static void OnBulletsChange()
@@ -54,6 +86,8 @@ public static class BulletManager
         {
             bullet.OnUpdate(deltaTime, time);
         }
+
+        DoRegistrations();
     }
 
     #endregion
