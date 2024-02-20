@@ -26,7 +26,7 @@ public class WaveManager : MonoBehaviour
 
     [SerializeField] [NonReorderable] private WaveContent[] waves;
 
-    public int currentWave = 0;
+    private int currentWave = 0;
     private Tween _waveSpawnTween;
 
     private void Start()
@@ -50,14 +50,20 @@ public class WaveManager : MonoBehaviour
         Sequence[] spawnSequences = new Sequence[enemyWave.Length];
         float interval;
 
-        for (int i = 0; i < enemyWave.Length; i++)
+        if (enemyWave.Length > 0)
         {
-            spawnSequences[i] = DOTween.Sequence();
-            interval = enemyWave[i].duration / enemyWave[i].quantity;
-            for (int j = 0; j < enemyWave[i].quantity; j++)
+            for (int i = 0; i < enemyWave.Length; i++)
             {
-                spawnSequences[i].AppendCallback(() => Enemy.Spawn(enemyWave[i].enemyType));
-                spawnSequences[i].AppendInterval(interval);
+                if (enemyWave[i].quantity > 0)
+                {
+                    spawnSequences[i] = DOTween.Sequence();
+                    interval = enemyWave[i].duration / enemyWave[i].quantity;
+                    for (int j = 0; j < enemyWave[i].quantity; j++)
+                    {
+                        spawnSequences[i].AppendCallback(() => Enemy.Spawn(enemyWave[i].enemyType));
+                        spawnSequences[i].AppendInterval(interval);
+                    }
+                }
             }
         }
 
