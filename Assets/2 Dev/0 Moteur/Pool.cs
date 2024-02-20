@@ -75,16 +75,23 @@ public class Pool : MonoBehaviour
     [SerializeField][Range(1, 100000)] private int bulletPoolBaseCapacity = 10000;
     [SerializeField][Range(1, 10)] private int bulletPoolRefillLimit = 5;
     [SerializeField][Range(1, 100)] private int bulletPoolRefillCapacity = 10;
+    
+    [Header("Enemy Pool")]
+    [SerializeField] private List<Enemy> pooledEnemies;
+    [SerializeField][Range(1, 100000)] private int enemyPoolBaseCapacity = 10000;
+    [SerializeField][Range(1, 10)] private int enemyPoolRefillLimit = 5;
+    [SerializeField][Range(1, 100)] private int enemyPoolRefillCapacity = 10;
 
     #endregion
 
     #region Initialization
 
     private static Stack<Bullet> _bulletStack = new();
+    private static Stack<Enemy> _enemyStack = new();
 
     private void Init()
     {
-        // Stack Sprite Renderer
+        // Stack Bullets
         if (pooledBullets.IsValid())
         {
             foreach (var bullet in pooledBullets)
@@ -94,6 +101,17 @@ public class Pool : MonoBehaviour
         }
         int numberToCreate = bulletPoolBaseCapacity - pooledBullets.Count;
         if (numberToCreate > 0) CreateNewPoolables<Bullet>(PoolableType.BULLET, numberToCreate);
+        
+        // Stack Enemies
+        if (pooledEnemies.IsValid())
+        {
+            foreach (var enemy in pooledEnemies)
+            {
+                _enemyStack.Push(enemy);
+            }
+        }
+        numberToCreate = enemyPoolBaseCapacity - pooledEnemies.Count;
+        if (numberToCreate > 0) CreateNewPoolables<Enemy>(PoolableType.ENEMY, numberToCreate);
     }
 
     #endregion
@@ -118,6 +136,7 @@ public class Pool : MonoBehaviour
         switch (type)
         {
             case PoolableType.BULLET: return _bulletStack.Count;
+            case PoolableType.ENEMY: return _enemyStack.Count;
         }
         return 0;
     }
@@ -127,6 +146,7 @@ public class Pool : MonoBehaviour
         switch (type)
         {
             case PoolableType.BULLET: return _bulletStack.Pop() as T;
+            case PoolableType.ENEMY: return _enemyStack.Pop() as T;
         }
         return null;
     }
@@ -135,6 +155,7 @@ public class Pool : MonoBehaviour
         switch (type)
         {
             case PoolableType.BULLET: _bulletStack.Push(newPoolable as Bullet); break;
+            case PoolableType.ENEMY: _enemyStack.Push(newPoolable as Enemy); break;
         }
     }
 
@@ -149,6 +170,14 @@ public class Pool : MonoBehaviour
                         if (_bulletStack.Count <= I.bulletPoolRefillLimit)
                         {
                             CreateNewPoolables<Bullet>(type, I.bulletPoolRefillCapacity);
+                        }
+                        break;
+                    }
+                case PoolableType.ENEMY:
+                    {
+                        if (_enemyStack.Count <= I.enemyPoolRefillLimit)
+                        {
+                            CreateNewPoolables<Enemy>(type, I.enemyPoolRefillCapacity);
                         }
                         break;
                     }
@@ -173,6 +202,7 @@ public class Pool : MonoBehaviour
         switch (type)
         {
             case PoolableType.BULLET: return I.pooledBullets[0] as T;
+            case PoolableType.ENEMY: return I.pooledEnemies[0] as T;
         }
         return null;
     }
@@ -181,6 +211,7 @@ public class Pool : MonoBehaviour
         switch (type)
         {
             case PoolableType.BULLET: return I.pooledBullets[0].transform.parent;
+            case PoolableType.ENEMY: return I.pooledEnemies[0].transform.parent;
         }
         return null;
     }
