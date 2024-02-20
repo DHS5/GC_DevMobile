@@ -346,6 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2850044158376567611}
   - component: {fileID: 8506323923015904512}
+  - component: {fileID: 3486943286393867435}
   m_Layer: 0
   m_Name: SR (1)
   m_TagString: Untagged
@@ -420,6 +421,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3486943286393867435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801753990949636928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a799cf0dcdfb8be4ea5f3b97960215c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 8506323923015904512}
 --- !u!1 &4169328411215562731
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,20 +481,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolPosition: {fileID: 2372973338599677894}
-  pooledSpriteRenderers:
-  - {fileID: 8506323923015904512}
-  - {fileID: 7278676000469360276}
-  - {fileID: 8102066499513102366}
-  - {fileID: 1985914909427163915}
-  - {fileID: 5055250724503501979}
-  - {fileID: 2543221352990722268}
-  - {fileID: 2792547427449421177}
-  - {fileID: 766620252748947969}
-  - {fileID: 2376959702457603059}
-  - {fileID: 4763946773304580282}
-  srPoolBaseCapacity: 10000
-  srPoolRefillLimit: 5
-  srPoolRefillCapacity: 10
+  pooledBullets:
+  - {fileID: 3486943286393867435}
+  bulletPoolBaseCapacity: 10000
+  bulletPoolRefillLimit: 5
+  bulletPoolRefillCapacity: 10
 --- !u!1 &5393784688251974235
 GameObject:
   m_ObjectHideFlags: 0
