@@ -29,6 +29,13 @@ public class Pool : MonoBehaviour
                 bullet.transform.position = poolPos;
             }
         }
+        if (pooledEnemies.IsValid())
+        {
+            foreach (var enemy in pooledEnemies)
+            {
+                enemy.transform.position = poolPos;
+            }
+        }
     }
 
 #endif
