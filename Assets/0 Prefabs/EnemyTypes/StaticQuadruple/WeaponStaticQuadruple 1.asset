@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4104d748ba7c9c149bd5279a10749d2b, type: 3}
   m_Name: WeaponStaticQuadruple 1
   m_EditorClassIdentifier: 
-  fireRate: 0.1
-  bulletCount: 1
-  spreadAngle: 90
+  fireRate: 0.01
+  bulletCount: 5
+  spreadAngle: 15
