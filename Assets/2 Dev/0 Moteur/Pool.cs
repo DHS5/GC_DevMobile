@@ -93,7 +93,7 @@ public class Pool : MonoBehaviour
             }
         }
         int numberToCreate = bulletPoolBaseCapacity - pooledBullets.Count;
-        if (numberToCreate > 0) CreateNewBullets(numberToCreate);
+        if (numberToCreate > 0) CreateNewPoolables<Bullet>(PoolableType.BULLET, numberToCreate);
     }
 
     #endregion
@@ -130,6 +130,13 @@ public class Pool : MonoBehaviour
         }
         return null;
     }
+    private static void Push<T>(PoolableType type, T newPoolable) where T : PoolableObject
+    {
+        switch (type)
+        {
+            case PoolableType.BULLET: _bulletStack.Push(newPoolable as Bullet); break;
+        }
+    }
 
     private static void EvaluateStack(PoolableType type)
     {
@@ -149,56 +156,41 @@ public class Pool : MonoBehaviour
         }
     }
 
-    private static void CreateNewPoolables<T>(PoolableType type, int amount)
+    private static void CreateNewPoolables<T>(PoolableType type, int amount) where T : PoolableObject
     {
-
-    }
-
-    private static void Dispose<T>(T poolable, PoolableType type) where T : PoolableObject
-    {
-
-    }
-
-    public static Bullet GetBullet()
-    {
-        if (_bulletStack.Count > 0)
-        {
-            Bullet bullet = _bulletStack.Pop();
-            EvaluateBulletStack();
-            return bullet;
-        }
-        else
-        {
-            Debug.LogError("Bullet Stack empty");
-            return null;
-        }
-    }
-    public static void DisposeBullet(Bullet bullet)
-    {
-        if (Exist() && bullet != null)
-        {
-            bullet.transform.position = I.poolPosition.position;
-            _bulletStack.Push(bullet);
-        }
-    }
-
-    private static void EvaluateBulletStack()
-    {
-        if (Exist() && _bulletStack.Count <= I.bulletPoolRefillLimit)
-        {
-            CreateNewBullets(I.bulletPoolRefillCapacity);
-            Debug.Log("Increase Bullet pool capacity by " + I.bulletPoolRefillCapacity);
-        }
-    }
-    private static void CreateNewBullets(int amount)
-    {
-        Bullet bullet;
+        T newPoolable;
         Vector3 poolPos = I.poolPosition.position;
         for (int i = 0; i < amount; i++)
         {
-            bullet = Instantiate(I.pooledBullets[0], I.pooledBullets[0].transform.parent);
-            bullet.transform.position = poolPos;
-            _bulletStack.Push(bullet);
+            newPoolable = Instantiate(GetOriginal<T>(type), GetParent(type));
+            newPoolable.transform.position = poolPos;
+            Push(type, newPoolable);
+        }
+    }
+
+    private static T GetOriginal<T>(PoolableType type) where T : PoolableObject
+    {
+        switch (type)
+        {
+            case PoolableType.BULLET: return I.pooledBullets[0] as T;
+        }
+        return null;
+    }
+    private static Transform GetParent(PoolableType type)
+    {
+        switch (type)
+        {
+            case PoolableType.BULLET: return I.pooledBullets[0].transform.parent;
+        }
+        return null;
+    }
+
+    public static void Dispose<T>(T poolable, PoolableType type) where T : PoolableObject
+    {
+        if (Exist() && poolable != null)
+        {
+            poolable.transform.position = I.poolPosition.position;
+            Push(type, poolable);
         }
     }
 

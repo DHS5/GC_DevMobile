@@ -19,7 +19,7 @@ public class Bullet : PoolableObject
 
     #region Static Accessor
 
-    public static Bullet Get() => Pool.GetBullet();
+    public static Bullet Get() => Pool.Get<Bullet>(Pool.PoolableType.BULLET);
 
     #endregion
 
@@ -62,7 +62,7 @@ public class Bullet : PoolableObject
         IsActive = false;
         BulletManager.Unregister(this);
 
-        Pool.DisposeBullet(this);
+        Pool.Dispose(this, Pool.PoolableType.BULLET);
     }
 
     /*
