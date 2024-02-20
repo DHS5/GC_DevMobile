@@ -17,6 +17,5 @@ public class PlayerController : MonoBehaviour
     private void OnMove(Vector2 screenDelta)
     {
         transform.MovePlayerClamp(Format.ComputeRelativeDeltaFromScreenDelta(screenDelta));
-        Debug.Log(transform.position);
     }
 }
