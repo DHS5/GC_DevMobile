@@ -63,9 +63,15 @@ public static class ExtensionMethods
         transform.position += Format.ComputePosition(relativeDelta);
     }
     
-    public static void MoveClamp(this Transform transform, Vector2 relativeDelta)
+    public static void MovePlayerClamp(this Transform transform, Vector2 relativeDelta)
     {
-        transform.position += Format.ComputePositionClamped(relativeDelta);
+        var pos = Format.ComputePosition(relativeDelta);
+        var newPos = transform.position + pos;
+        var x = Format.DemiBounds.x * .83f;
+        var y = Format.DemiBounds.y * .75f;
+        newPos.x = Mathf.Clamp(newPos.x, -x, x);
+        newPos.y = Mathf.Clamp(newPos.y, -y, y);
+        transform.position = newPos;
     }
     public static void MoveX(this Transform transform, float relativeXDelta)
     {
