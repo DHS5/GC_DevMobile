@@ -31,6 +31,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(Vector2 screenPosition)
     {
-        spriteRenderer.transform.Move(screenPosition);
+        spriteRenderer.transform.Move(Format.ComputeRelativeDeltaFromScreenDelta(screenPosition));
     }
 }
