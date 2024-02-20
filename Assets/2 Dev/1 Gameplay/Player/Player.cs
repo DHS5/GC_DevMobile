@@ -1,15 +1,37 @@
 using _2_Dev._1_Gameplay;
 using UnityEngine;
 
-public class Player : Plane, IDamageable
+public class Player : MonoBehaviour, IDamageable
 {
-    protected override void Die()
+    
+    [SerializeField] private Weapon weapon;
+    [SerializeField] int maxHealth;
+    [SerializeField] private float health;
+    
+    protected virtual void Awake() => health = maxHealth;
+    
+    protected void Die()
     {
-        // TODO: Implement VFX?  Freeze Controls?
+        GameManager.Instance.GameOver();
+    }
+    
+    public void AddHealth(int amount)
+    {
+        health += amount;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
     }
 
     public void TakeDamage(float damage)
     {
-        throw new System.NotImplementedException();
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
     }
+    
+    public float GetHealthNormalized() => health / (float)maxHealth;
 }

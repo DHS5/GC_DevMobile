@@ -10,7 +10,7 @@ public class PlayerHUD : MonoBehaviour
 
     void Update()
     {
-        healthBar.fillAmount = GameManager.Instance.player.GetHealthNormalized();
+        healthBar.fillAmount = GameManager.Instance.Player.GetHealthNormalized();
         scoreText.text = $"Score: {GameManager.Instance.GetScore()}";
     }
 }
