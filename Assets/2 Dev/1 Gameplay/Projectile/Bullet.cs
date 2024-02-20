@@ -33,6 +33,8 @@ public class Bullet : PoolableObject
         _strategy = strategy;
         _shooter = shooter;
         _startTime = Time.time;
+        
+        spriteRenderer.sprite = _strategy.Sprite;
 
         BulletManager.Register(this);
     }
