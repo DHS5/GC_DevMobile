@@ -169,7 +169,7 @@
                 {
                     "name": "",
                     "id": "8124dbc0-8741-445a-8827-4093ff835de2",
-                    "path": "<Touchscreen>/delta",
+                    "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch",

@@ -22,9 +22,16 @@ public class InputReader : MonoBehaviour
         playerInput.actions["Fire"].performed -= OnInputFire;
     }
 
+
+    private Vector2 _previousMousePos;
     private void OnInputMove(InputAction.CallbackContext context)
     {
-        OnMove?.Invoke(context.ReadValue<Vector2>());
+        Vector2 current = context.ReadValue<Vector2>();
+        Vector2 delta = current - _previousMousePos;
+        Debug.Log(delta + " " + delta.magnitude);
+        if (delta.magnitude < 50)
+            OnMove?.Invoke(delta);
+        _previousMousePos = current;
     }
     private void OnInputFire(InputAction.CallbackContext context)
     {

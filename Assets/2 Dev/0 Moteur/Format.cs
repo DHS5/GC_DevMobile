@@ -111,7 +111,7 @@ public class Format : MonoBehaviour
         float deltaX = screenDelta.x / Resolution.x;
         float deltaY = screenDelta.y / Resolution.y;
         Vector3 result = new Vector3(deltaX * ScreenBounds.x, deltaY * ScreenBounds.y, 0);
-        Debug.Log("Screen delta " + screenDelta + " delta X " + deltaX + " delta Y " + deltaY + " " + result);
+        //Debug.Log("Screen delta " + screenDelta + " delta X " + deltaX + " delta Y " + deltaY + " " + result);
         return result;
     }
     public static Vector3 ComputeNormalizedPosition(Vector2 normalizedPosition)
