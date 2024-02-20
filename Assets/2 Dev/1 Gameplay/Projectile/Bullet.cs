@@ -1,5 +1,6 @@
 using _2_Dev._1_Gameplay.Weapon;
 using System;
+using _2_Dev._1_Gameplay;
 using UnityEngine;
 
 public class Bullet : PoolableObject
@@ -43,21 +44,18 @@ public class Bullet : PoolableObject
         if (lifetime >= _strategy.Lifetime)
         {
             Dispose();
-            return;
         }
 
         // Update Position and Rotation here
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (IsActive)
+        if (!IsActive) return;
+        var damageable = collision.gameObject.GetComponent<IDamageable>();
+        if(damageable != null)
         {
-            var plane = collision.gameObject.GetComponent<Plane>();
-            if(plane != null)
-            {
-                plane.TakeDamage(10);
-            }
+            damageable.TakeDamage(10);
         }
     }
 
