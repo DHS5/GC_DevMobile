@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4513703884920508342}
   - component: {fileID: -2973363544518285161}
+  - component: {fileID: -9167263348461640486}
   - component: {fileID: 2678183460265705488}
   - component: {fileID: -4035836479837671531}
   - component: {fileID: 6133885561203782738}
@@ -88,6 +89,19 @@ MonoBehaviour:
   inputReader: {fileID: -4035836479837671531}
   weapon: {fileID: 2678183460265705488}
   spriteRenderer: {fileID: 1948684289813386479}
+--- !u!114 &-9167263348461640486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7715831211876101469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8eda6322702a045a719de632eb1f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!114 &2678183460265705488
 MonoBehaviour:
   m_ObjectHideFlags: 0

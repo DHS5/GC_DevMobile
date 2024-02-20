@@ -14,20 +14,30 @@ public class InputReader : MonoBehaviour
     private void OnEnable()
     {
         playerInput.actions["Move"].performed += OnInputMove;
-        playerInput.actions["Fire"].performed += OnInputFire;
+        playerInput.actions["Touch"].canceled += OnCanceledTouch;
     }
     private void OnDisable()
     {
         playerInput.actions["Move"].performed -= OnInputMove;
-        playerInput.actions["Fire"].performed -= OnInputFire;
+        playerInput.actions["Touch"].canceled -= OnCanceledTouch;
     }
 
+    bool _startTouch = true;
+    private void OnCanceledTouch(InputAction.CallbackContext context)
+    {
+        _startTouch = true;
+    }
+
+    private Vector2 _previousMousePos;
     private void OnInputMove(InputAction.CallbackContext context)
     {
-        OnMove?.Invoke(context.ReadValue<Vector2>());
-    }
-    private void OnInputFire(InputAction.CallbackContext context)
-    {
-        OnFire?.Invoke();
+        Vector2 current = context.ReadValue<Vector2>();
+        Vector2 delta = current - _previousMousePos;
+
+        if (!_startTouch)
+            OnMove?.Invoke(delta);
+
+        _startTouch = false;
+        _previousMousePos = current;
     }
 }

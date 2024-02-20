@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyType : ScriptableObject
 {
     [SerializeField] private Enemy.EnemyMovement movement;
+    [SerializeField] private Vector2 fixedRelativePosition = new Vector2(0, 0.5f);
     [SerializeField] private EnemyPath path;
     [SerializeField] private WeaponStrategy weaponStrategy;
     [SerializeField] private BulletStrategy bulletStrategy;
@@ -13,4 +14,5 @@ public class EnemyType : ScriptableObject
     public EnemyPath Path => path;
     public WeaponStrategy WeaponStrategy => weaponStrategy;
     public BulletStrategy BulletStrategy => bulletStrategy;
+    public Vector2 FixedRelativePosition => fixedRelativePosition;
 }

@@ -7,7 +7,7 @@ public class UpdateManager : MonoBehaviour
     public static event Action OnLateUpdate;
     public static event Action OnFixedUpdate;
 
-    public static int FrameIndex;
+    public static int FrameIndex { get; private set; }
 
     private void Start()
     {
@@ -16,11 +16,11 @@ public class UpdateManager : MonoBehaviour
 
     private void Update()
     {
-        FrameIndex++;
         float deltaTime = Time.deltaTime;
         float time = Time.time;
 
         OnUpdate?.Invoke(FrameIndex, deltaTime, time);
+        FrameIndex++;
     }
 
     private void LateUpdate()
