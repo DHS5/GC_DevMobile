@@ -55,7 +55,7 @@ public class Format : MonoBehaviour
     private void Init()
     {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = -1;
 
         Resolution = new Vector2(Screen.width, Screen.height);
         
