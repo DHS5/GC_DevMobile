@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Events;
@@ -29,6 +30,7 @@ public class PauseMenu : MonoBehaviour
 
     public void TogglePause()
     {
+        Debug.Log("PAUSE toggle");
         if (isPaused)
             Resume();
         else
