@@ -33,4 +33,12 @@ public class SplineManager : MonoBehaviour
     {
         return I.splinePaths.Get(path);
     }
+
+    public void ResizeSplines()
+    {
+        //foreach (var spline in splinePaths)
+        //{
+        //
+        //}
+    }
 }
