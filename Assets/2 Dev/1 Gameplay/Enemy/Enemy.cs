@@ -39,6 +39,10 @@ public class Enemy : PoolableObject
 
     private void OnStaticUpdate(float deltaTime)
     {
-
+        if (weapon != null && weapon.IsReadyToFire())
+        {
+            weapon.UpdateTimeSinceLastFire(deltaTime);
+            weapon.Shoot();
+        }
     }
 }

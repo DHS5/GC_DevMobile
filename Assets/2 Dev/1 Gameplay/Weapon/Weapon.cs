@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
 
     protected WeaponStrategy _weaponStrategy;
     protected BulletStrategy _bulletStrategy;
-
+    protected float timeSinceLastFire;
 
     public bool IsPlayer => isPlayer;
 
@@ -16,6 +16,16 @@ public class Weapon : MonoBehaviour
     {
         _weaponStrategy = weaponStrategy;
         _bulletStrategy = bulletStrategy;
+    }
+
+    public void UpdateTimeSinceLastFire(float deltaTime)
+    {
+        timeSinceLastFire += deltaTime;
+    }
+
+    public bool IsReadyToFire()
+    {
+        return timeSinceLastFire >= _weaponStrategy.FireRate;
     }
 
     public void Shoot()
@@ -27,7 +37,9 @@ public class Weapon : MonoBehaviour
         for (int i = 0; i < bullets.Length; i++)
         {
             bullets[i] = Bullet.Get();
-            bullets[i].Init(firePos, Vector3.Slerp(fireRight, -fireRight, (i + 1)/(bullets.Length + 1)), _bulletStrategy, this);
+            bullets[i].Init(firePos, Vector3.Slerp(fireRight, -fireRight, (i + 1) / (bullets.Length + 1)), _bulletStrategy, this);
         }
+
+        timeSinceLastFire = 0f;
     }
 }

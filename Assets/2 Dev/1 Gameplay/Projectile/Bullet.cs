@@ -53,7 +53,11 @@ public class Bullet : PoolableObject
     {
         if (IsActive)
         {
-            // Search for damageable, check if is Player etc...
+            var plane = collision.gameObject.GetComponent<Plane>();
+            if(plane != null)
+            {
+                plane.TakeDamage(10);
+            }
         }
     }
 

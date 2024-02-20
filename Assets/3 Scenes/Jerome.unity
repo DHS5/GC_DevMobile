@@ -1152,6 +1152,58 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c715982fb5ca7cf46a2dafdd7e70f83e, type: 3}
+--- !u!1 &1711442047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1711442049}
+  - component: {fileID: 1711442048}
+  m_Layer: 0
+  m_Name: SpawnerDebug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1711442048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711442047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd17e2229f68d145950976705b3c4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTypes:
+  - {fileID: 11400000, guid: c5aa9665309eddf4fb7ef054b0d71f41, type: 2}
+  - {fileID: 11400000, guid: c5aa9665309eddf4fb7ef054b0d71f41, type: 2}
+  - {fileID: 11400000, guid: c5aa9665309eddf4fb7ef054b0d71f41, type: 2}
+  - {fileID: 11400000, guid: c5aa9665309eddf4fb7ef054b0d71f41, type: 2}
+  spawnPosition: {x: 0, y: 0, z: 0}
+  maxEnemies: 10
+  spawnInterval: 2
+--- !u!4 &1711442049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711442047}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1927789794
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,8 +1365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae237e736224d04ca22e32518de2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStrategy: {fileID: 11400000, guid: 03ac1462e727a9e48ae7cec5d9ce6d02, type: 2}
-  firePoint: {fileID: 650390727}
 --- !u!1 &1939924852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,3 +1530,4 @@ SceneRoots:
   - {fileID: 1049651852}
   - {fileID: 1693729420}
   - {fileID: 1939924853}
+  - {fileID: 1711442049}
