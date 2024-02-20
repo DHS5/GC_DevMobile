@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Weapon Strategy", menuName = "Strategy/Weapon")]
-public abstract class WeaponStrategy : ScriptableObject
+public class WeaponStrategy : ScriptableObject
 {
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private int bulletCount = 1;

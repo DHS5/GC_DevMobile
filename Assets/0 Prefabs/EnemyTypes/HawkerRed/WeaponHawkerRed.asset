@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 880063fe9451b39408e8cf5e33093139, type: 3}
-  m_Name: HawkerRed
+  m_Script: {fileID: 11500000, guid: 4104d748ba7c9c149bd5279a10749d2b, type: 3}
+  m_Name: WeaponHawkerRed
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 5556856966863788097, guid: bd25b32e84785bf43a39789e9b5aac61, type: 3}
-  weaponPrefab: {fileID: 0}
-  speed: 2
+  fireRate: 0.5
+  bulletCount: 1
+  spreadAngle: 5
