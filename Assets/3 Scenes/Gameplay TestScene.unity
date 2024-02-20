@@ -288,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map: {fileID: 2046687345}
   speed: 2
-  mapHeight: 20
+  mapHeight: 0
 --- !u!1 &312885978
 GameObject:
   m_ObjectHideFlags: 0
