@@ -47,12 +47,17 @@ public class Bullet : PoolableObject
         if (lifetime >= _strategy.Lifetime)
         {
             Dispose();
+            return;
         }
 
         float normalizedLifetime = lifetime / _strategy.Lifetime;
 
-        transform.Rotate(Vector3.forward, deltaTime * _strategy.CurrentRotation(normalizedLifetime));
-        transform.Move(transform.up * (deltaTime * _strategy.CurrentSpeed(normalizedLifetime)));
+        float rotateSpeed = deltaTime * _strategy.CurrentRotation(normalizedLifetime);
+        if (rotateSpeed != 0)
+            transform.Rotate(Vector3.forward, rotateSpeed);
+        float moveSpeed = deltaTime * _strategy.CurrentSpeed(normalizedLifetime);
+        if (moveSpeed != 0)
+            transform.Move(transform.up * moveSpeed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
