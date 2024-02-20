@@ -1,3 +1,4 @@
+using System;
 using _2_Dev._1_Gameplay;
 using DG.Tweening;
 using UnityEngine;
@@ -24,9 +25,22 @@ public class Player : MonoBehaviour, IDamageable
         transform.SetRelativeSize(relativeSize, 1);
         transform.SetRelativePosition(relativeStartPosition);
     }
-    
-    
-    
+
+    private void OnEnable()
+    {
+        UpdateManager.OnUpdate += OnUpdate;
+    }
+
+    private void OnUpdate(int frameIndex, float deltaTime, float time)
+    {
+        weapon.Shoot(time);
+    }
+
+    private void OnDisable()
+    {
+        UpdateManager.OnUpdate -= OnUpdate;
+    }
+
     public void AddHealth(int amount)
     {
         health += amount;
