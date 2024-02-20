@@ -103,10 +103,18 @@ public class Format : MonoBehaviour
     {
         return ComputeNormalizedPosition(new Vector2(Mathf.InverseLerp(0, Resolution.x, screenPosition.x), Mathf.InverseLerp(0, Resolution.y, screenPosition.y)));
     }
+    public static Vector2 ComputeRelativeDeltaFromScreenDelta(Vector2 screenDelta)
+    {
+        return new Vector2(screenDelta.x / Resolution.x, screenDelta.y / Resolution.y);
+    }
     public static Vector3 ComputeNormalizedPosition(Vector2 normalizedPosition)
     {
         return new Vector3(normalizedPosition.x * ScreenBounds.x - DemiBounds.x, normalizedPosition.y * ScreenBounds.y - DemiBounds.y, 0);
     }
+    //public static Vector3 ComputeRelativePositionFromWorld(Vector3 worldPos)
+    //{
+    //    return new Vector3(Mathf.InverseLerp(-DemiBounds.x, DemiBounds.x, worldPos.x), Mathf.InverseLerp(-DemiBounds.y, DemiBounds.y, worldPos.y), 0);
+    //}
 
     #endregion
 }
