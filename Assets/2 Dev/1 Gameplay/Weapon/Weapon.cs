@@ -68,6 +68,8 @@ public class Weapon : MonoBehaviour
             bullets[i] = Bullet.Get();
             bullets[i].Init(firePos, spreads[i] - shootRot, _bulletStrategy, this);
         }
+        
+        AudioManager.Instance.PlaySFX(_bulletStrategy.SfxName);
 
         _lastFireTime = time;
     }

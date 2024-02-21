@@ -29,7 +29,7 @@ public class OptionMenu : MonoBehaviour
 
     public void SetMusicVolume()
     {
-        Debug.Log(musicSlider.value);
+        //Debug.Log(musicSlider.value);
         AudioManager.Instance.MusicVolume(musicSlider.value);
     }
 

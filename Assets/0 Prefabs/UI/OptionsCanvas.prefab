@@ -762,8 +762,16 @@ PrefabInstance:
       value: MusicSlider
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
+      propertyPath: m_Value
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
+      propertyPath: m_MaxValue
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_MinValue
-      value: 0.01
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
@@ -927,8 +935,16 @@ PrefabInstance:
       value: SFXSlider
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
+      propertyPath: m_Value
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
+      propertyPath: m_MaxValue
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_MinValue
-      value: 0.01
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size

@@ -54,6 +54,7 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
 
     public void TakeDamage(float damage)
     {
+        AudioManager.Instance.PlaySFX("EnemyHit");
         health -= damage;
         if (health <= 0)
         {

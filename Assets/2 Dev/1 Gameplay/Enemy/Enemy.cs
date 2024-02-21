@@ -120,6 +120,8 @@ public class Enemy : PoolableObject, IDamageable
     void IDamageable.TakeDamage(float damage)
     {
         if (!IsActive) return;
+        
+        AudioManager.Instance.PlaySFX("EnemyHit");
 
         _health -= damage;
         if (_health <= 0)
