@@ -13,6 +13,7 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
     
     [SerializeField] private float relativeSize = 1;
     [SerializeField] private Vector2 relativeStartPosition = new Vector2(0, -0.5f);
+    [SerializeField] private AudioData hitSoundData;
     
     protected virtual void Awake() => health = maxHealth;
     
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
 
     public void TakeDamage(float damage)
     {
-        AudioManager.Instance.PlaySFX("EnemyHit");
+        AudioManager.Instance.PlayDamageSFX(hitSoundData);
         health -= damage;
         if (health <= 0)
         {

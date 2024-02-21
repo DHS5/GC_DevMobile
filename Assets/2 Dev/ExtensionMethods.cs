@@ -87,4 +87,14 @@ public static class ExtensionMethods
     }
 
     #endregion
+
+    #region Audio
+
+    public static float Volume(this AudioData audioData)
+    {
+        if (audioData == null) return 1f;
+        return audioData.RelativeVolume;
+    }
+
+    #endregion
 }

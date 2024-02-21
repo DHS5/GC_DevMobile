@@ -4,16 +4,17 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private string gameSceneName = "GameScene";
     [SerializeField] private GameObject optionsCanvas;
+    [SerializeField] private AudioData clickSoundData;
 
     public void StartGame()
     {
-        AudioManager.Instance.PlaySFX("ClickButton");
+        AudioManager.Instance.PlayShootSFX(clickSoundData);
         UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
     }
     public void Options()
     {
-        AudioManager.Instance.PlaySFX("ClickButton");
-        optionsCanvas?.SetActive(true);
+        AudioManager.Instance.PlayShootSFX(clickSoundData);
+        optionsCanvas.SetActive(true);
         gameObject.SetActive(false);
     }
 
