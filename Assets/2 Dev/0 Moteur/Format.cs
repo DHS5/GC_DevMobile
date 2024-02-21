@@ -144,15 +144,22 @@ public class Format : MonoBehaviour
 
     #endregion
 
-    private static Dictionary<Vector2, Vector2> precomputedVectors = new Dictionary<Vector2, Vector2>();
+    private static Dictionary<Vector2, Vector2> precomputedVectors = new();
+    private static int maxDictionarySize = 100;
 
-    public static void MoveOptimized(Rigidbody2D rigidbody2D, Vector2 relativeDelta)
+    public static void MoveRigidBodyOptimized(Rigidbody2D rigidbody2D, Vector2 relativeDelta)
     {
         Vector2 computedVector;
         if (!precomputedVectors.TryGetValue(relativeDelta, out computedVector))
         {
             computedVector = ComputeVector2Position(relativeDelta);
             precomputedVectors[relativeDelta] = computedVector;
+            
+            // // Clear the dictionary ?
+            // if (precomputedVectors.Count > maxDictionarySize)
+            // {
+            //     precomputedVectors.Clear();
+            // }
         }
 
         rigidbody2D.MovePosition(rigidbody2D.position + computedVector);

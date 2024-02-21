@@ -64,7 +64,7 @@ public static class ExtensionMethods
     }
     public static void Move(this Rigidbody2D rigidbody2D, Vector2 relativeDelta)
     {
-        Format.MoveOptimized(rigidbody2D, relativeDelta);
+        Format.MoveRigidBodyOptimized(rigidbody2D, relativeDelta);
     }
     
     public static void MovePlayerClamp(this Transform transform, Vector2 relativeDelta)
