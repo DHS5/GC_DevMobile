@@ -3,7 +3,8 @@
     public enum CollectibleType
     {
         HEALTH,
-        FIRE_RATE,
+        FIRE_RATE_PLUS,
+        FIRE_RATE_REDUCE,
         BULLET_LEVEL_UP,
         SPREAD_PLUS,
         SPREAD_REDUCE,

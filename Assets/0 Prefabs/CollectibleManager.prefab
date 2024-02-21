@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5567644484227948ac503f0edd2a7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleDatas: []
+  collectibleChancePercentage: 0.05
+  collectibleDatas:
+  - collectibleData: {fileID: 0}
+    weight: 0
