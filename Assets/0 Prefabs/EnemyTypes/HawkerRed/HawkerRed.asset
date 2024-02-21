@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880063fe9451b39408e8cf5e33093139, type: 3}
   m_Name: HawkerRed
   m_EditorClassIdentifier: 
+  maxHealth: 2000
+  movement: 0
+  fixedRelativePosition: {x: 0, y: 0.5}
   path: 0
   weaponStrategy: {fileID: 11400000, guid: c93b09b20290551459b30ccc8ec456e4, type: 2}
   bulletStrategy: {fileID: 11400000, guid: 2c8ad52f56408fa4b9202771b00fbb27, type: 2}

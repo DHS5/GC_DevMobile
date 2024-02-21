@@ -143,4 +143,18 @@ public class Format : MonoBehaviour
     }
 
     #endregion
+
+    private static Dictionary<Vector2, Vector2> precomputedVectors = new Dictionary<Vector2, Vector2>();
+
+    public static void MoveOptimized(Rigidbody2D rigidbody2D, Vector2 relativeDelta)
+    {
+        Vector2 computedVector;
+        if (!precomputedVectors.TryGetValue(relativeDelta, out computedVector))
+        {
+            computedVector = ComputeVector2Position(relativeDelta);
+            precomputedVectors[relativeDelta] = computedVector;
+        }
+
+        rigidbody2D.MovePosition(rigidbody2D.position + computedVector);
+    }
 }
