@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     
     public static event Action OnGameOver;
-    
+    public static event Action OnGamePause;
+    public static event Action OnGameResume;
+
     int score;
     
     // TODO Add a next level instead of game over
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
     }
-    
+
     public void GameOver()
     {
         OnGameOver?.Invoke();
