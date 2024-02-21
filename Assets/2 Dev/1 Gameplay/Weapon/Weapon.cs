@@ -34,14 +34,13 @@ public class Weapon : MonoBehaviour
 
         Bullet[] bullets = new Bullet[_weaponStrategy.BulletCount];
         Vector3 firePos = firePoint.position;
-        Vector3 fireUp = firePoint.up;
-        float shootRot = transform.rotation.eulerAngles.z;
+        float shootRot = firePoint.rotation.eulerAngles.z;
 
         for (int i = 0; i < bullets.Length; i++)
         {
             bullets[i] = Bullet.Get();
-            float spreadRotation = _weaponStrategy.SpreadAngle * (i - bullets.Length / 2);
-            bullets[i].Init(firePos, spreadRotation + shootRot, _bulletStrategy, this);
+            float spreadRotation = _weaponStrategy.SpreadAngle * (i - bullets.Length / 2) - shootRot;
+            bullets[i].Init(firePos, spreadRotation, _bulletStrategy, this);
         }
 
         _lastFireTime = time;

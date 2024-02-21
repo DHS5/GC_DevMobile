@@ -175,6 +175,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
+      propertyPath: waves.Array.data[1].enemiesToSpawn.Array.data[0].duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
+      propertyPath: waves.Array.data[1].enemiesToSpawn.Array.data[0].quantity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
