@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        AudioManager.Instance.PlaySFX("ClickButton");
         UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
     }
 
