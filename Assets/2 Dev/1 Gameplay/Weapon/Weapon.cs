@@ -63,17 +63,15 @@ public class Weapon : MonoBehaviour
     {
         if (!IsReadyToFire(time)) return;
 
-        var bullets = new Bullet[_bulletCount];
+        Bullet bullet;
         var firePos = firePoint.position;
         var shootRot = firePoint.rotation.eulerAngles.z;
 
-        for (var i = 0; i < bullets.Length; i++)
+        for (var i = 0; i < _bulletCount; i++)
         {
-            bullets[i] = Bullet.Get();
-            bullets[i].Init(firePos, spreads[i] - shootRot, _bulletStrategy, this);
+            bullet = Bullet.Get();
+            bullet.Init(firePos, spreads[i] - shootRot, _bulletStrategy, this);
         }
-
-        //AudioManager.Instance.PlaySFX(_bulletStrategy.SfxName);
 
         _lastFireTime = time;
     }
