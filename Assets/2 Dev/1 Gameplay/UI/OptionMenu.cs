@@ -30,12 +30,12 @@ public class OptionMenu : MonoBehaviour
     public void SetMusicVolume()
     {
         //Debug.Log(musicSlider.value);
-        AudioManager.Instance.MusicVolume(musicSlider.value);
+        AudioManager.Instance.SetMusicVolume(musicSlider.value);
     }
 
     public void SetSFXVolume()
     {
-        AudioManager.Instance.SFXVolume(sfxSlider.value);
+        AudioManager.Instance.SetSFXVolume(sfxSlider.value);
     }
 
     public void exitOptions()

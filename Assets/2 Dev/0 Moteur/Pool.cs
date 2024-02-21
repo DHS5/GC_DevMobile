@@ -151,7 +151,7 @@ public class Pool : MonoBehaviour
             }
         }
         numberToCreate = collectiblePoolBaseCapacity - pooledCollectibles.Count;
-        if (numberToCreate > 0) CreateNewPoolables<Enemy>(PoolableType.COLLECTIBLE, numberToCreate);
+        if (numberToCreate > 0) CreateNewPoolables<Collectible>(PoolableType.COLLECTIBLE, numberToCreate);
     }
 
     #endregion

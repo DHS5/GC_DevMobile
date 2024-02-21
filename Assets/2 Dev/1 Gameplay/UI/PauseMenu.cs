@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject otherCanvas;
 
     [SerializeField] private string gameSceneName = "MainMenu";
+    [SerializeField] private AudioData clickSoundData;
 
     public static event Action OnGamePause;
     public static event Action OnGameResume;
@@ -39,14 +40,14 @@ public class PauseMenu : MonoBehaviour
 
     public void Options()
     {
-        AudioManager.Instance.PlaySFX("ClickButton");
+        AudioManager.Instance.PlayShootSFX(clickSoundData);
         optionsCanvas.SetActive(true);
         otherCanvas.SetActive(false);
     }
 
     public void TogglePause()
     {
-        AudioManager.Instance.PlaySFX("ClickButton");
+        AudioManager.Instance.PlayShootSFX(clickSoundData);
         if (isPaused)
             Resume();
         else
@@ -55,7 +56,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ExitGame()
     {
-        AudioManager.Instance.PlaySFX("ClickButton");
+        AudioManager.Instance.PlayShootSFX(clickSoundData);
         UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
     }
 }
