@@ -30,9 +30,10 @@ public class Bullet : PoolableObject
         IsActive = true;
 
         gameObject.layer = shooter.BulletLayer;
+        bulletTransform.position = pos;
 
         bulletRigidbody.simulated = true;
-        bulletRigidbody.position = pos;
+        //bulletRigidbody.position = pos;
         bulletRigidbody.rotation = dir;
         _strategy = strategy;
         _startTime = Time.time;
