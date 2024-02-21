@@ -7,8 +7,8 @@ public class WaveManager : MonoBehaviour
     public struct EnemiesToSpawn
     {
         public float duration;
-        public int quantity;
-        public EnemyType enemyType;
+        public int[] quantities;
+        public EnemyType[] enemyTypes;
     }
 
     [System.Serializable]
@@ -24,9 +24,11 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private int levelNumber = 3;
     [SerializeField] [NonReorderable] private WaveContent[] waves;
 
-    private int currentWave = 0;
+    private int _currentWave = 0;
+    private int _currentLevel = 0;
     private Tween _waveSpawnTween;
 
     private void Start()
@@ -46,7 +48,7 @@ public class WaveManager : MonoBehaviour
 
     private void SpawnWave()
     {
-        var wave = waves[currentWave];
+        var wave = waves[_currentWave];
         var enemyWave = wave.GetEnemiesSpawnList();
 
         if (enemyWave.Length > 0)
@@ -56,12 +58,12 @@ public class WaveManager : MonoBehaviour
             EnemyType enemyType;
 
             for (var i = 0; i < enemyWave.Length; i++)
-                if (enemyWave[i].quantity > 0)
+                if (enemyWave[i].quantities[_currentLevel] > 0)
                 {
                     spawnSequences[i] = DOTween.Sequence();
-                    interval = enemyWave[i].duration / enemyWave[i].quantity;
-                    enemyType = enemyWave[i].enemyType;
-                    for (var j = 0; j < enemyWave[i].quantity; j++)
+                    interval = enemyWave[i].duration / enemyWave[i].quantities[_currentLevel];
+                    enemyType = enemyWave[i].enemyTypes[_currentLevel];
+                    for (var j = 0; j < enemyWave[i].quantities[_currentLevel]; j++)
                     {
                         spawnSequences[i].AppendCallback(() => Enemy.Spawn(enemyType));
                         spawnSequences[i].AppendInterval(interval);
@@ -69,9 +71,17 @@ public class WaveManager : MonoBehaviour
                 }
         }
 
-        currentWave++;
-        if (currentWave < waves.Length)
+        _currentWave++;
+        if (_currentWave < waves.Length)
+        {
             _waveSpawnTween = DOVirtual.DelayedCall(wave.waveDuration, SpawnWave);
+        }
+        else
+        {
+            _currentWave = 0;
+            _currentLevel = Mathf.Min(_currentLevel + 1, levelNumber - 1);
+            _waveSpawnTween = DOVirtual.DelayedCall(wave.waveDuration, SpawnWave);
+        }
     }
 
     public void OnGameOver()

@@ -44,11 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb14676b38092104e8a5a689b84a55e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelNumber: 3
   waves:
   - waveDuration: 5
     enemiesToSpawn: []
   - waveDuration: 20
     enemiesToSpawn:
+    - duration: 20
+      quantities: 050000000a00000014000000
+      enemyTypes:
+      - {fileID: 11400000, guid: c5aa9665309eddf4fb7ef054b0d71f41, type: 2}
+      - {fileID: 11400000, guid: c5aa9665309eddf4fb7ef054b0d71f41, type: 2}
+      - {fileID: 11400000, guid: c5aa9665309eddf4fb7ef054b0d71f41, type: 2}
+  - waveDuration: 30
+    enemiesToSpawn:
     - duration: 10
-      quantity: 5
-      enemyType: {fileID: 11400000, guid: c5aa9665309eddf4fb7ef054b0d71f41, type: 2}
+      quantities: 03000000060000000a000000
+      enemyTypes:
+      - {fileID: 11400000, guid: 35d5cc11c1552f148b70b7ccb1765ec9, type: 2}
+      - {fileID: 11400000, guid: 35d5cc11c1552f148b70b7ccb1765ec9, type: 2}
+      - {fileID: 11400000, guid: 35d5cc11c1552f148b70b7ccb1765ec9, type: 2}

@@ -56,20 +56,18 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
     {
         health += amount;
         if (health > maxHealth) health = maxHealth;
-        PlayerHUD.Instance.SetHealth(health / maxHealth);
+        PlayerHUD.Instance.SetHealth(NormalizedHealth);
     }
 
     public void TakeDamage(float damage)
     {
         AudioManager.Instance.PlayDamageSFX(hitSoundData);
         health -= damage;
+        PlayerHUD.Instance.SetHealth(NormalizedHealth);
         if (health <= 0) Die();
     }
 
-    public float GetHealthNormalized()
-    {
-        return health / (float)maxHealth;
-    }
+    public float NormalizedHealth => health / maxHealth;
 
     public void OnCollectibleCollected(CollectibleData data)
     {
