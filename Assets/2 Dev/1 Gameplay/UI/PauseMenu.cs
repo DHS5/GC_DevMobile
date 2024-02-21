@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using System.ComponentModel;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,15 +10,15 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     private bool isPaused = false;
 
-    public UnityEvent OnPause;
-    public UnityEvent OnResume;
+    public static event Action OnGamePause;
+    public static event Action OnGameResume;
 
     private void Pause()
     {
         isPaused = true;
         Time.timeScale = 0f;
         pauseMenuUI.SetActive(true);
-        OnPause.Invoke();
+        OnGamePause?.Invoke();
     }
 
     private void Resume()
@@ -25,7 +26,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
-        OnResume.Invoke();
+        OnGameResume?.Invoke();
     }
 
     public void TogglePause()
