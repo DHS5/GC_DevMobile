@@ -1,16 +1,17 @@
 using _2_Dev._1_Gameplay.Weapon;
 using UnityEngine;
+using Utilities;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] protected bool isPlayer;
     [SerializeField] protected Transform firePoint;
+    [SerializeField, Layer] protected int bulletLayer;
 
     [SerializeField] protected WeaponStrategy _weaponStrategy;
     [SerializeField] protected BulletStrategy _bulletStrategy;
     protected float _lastFireTime;
 
-    public bool IsPlayer => isPlayer;
+    public int BulletLayer => bulletLayer;
 
     public void SetStrategy(WeaponStrategy weaponStrategy, BulletStrategy bulletStrategy)
     {

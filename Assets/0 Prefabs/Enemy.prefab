@@ -288,8 +288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93470c191f4387d4384fc044fdad8039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
   firePoint: {fileID: 5977020683969327325}
+  bulletLayer: 9
+  _weaponStrategy: {fileID: 11400000, guid: c93b09b20290551459b30ccc8ec456e4, type: 2}
+  _bulletStrategy: {fileID: 11400000, guid: cee788d1fcd78b34f9892ab55626b157, type: 2}
 --- !u!114 &-699907380606048640
 MonoBehaviour:
   m_ObjectHideFlags: 0

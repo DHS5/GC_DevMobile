@@ -29,6 +29,8 @@ public class Bullet : PoolableObject
     {
         IsActive = true;
 
+        gameObject.layer = shooter.BulletLayer;
+
         bulletTransform.position = pos;
         bulletTransform.up = dir;
         _strategy = strategy;
