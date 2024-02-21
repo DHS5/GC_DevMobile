@@ -25,6 +25,7 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
     {
         transform.SetRelativeSize(relativeSize, 1);
         transform.SetRelativePosition(relativeStartPosition);
+        weapon.SetStrategy();
     }
 
     private void OnEnable()
