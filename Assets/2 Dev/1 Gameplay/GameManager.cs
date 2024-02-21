@@ -10,12 +10,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player player;
      
     public Player Player => player;
+    public bool GamePaused;
 
     public static GameManager Instance { get; private set; }
     
     public static event Action OnGameOver;
-    public static event Action OnGamePause;
-    public static event Action OnGameResume;
 
     int score;
     
@@ -43,6 +42,28 @@ public class GameManager : MonoBehaviour
     {
         // TODO
     }
+
+    private void OnEnable()
+    {
+        PauseMenu.OnGamePause += GamePause;
+        PauseMenu.OnGameResume += GameResume;
+    }
+    private void OnDisable()
+    {
+        PauseMenu.OnGamePause -= GamePause;
+        PauseMenu.OnGameResume -= GameResume;
+    }
+
+    private void GamePause()
+    {
+        GamePaused = true;
+    }
+
+    private void GameResume()
+    {
+        GamePaused = false;
+    }
+
 
     public void AddScore(int amount) => score += amount;
     public int GetScore() => score;
