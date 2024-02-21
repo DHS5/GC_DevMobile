@@ -56,6 +56,7 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
     {
         health += amount;
         if (health > maxHealth) health = maxHealth;
+        PlayerHUD.Instance.SetHealth(health / maxHealth);
     }
 
     public void TakeDamage(float damage)

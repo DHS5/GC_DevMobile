@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int amount)
     {
         score += amount;
+        PlayerHUD.Instance.SetScore(score);
     }
 
     public int GetScore()
