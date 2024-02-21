@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace _2_Dev._1_Gameplay.Colectible
 {
+    [CreateAssetMenu(fileName = "CollectibleData", menuName = "CollectibleData")]
     public class CollectibleData : ScriptableObject
     {
         [SerializeField] private CollectibleType type;
