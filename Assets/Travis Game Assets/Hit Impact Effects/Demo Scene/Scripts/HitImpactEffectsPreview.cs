@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace TravisGameAssets
 {
@@ -25,7 +26,7 @@ namespace TravisGameAssets
 		public Image floorIcon;
 		public Image slowMotionIcon;
 		
-		public GameObject light;
+		[FormerlySerializedAs("light")] public GameObject HIEP_light;
 		
 		private GameObject[] hitEffects;
 
@@ -179,7 +180,7 @@ namespace TravisGameAssets
 		public void ToggleLighting()
 		{
 			lighting = !lighting;
-			light.SetActive(lighting);
+			HIEP_light.SetActive(lighting);
 		}
 		
 		
