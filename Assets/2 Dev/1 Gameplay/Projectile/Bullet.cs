@@ -38,16 +38,30 @@ public class Bullet : PoolableObject
         _strategy = strategy;
         _shooter = shooter;
         _startTime = Time.time;
-        
+        _toDispose = false;
+        _toUnsimulate = false;
+
         spriteRenderer.sprite = _strategy.Sprite;
         boxCollider.enabled = true;
 
         BulletManager.Register(this);
     }
 
-    // Fixed Update ?
     public void OnUpdate(float deltaTime, float time)
     {
+        if (_toDispose)
+        {
+            Pool.Dispose(this, Pool.PoolableType.BULLET);
+            _toDispose = false;
+            return;
+        }
+        if (_toUnsimulate)
+        {
+            BulletManager.Unregister(this);
+            bulletRigidbody.simulated = false;
+            return;
+        }
+
         float lifetime = time - _startTime;
 
         if (lifetime >= _strategy.Lifetime)
@@ -61,36 +75,34 @@ public class Bullet : PoolableObject
         float rotateSpeed = deltaTime * _strategy.CurrentRotation(normalizedLifetime);
         if (rotateSpeed != 0)
             bulletRigidbody.MoveRotation(rotateSpeed);
-            //bulletTransform.Rotate(Vector3.forward, rotateSpeed);
         float moveSpeed = deltaTime * _strategy.CurrentSpeed(normalizedLifetime);
         if (moveSpeed != 0)
             bulletRigidbody.Move(bulletTransform.up * moveSpeed);
-            //bulletTransform.Move(bulletTransform.up * moveSpeed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collide with " + collision.gameObject, collision.gameObject);
-
         if (!IsActive) return;
 
         if (collision.gameObject.TryGetComponent(out IDamageable damageable))
         {
             damageable.TakeDamage(_strategy.Damage);
+            Dispose();
         }
     }
 
+    private bool _toDispose = false;
+    private bool _toUnsimulate = false;
     private void Dispose()
     {
-        bulletRigidbody.simulated = false;
         IsActive = false;
-        BulletManager.Unregister(this);
-
-        Pool.Dispose(this, Pool.PoolableType.BULLET);
+        _toDispose = true;
+        _toUnsimulate = true;
     }
 
     public override void MoveTo(Vector3 position)
     {
+        Debug.Log("bullet move to " + position);
         bulletRigidbody.MovePosition(position);
     }
 }

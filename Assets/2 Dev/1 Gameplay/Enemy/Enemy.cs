@@ -101,13 +101,14 @@ public class Enemy : PoolableObject, IDamageable
                 OnStaticUpdate(time);
                 break;
         }
+        weapon.Shoot(time);
     }
 
     private void OnStaticUpdate(float time)
     {
         if (weapon != null)
         {
-            weapon.Shoot(time);
+            
         }
     }
 
