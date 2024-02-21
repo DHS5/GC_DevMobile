@@ -40,8 +40,8 @@ namespace _2_Dev._1_Gameplay.Colectible
 
         public void OnCollisionEnter2D(Collision2D other)
         {
-            if (IsActive) return;
-
+            if (!IsActive) return;
+            
             if (other.gameObject.TryGetComponent<ICollectibleListener>(out var listener))
             {
                 listener.OnCollectibleCollected(_data);
