@@ -68,12 +68,11 @@ public class Bullet : PoolableObject
     {
         if (!IsActive) return;
 
-        Debug.Log("collide with " + collision.gameObject);
+        Debug.Log("collide with " + collision.gameObject, collision.gameObject);
 
-        var damageable = collision.gameObject.GetComponent<IDamageable>();
-        if(damageable != null)
+        if (collision.gameObject.TryGetComponent(out IDamageable damageable))
         {
-            damageable.TakeDamage(10);
+            damageable.TakeDamage(_strategy.Damage);
         }
     }
 

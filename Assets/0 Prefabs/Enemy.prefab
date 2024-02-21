@@ -274,8 +274,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splineAnimate: {fileID: -699907380606048640}
   weapon: {fileID: 3811435687658015615}
-  health: 100
   spriteRenderer: {fileID: 576059724892709016}
+  boxCollider: {fileID: 5752391940506382360}
+  maxHealth: 100
 --- !u!114 &3811435687658015615
 MonoBehaviour:
   m_ObjectHideFlags: 0
