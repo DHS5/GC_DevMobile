@@ -24,6 +24,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         transform.SetRelativeSize(relativeSize, 1);
         transform.SetRelativePosition(relativeStartPosition);
+        weapon.SetStrategy();
     }
 
     private void OnEnable()

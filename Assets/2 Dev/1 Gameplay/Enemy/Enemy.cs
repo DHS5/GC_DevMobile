@@ -88,7 +88,6 @@ public class Enemy : PoolableObject, IDamageable
                 OnStaticUpdate(time);
                 break;
         }
-        Debug.Log("enemy shoot");
         weapon.Shoot(time);
     }
 
