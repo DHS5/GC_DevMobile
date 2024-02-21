@@ -40,7 +40,7 @@ public class OptionMenu : MonoBehaviour
 
     public void exitOptions()
     {
-        previousMenu?.SetActive(true);
+        previousMenu.SetActive(true);
         gameObject.SetActive(false);
     }
 }

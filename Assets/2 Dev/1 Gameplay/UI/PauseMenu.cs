@@ -7,8 +7,12 @@ using UnityEngine.Events;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI;
     private bool isPaused = false;
+    [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject optionsCanvas;
+    [SerializeField] private GameObject otherCanvas;
+
+    [SerializeField] private string gameSceneName = "MainMenu";
 
     public static event Action OnGamePause;
     public static event Action OnGameResume;
@@ -33,6 +37,13 @@ public class PauseMenu : MonoBehaviour
         OnGameResume?.Invoke();
     }
 
+    public void Options()
+    {
+        AudioManager.Instance.PlaySFX("ClickButton");
+        optionsCanvas.SetActive(true);
+        otherCanvas.SetActive(false);
+    }
+
     public void TogglePause()
     {
         AudioManager.Instance.PlaySFX("ClickButton");
@@ -42,12 +53,9 @@ public class PauseMenu : MonoBehaviour
             Pause();
     }
 
-    public void Quit()
+    public void ExitGame()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        AudioManager.Instance.PlaySFX("ClickButton");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
     }
 }

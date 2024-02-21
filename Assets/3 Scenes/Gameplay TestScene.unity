@@ -1396,6 +1396,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1844070145779095115, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 700726700132206770}
+    - target: {fileID: 1844070145779095115, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: exitOptions
+      objectReference: {fileID: 0}
+    - target: {fileID: 1844070145779095115, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6591898790901479641, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1403,6 +1415,10 @@ PrefabInstance:
     - target: {fileID: 8259782441246006997, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8259782441246006997, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9140269683026959155, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
       propertyPath: m_Pivot.x
@@ -1489,6 +1505,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+--- !u!114 &700726700132206770 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1058795026879176149, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+  m_PrefabInstance: {fileID: 700726700132206769}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fa0a2f89bbaf254883cec88f2fef071, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4168325740501085647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1633,6 +1660,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 94354342}
+    - target: {fileID: 5312950012505386104, guid: c4058713a00721247b99b9216e19515e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TogglePause
+      objectReference: {fileID: 0}
     - target: {fileID: 8122646697215163808, guid: c4058713a00721247b99b9216e19515e, type: 3}
       propertyPath: m_IsActive
       value: 1
