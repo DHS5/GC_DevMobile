@@ -56,7 +56,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5543007618250775949
 RectTransform:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   sfxSlider: {fileID: 4994563385001337470}
   musicToggle: {fileID: 2974574914818314058}
   sfxToggle: {fileID: 1893739357237189210}
-  mainMenu: {fileID: 3603729315976427631}
+  previousMenu: {fileID: 3603729315976427631}
 --- !u!223 &3672170419004418860
 Canvas:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978018070664435154}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -471,7 +471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2811719266725219782
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1757,12 +1757,16 @@ PrefabInstance:
       value: MusicSlider
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
+      propertyPath: m_MinValue
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1786,23 +1790,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5220827253169762896, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.44444445
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5220827253169762896, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781739406481652012, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.44444445
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781739406481652012, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781739406481652012, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.44444445
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7585515230705573990, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_Pivot.x
@@ -2044,12 +2048,16 @@ PrefabInstance:
       value: SFXSlider
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
+      propertyPath: m_MinValue
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2073,23 +2081,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5220827253169762896, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.44444445
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5220827253169762896, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781739406481652012, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.44444445
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781739406481652012, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781739406481652012, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.44444445
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7585515230705573990, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_Pivot.x
@@ -2206,7 +2214,7 @@ PrefabInstance:
       objectReference: {fileID: 1138209017951934020}
     - target: {fileID: 1635534380632038982, guid: a9e8eea4d23b6dc478d91d88e40b534b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartGame
+      value: Options
       objectReference: {fileID: 0}
     - target: {fileID: 1635534380632038982, guid: a9e8eea4d23b6dc478d91d88e40b534b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
