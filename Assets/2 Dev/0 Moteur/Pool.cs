@@ -105,7 +105,7 @@ public class Pool : MonoBehaviour
     [SerializeField][Range(1, 100)] private int enemyPoolRefillCapacity = 10;
     
     [Header("Collectible Pool")]
-    [SerializeField] private List<Enemy> pooledCollectibles;
+    [SerializeField] private List<Collectible> pooledCollectibles;
     [SerializeField][Range(1, 100000)] private int collectiblePoolBaseCapacity = 10;
     [SerializeField][Range(1, 10)] private int collectiblePoolRefillLimit = 2;
     [SerializeField][Range(1, 100)] private int collectiblePoolRefillCapacity = 1;
@@ -116,7 +116,7 @@ public class Pool : MonoBehaviour
 
     private static Stack<Bullet> _bulletStack = new();
     private static Stack<Enemy> _enemyStack = new();
-    private static Stack<Enemy> _collectibleStack = new();
+    private static Stack<Collectible> _collectibleStack = new();
 
     private void Init()
     {
@@ -198,7 +198,7 @@ public class Pool : MonoBehaviour
         {
             case PoolableType.BULLET: _bulletStack.Push(newPoolable as Bullet); break;
             case PoolableType.ENEMY: _enemyStack.Push(newPoolable as Enemy); break;
-            case PoolableType.COLLECTIBLE: _collectibleStack.Push(newPoolable as Enemy); break;
+            case PoolableType.COLLECTIBLE: _collectibleStack.Push(newPoolable as Collectible); break;
         }
     }
 
