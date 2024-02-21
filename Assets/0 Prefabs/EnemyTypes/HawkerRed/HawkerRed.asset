@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: HawkerRed
   m_EditorClassIdentifier: 
   maxHealth: 2000
-  movement: 0
+  movement: 1
   fixedRelativePosition: {x: 0, y: 0.5}
-  path: 0
+  path: 1
   weaponStrategy: {fileID: 11400000, guid: c93b09b20290551459b30ccc8ec456e4, type: 2}
   bulletStrategy: {fileID: 11400000, guid: 2c8ad52f56408fa4b9202771b00fbb27, type: 2}
