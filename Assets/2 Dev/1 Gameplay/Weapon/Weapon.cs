@@ -40,8 +40,7 @@ public class Weapon : MonoBehaviour
         {
             bullets[i] = Bullet.Get();
             float spreadRotation = _weaponStrategy.SpreadAngle * (i - bullets.Length / 2);
-            Vector3 spreadDirection = Quaternion.Euler(0, 0, spreadRotation) * fireUp;
-            bullets[i].Init(firePos, spreadDirection, _bulletStrategy, this);
+            bullets[i].Init(firePos, spreadRotation, _bulletStrategy, this);
         }
 
         _lastFireTime = time;

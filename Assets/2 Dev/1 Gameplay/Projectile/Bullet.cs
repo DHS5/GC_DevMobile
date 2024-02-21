@@ -26,14 +26,14 @@ public class Bullet : PoolableObject
 
     #endregion
 
-    public void Init(Vector3 pos, Vector3 dir, BulletStrategy strategy, Weapon shooter)
+    public void Init(Vector3 pos, float dir, BulletStrategy strategy, Weapon shooter)
     {
         IsActive = true;
 
         gameObject.layer = shooter.BulletLayer;
 
-        bulletRigidbody.MovePosition(pos);
-        bulletRigidbody.rotation = 0;
+        bulletRigidbody.position = pos;
+        bulletRigidbody.rotation = dir;
         _strategy = strategy;
         _shooter = shooter;
         _startTime = Time.time;
