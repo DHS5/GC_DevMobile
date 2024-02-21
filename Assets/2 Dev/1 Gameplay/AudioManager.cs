@@ -13,7 +13,9 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
     
     public Sound[] musicSounds, sfxSounds;
-    public AudioSource musicSource, sfxSource;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource sfxSource;
+
 
     private void Awake()
     {
@@ -71,6 +73,16 @@ public class AudioManager : MonoBehaviour
         sfxSource.mute = !sfxSource.mute;
     }
 
+    public bool IsMusicEnabled()
+    {
+        return musicSource.mute;
+    }
+
+    public bool AreSFXEnabled()
+    {
+        return sfxSource.mute;
+    }
+
     public void MusicVolume(float iVolume)
     {
         musicSource.volume = iVolume;
@@ -78,5 +90,14 @@ public class AudioManager : MonoBehaviour
     public void SFXVolume(float iVolume)
     {
         sfxSource.volume = iVolume;
+    }
+
+    public float GetMusicVolume()
+    {
+        return musicSource.volume;
+    }
+    public float GetSFXVolume()
+    {
+        return sfxSource.volume;
     }
 }
