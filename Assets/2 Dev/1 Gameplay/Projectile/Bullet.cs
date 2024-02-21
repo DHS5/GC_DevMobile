@@ -75,7 +75,7 @@ public class Bullet : PoolableObject
         }
     }
 
-    private void Dispose()
+    public void Dispose()
     {
         BulletManager.Unregister(this);
         bulletRigidbody.simulated = false;

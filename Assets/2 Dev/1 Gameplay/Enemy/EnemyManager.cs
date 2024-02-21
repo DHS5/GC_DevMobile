@@ -78,6 +78,20 @@ public static class EnemyManager
         }
     }
 
+    private static void Clear()
+    {
+        _toRegister.Clear();
+        _toUnregister.Clear();
+
+        foreach (var enemy in _enemies)
+        {
+            if (enemy.IsActive)
+            {
+                enemy.Dispose();
+            }
+        }
+    }
+
     #endregion
 
     #region Update

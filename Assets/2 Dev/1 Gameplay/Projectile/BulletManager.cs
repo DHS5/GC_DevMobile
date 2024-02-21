@@ -74,6 +74,20 @@ public static class BulletManager
         }
     }
 
+    private static void Clear()
+    {
+        _toRegister.Clear();
+        _toUnregister.Clear();
+
+        foreach (var bullet in _bullets)
+        {
+            if (bullet.IsActive)
+            {
+                bullet.Dispose();
+            }
+        }
+    }
+
     #endregion
 
     #region Update
