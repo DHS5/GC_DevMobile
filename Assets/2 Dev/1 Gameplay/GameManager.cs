@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour
         GamePaused = false;
     }
 
-
     public void AddScore(int amount) => score += amount;
     public int GetScore() => score;
 }
