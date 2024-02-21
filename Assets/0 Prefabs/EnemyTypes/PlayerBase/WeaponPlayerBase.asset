@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 0.1
   bulletCount: 3
-  spreadAngle: 20
+  spreadAngle: 30

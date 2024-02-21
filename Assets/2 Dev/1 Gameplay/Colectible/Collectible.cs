@@ -12,7 +12,7 @@ namespace _2_Dev._1_Gameplay.Colectible
         private CollectibleData _data;
         public bool IsActive { get; private set; }
 
-        public static Collectible Get(CollectibleData data, Vector3 position)
+        public static Collectible Spawn(CollectibleData data, Vector3 position)
         {
             Collectible c = Pool.Get<Collectible>(Pool.PoolableType.COLLECTIBLE);
             c.Init(data, position);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using _2_Dev._1_Gameplay;
+using _2_Dev._1_Gameplay.Colectible;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Splines;
@@ -77,6 +78,16 @@ public class Enemy : PoolableObject, IDamageable
         Pool.Dispose(this, Pool.PoolableType.ENEMY);
     }
 
+    private void OnDead()
+    {
+        CollectibleData collectibleData = CollectibleManager.Get();
+        if (collectibleData != null)
+        {
+            Collectible.Spawn(collectibleData, enemyTransform.position);
+        }
+        Dispose();
+    }
+
 
     public void OnUpdate(float deltaTime, float time)
     {
@@ -113,7 +124,7 @@ public class Enemy : PoolableObject, IDamageable
         _health -= damage;
         if (_health <= 0)
         {
-            Dispose();
+            OnDead();
         }
     }
 
