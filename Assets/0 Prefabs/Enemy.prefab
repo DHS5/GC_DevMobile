@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8996925294175787758}
   - component: {fileID: 3587270099916085266}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2762652016017573029}
   - component: {fileID: 576059724892709016}
   - component: {fileID: 1634451670502316286}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,6 +276,7 @@ MonoBehaviour:
   weapon: {fileID: 3811435687658015615}
   spriteRenderer: {fileID: 576059724892709016}
   boxCollider: {fileID: 5752391940506382360}
+  enemyRigidbody: {fileID: 9167747737518160341}
 --- !u!114 &3811435687658015615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +325,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5556856966863788097}
   m_BodyType: 1
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -349,7 +350,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5556856966863788097}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

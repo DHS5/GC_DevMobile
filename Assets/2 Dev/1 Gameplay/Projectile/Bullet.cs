@@ -32,6 +32,7 @@ public class Bullet : PoolableObject
 
         gameObject.layer = shooter.BulletLayer;
 
+        bulletRigidbody.simulated = true;
         bulletRigidbody.position = pos;
         bulletRigidbody.rotation = dir;
         _strategy = strategy;
@@ -81,7 +82,7 @@ public class Bullet : PoolableObject
 
     private void Dispose()
     {
-        boxCollider.enabled = false;
+        bulletRigidbody.simulated = false;
         IsActive = false;
         BulletManager.Unregister(this);
 

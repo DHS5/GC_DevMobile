@@ -20,6 +20,7 @@ public class Enemy : PoolableObject, IDamageable
     [SerializeField] private Weapon weapon;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private Rigidbody2D enemyRigidbody;
 
     private float _health;
 
@@ -45,10 +46,10 @@ public class Enemy : PoolableObject, IDamageable
     {
         EnemyManager.Register(this);
 
+        enemyRigidbody.simulated = true;
         _enemyType = enemyType;
         IsActive = true;
         _health = enemyType.MaxHealth;
-        boxCollider.enabled = true;
 
         if (enemyType.Movement == EnemyMovement.PATH)
         {
@@ -64,7 +65,7 @@ public class Enemy : PoolableObject, IDamageable
 
     public void Dispose()
     {
-        boxCollider.enabled = false;
+        enemyRigidbody.simulated = false;
         IsActive = false;
         EnemyManager.Unregister(this);
 
