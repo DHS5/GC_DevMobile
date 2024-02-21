@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private InputReader inputReader;
+    [Header("References")] [SerializeField]
+    private InputReader inputReader;
 
     private void OnEnable()
     {
         inputReader.OnMove += OnMove;
     }
+
     private void OnDisable()
     {
         inputReader.OnMove -= OnMove;

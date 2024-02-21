@@ -1,9 +1,6 @@
-using DG.Tweening;
 using System;
-using System.ComponentModel;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -57,6 +54,6 @@ public class PauseMenu : MonoBehaviour
     public void ExitGame()
     {
         AudioManager.Instance.PlayShootSFX(clickSoundData);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
+        SceneManager.LoadScene(gameSceneName);
     }
 }

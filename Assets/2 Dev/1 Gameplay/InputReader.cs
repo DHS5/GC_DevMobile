@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class InputReader : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private PlayerInput playerInput;
+    [Header("References")] [SerializeField]
+    private PlayerInput playerInput;
 
     public event Action<Vector2> OnMove;
 
@@ -18,6 +18,7 @@ public class InputReader : MonoBehaviour
         PauseMenu.OnGamePause += OnGamePaused;
         PauseMenu.OnGameResume += OnGameResumed;
     }
+
     private void OnDisable()
     {
         playerInput.actions["Move"].performed -= OnInputMove;
@@ -27,17 +28,19 @@ public class InputReader : MonoBehaviour
         PauseMenu.OnGameResume -= OnGameResumed;
     }
 
-    bool _startTouch = true;
+    private bool _startTouch = true;
+
     private void OnCanceledTouch(InputAction.CallbackContext context)
     {
         _startTouch = true;
     }
 
     private Vector2 _previousMousePos;
+
     private void OnInputMove(InputAction.CallbackContext context)
     {
-        Vector2 current = context.ReadValue<Vector2>();
-        Vector2 delta = current - _previousMousePos;
+        var current = context.ReadValue<Vector2>();
+        var delta = current - _previousMousePos;
 
         if (!_startTouch)
             OnMove?.Invoke(delta);
@@ -51,6 +54,7 @@ public class InputReader : MonoBehaviour
         playerInput.actions["Move"].performed -= OnInputMove;
         playerInput.actions["Touch"].canceled -= OnCanceledTouch;
     }
+
     private void OnGameResumed()
     {
         playerInput.actions["Move"].performed += OnInputMove;

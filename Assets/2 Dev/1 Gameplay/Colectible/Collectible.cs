@@ -5,8 +5,9 @@ namespace _2_Dev._1_Gameplay.Colectible
 {
     public class Collectible : PoolableObject
     {
-        [Header("References")]
-        [SerializeField] private Collider2D boxCollider;
+        [Header("References")] [SerializeField]
+        private Collider2D boxCollider;
+
         [SerializeField] private SpriteRenderer spriteRenderer;
 
         private CollectibleData _data;
@@ -14,7 +15,7 @@ namespace _2_Dev._1_Gameplay.Colectible
 
         public static Collectible Spawn(CollectibleData data, Vector3 position)
         {
-            Collectible c = Pool.Get<Collectible>(Pool.PoolableType.COLLECTIBLE);
+            var c = Pool.Get<Collectible>(Pool.PoolableType.COLLECTIBLE);
             c.Init(data, position);
             return c;
         }
@@ -29,19 +30,19 @@ namespace _2_Dev._1_Gameplay.Colectible
             boxCollider.enabled = true;
             transform.position = position;
         }
-        
+
         public void Dispose()
         {
             IsActive = false;
             boxCollider.enabled = false;
-            
+
             Pool.Dispose(this, Pool.PoolableType.COLLECTIBLE);
         }
 
         public void OnCollisionEnter2D(Collision2D other)
         {
             if (!IsActive) return;
-            
+
             if (other.gameObject.TryGetComponent<ICollectibleListener>(out var listener))
             {
                 listener.OnCollectibleCollected(_data);

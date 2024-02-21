@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class    CollectibleManager : MonoBehaviour
+public class CollectibleManager : MonoBehaviour
 {
     #region Singleton
 
@@ -17,6 +17,7 @@ public class    CollectibleManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         I = this;
 
         Init();
@@ -33,7 +34,7 @@ public class    CollectibleManager : MonoBehaviour
 
     #region Global Members
 
-    [SerializeField][Range(0f, 1f)] private float collectibleChancePercentage = 0.05f;
+    [SerializeField] [Range(0f, 1f)] private float collectibleChancePercentage = 0.05f;
     [SerializeField] private List<CollectibleDataPonderate> collectibleDatas;
 
     #endregion
@@ -45,12 +46,8 @@ public class    CollectibleManager : MonoBehaviour
     private void Init()
     {
         foreach (var data in collectibleDatas)
-        {
-            for (int i = 0; i < data.weight; i++)
-            {
+            for (var i = 0; i < data.weight; i++)
                 _datas.Add(data.collectibleData);
-            }
-        }
     }
 
     #endregion
@@ -61,6 +58,7 @@ public class    CollectibleManager : MonoBehaviour
     {
         return _datas[UnityEngine.Random.Range(0, _datas.Count)];
     }
+
     public static CollectibleData Get()
     {
         if (UnityEngine.Random.value < I.collectibleChancePercentage)

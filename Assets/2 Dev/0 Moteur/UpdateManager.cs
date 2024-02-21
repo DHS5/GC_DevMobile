@@ -10,6 +10,7 @@ public class UpdateManager : MonoBehaviour
     public static int FrameIndex { get; private set; }
     public static float FixedDelta { get; private set; }
     public static float CurrentTime { get; private set; }
+
     private void Start()
     {
         FrameIndex = 0;
@@ -18,7 +19,7 @@ public class UpdateManager : MonoBehaviour
 
     private void Update()
     {
-        float deltaTime = Time.deltaTime;
+        var deltaTime = Time.deltaTime;
         CurrentTime = Time.time;
 
         OnUpdate?.Invoke(FrameIndex, deltaTime, CurrentTime);

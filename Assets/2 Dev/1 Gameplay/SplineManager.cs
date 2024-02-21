@@ -4,7 +4,7 @@ using UnityEngine.Splines;
 public enum EnemyPath
 {
     FIRST,
-    SECOND,
+    SECOND
 }
 
 public class SplineManager : MonoBehaviour
@@ -12,6 +12,7 @@ public class SplineManager : MonoBehaviour
     #region Singleton
 
     private static SplineManager I { get; set; }
+
     private void Awake()
     {
         if (I != null)
@@ -19,6 +20,7 @@ public class SplineManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         I = this;
     }
 
@@ -47,7 +49,7 @@ public class SplineManager : MonoBehaviour
         foreach (var spline in splinePaths)
         {
             knots = spline.Spline.ToArray();
-            for (int i = 0; i < knots.Length; i++)
+            for (var i = 0; i < knots.Length; i++)
             {
                 knot = knots[i];
                 knot.Position = Format.ComputeCorrectPosition(knot.Position);

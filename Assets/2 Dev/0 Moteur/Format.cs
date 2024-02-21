@@ -6,7 +6,11 @@ using UnityEngine.UI;
 
 public class Format : MonoBehaviour
 {
-    public enum Axis { X = 0, Y = 1 }
+    public enum Axis
+    {
+        X = 0,
+        Y = 1
+    }
 
     #region Singleton
 
@@ -19,6 +23,7 @@ public class Format : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         I = this;
 
         Init();
@@ -28,9 +33,9 @@ public class Format : MonoBehaviour
 
     #region Global Members
 
-    [SerializeField] private Vector2 referenceBounds = new Vector2(17.7f, 10);
+    [SerializeField] private Vector2 referenceBounds = new(17.7f, 10);
 
-    [SerializeField] private Vector2Int referenceResolution = new Vector2Int(1920, 1080);
+    [SerializeField] private Vector2Int referenceResolution = new(1920, 1080);
 
     #endregion
 
@@ -41,7 +46,7 @@ public class Format : MonoBehaviour
     public static float Ratio { get; private set; }
     public static float ReferenceRatio { get; private set; }
     public static float RatioDiff { get; private set; }
-    
+
     public static Vector2 ResolutionDelta { get; private set; }
     public static float ScaleFactor { get; private set; }
 
@@ -61,7 +66,7 @@ public class Format : MonoBehaviour
         Application.targetFrameRate = 120;
 
         Resolution = new Vector2(Screen.width, Screen.height);
-        
+
         ReferenceRatio = (float)referenceResolution.x / referenceResolution.y;
         Ratio = Resolution.x / Resolution.y;
         RatioDiff = Ratio / ReferenceRatio;
@@ -75,12 +80,12 @@ public class Format : MonoBehaviour
         DemiBounds = new Vector2(ScreenBounds.x / 2, ScreenBounds.y / 2);
 
         Debug.Log("Resolution : " + Resolution + "\n" +
-            "Screen : width = " + Screen.width + " height = " + Screen.height + "\n" +
-            "Ratio : " + Ratio + "\n" +
-            "Ratio Diff : " + RatioDiff + "\n" +
-            "Resolution Delta : " + ResolutionDelta + "\n" +
-            "Scale Factor : " + ScaleFactor + "\n" +
-            "Screen Bounds : " + ScreenBounds);
+                  "Screen : width = " + Screen.width + " height = " + Screen.height + "\n" +
+                  "Ratio : " + Ratio + "\n" +
+                  "Ratio Diff : " + RatioDiff + "\n" +
+                  "Resolution Delta : " + ResolutionDelta + "\n" +
+                  "Scale Factor : " + ScaleFactor + "\n" +
+                  "Screen Bounds : " + ScreenBounds);
     }
 
     #endregion
@@ -89,7 +94,7 @@ public class Format : MonoBehaviour
 
     public static Vector2 ComputeSize(float relativeSize, float ratio)
     {
-        float factor = relativeSize * ScaleFactor;
+        var factor = relativeSize * ScaleFactor;
         return new Vector2(ratio * factor, factor);
     }
 
@@ -109,7 +114,8 @@ public class Format : MonoBehaviour
 
     public static Vector3 ComputePositionClamped(Vector2 relativePosition)
     {
-        return new Vector3(Mathf.Clamp(relativePosition.x * DemiBounds.x, -DemiBounds.x, DemiBounds.x), Mathf.Clamp(relativePosition.y * DemiBounds.y, -DemiBounds.y, DemiBounds.y), 0);
+        return new Vector3(Mathf.Clamp(relativePosition.x * DemiBounds.x, -DemiBounds.x, DemiBounds.x),
+            Mathf.Clamp(relativePosition.y * DemiBounds.y, -DemiBounds.y, DemiBounds.y), 0);
     }
 
     public static Vector3 ComputePosition(float relativeX, float relativeY)
@@ -124,24 +130,25 @@ public class Format : MonoBehaviour
 
     public static Vector2 ComputeRelativeDeltaFromScreenDelta(Vector2 screenDelta)
     {
-        float deltaX = screenDelta.x / Resolution.x;
-        float deltaY = screenDelta.y / Resolution.y;
+        var deltaX = screenDelta.x / Resolution.x;
+        var deltaY = screenDelta.y / Resolution.y;
         return new Vector2(deltaX * 2, deltaY * 2);
     }
 
     public static Vector3 ComputeNormalizedPosition(Vector2 normalizedPosition)
     {
-        return new Vector3(normalizedPosition.x * ScreenBounds.x - DemiBounds.x, normalizedPosition.y * ScreenBounds.y - DemiBounds.y, 0);
+        return new Vector3(normalizedPosition.x * ScreenBounds.x - DemiBounds.x,
+            normalizedPosition.y * ScreenBounds.y - DemiBounds.y, 0);
     }
 
     public static Vector2 GetReferenceRelativePosition(Vector3 basePos)
     {
-        float absX = Mathf.Abs(basePos.x);
-        bool xNeg = basePos.x < 0;
-        float absY = Mathf.Abs(basePos.y);
-        bool yNeg = basePos.y < 0;
-        float x = absX / RefDemiBounds.x * (xNeg ? -1f : 1f);
-        float y = absY / RefDemiBounds.y * (yNeg ? -1f : 1f);
+        var absX = Mathf.Abs(basePos.x);
+        var xNeg = basePos.x < 0;
+        var absY = Mathf.Abs(basePos.y);
+        var yNeg = basePos.y < 0;
+        var x = absX / RefDemiBounds.x * (xNeg ? -1f : 1f);
+        var y = absY / RefDemiBounds.y * (yNeg ? -1f : 1f);
 
         return new Vector2(x, y);
     }
@@ -168,7 +175,7 @@ public class Format : MonoBehaviour
     {
         GameManager.OnGameOver += ClearComputeCache;
     }
-    
+
     public void OnDisable()
     {
         GameManager.OnGameOver -= ClearComputeCache;

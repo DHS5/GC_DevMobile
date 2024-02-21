@@ -17,7 +17,9 @@ public static class EnemyManager
     public static void Register(Enemy enemy)
     {
         if (IsActive)
+        {
             _toRegister.Add(enemy);
+        }
 
         else if (!_enemies.Contains(enemy))
         {
@@ -25,6 +27,7 @@ public static class EnemyManager
             OnEnemiesChange();
         }
     }
+
     public static void Unregister(Enemy enemy)
     {
         _toUnregister.Add(enemy);
@@ -32,27 +35,20 @@ public static class EnemyManager
 
     private static void DoRegistrations()
     {
-        bool change = false;
+        var change = false;
 
         if (_toRegister.IsValid())
         {
             change = true;
             foreach (var e in _toRegister)
-            {
                 if (!_enemies.Contains(e))
-                {
                     _enemies.Add(e);
-
-                }
-            }
         }
+
         if (_toUnregister.IsValid())
         {
             change = true;
-            foreach (var b in _toUnregister)
-            {
-                _enemies.Remove(b);
-            }
+            foreach (var b in _toUnregister) _enemies.Remove(b);
         }
 
         if (change)
@@ -84,12 +80,8 @@ public static class EnemyManager
         _toUnregister.Clear();
 
         foreach (var enemy in _enemies)
-        {
             if (enemy.IsActive)
-            {
                 enemy.Dispose();
-            }
-        }
     }
 
     #endregion
@@ -101,6 +93,7 @@ public static class EnemyManager
         UpdateManager.OnFixedUpdate += OnUpdate;
         IsActive = true;
     }
+
     private static void OnEndUpdate()
     {
         IsActive = false;
@@ -109,10 +102,7 @@ public static class EnemyManager
 
     private static void OnUpdate(int frameIndex, float deltaTime, float time)
     {
-        foreach (var enemy in _enemies)
-        {
-            enemy.OnUpdate(deltaTime, time);
-        }
+        foreach (var enemy in _enemies) enemy.OnUpdate(deltaTime, time);
 
         DoRegistrations();
     }

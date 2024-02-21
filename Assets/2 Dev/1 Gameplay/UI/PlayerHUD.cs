@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerHUD : MonoBehaviour
 {
-    [SerializeField] Image healthBar;
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] private Image healthBar;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
-    void Update()
+    private void Update()
     {
         healthBar.fillAmount = GameManager.Instance.Player.GetHealthNormalized();
         scoreText.text = $"Score: {GameManager.Instance.GetScore()}";

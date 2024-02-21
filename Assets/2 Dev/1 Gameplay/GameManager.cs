@@ -6,26 +6,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject gameOverUI;
+    [SerializeField] private GameObject gameOverUI;
     [SerializeField] private Player player;
-     
+
     public Player Player => player;
 
     public static GameManager Instance { get; private set; }
-    
+
     public static event Action OnGameOver;
 
-    int score;
-    
+    private int score;
+
     // TODO Add a next level instead of game over
 
-    void Awake()
+    private void Awake()
     {
         if (Instance != null)
         {
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
     }
 
@@ -36,13 +37,20 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         DOVirtual.DelayedCall(3, OnGameEnd);
     }
-    
+
     private void OnGameEnd()
     {
         // TODO
     }
 
 
-    public void AddScore(int amount) => score += amount;
-    public int GetScore() => score;
+    public void AddScore(int amount)
+    {
+        score += amount;
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
 }

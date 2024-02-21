@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
         AudioManager.Instance.PlayShootSFX(clickSoundData);
         UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
     }
+
     public void Options()
     {
         AudioManager.Instance.PlayShootSFX(clickSoundData);
@@ -24,7 +25,7 @@ public class MainMenu : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-        // Si nous sommes dans un build exécutable, quittez l'application
+        // Si nous sommes dans un build exÃ©cutable, quittez l'application
         Application.Quit();
 #endif
     }

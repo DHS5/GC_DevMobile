@@ -16,8 +16,9 @@ public class Enemy : PoolableObject, IDamageable
 
     #region Global Members
 
-    [Header("References")]
-    [SerializeField] private Transform enemyTransform;
+    [Header("References")] [SerializeField]
+    private Transform enemyTransform;
+
     [SerializeField] private SplineAnimate splineAnimate;
     [SerializeField] private Weapon weapon;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -37,7 +38,7 @@ public class Enemy : PoolableObject, IDamageable
 
     public static Enemy Spawn(EnemyType type)
     {
-        Enemy e = Pool.Get<Enemy>(Pool.PoolableType.ENEMY);
+        var e = Pool.Get<Enemy>(Pool.PoolableType.ENEMY);
         e.Init(type);
         return e;
     }
@@ -62,6 +63,7 @@ public class Enemy : PoolableObject, IDamageable
         {
             transform.SetRelativePosition(enemyType.FixedRelativePosition);
         }
+
         weapon.SetStrategy(_enemyType.WeaponStrategy, _enemyType.BulletStrategy);
     }
 
@@ -80,11 +82,8 @@ public class Enemy : PoolableObject, IDamageable
 
     private void OnDead()
     {
-        CollectibleData collectibleData = CollectibleManager.Get();
-        if (collectibleData != null)
-        {
-            Collectible.Spawn(collectibleData, enemyTransform.position);
-        }
+        var collectibleData = CollectibleManager.Get();
+        if (collectibleData != null) Collectible.Spawn(collectibleData, enemyTransform.position);
         Dispose();
     }
 
@@ -99,6 +98,7 @@ public class Enemy : PoolableObject, IDamageable
                 OnStaticUpdate(time);
                 break;
         }
+
         weapon.Shoot(time);
     }
 
@@ -106,7 +106,6 @@ public class Enemy : PoolableObject, IDamageable
     {
         if (weapon != null)
         {
-            
         }
     }
 
@@ -122,10 +121,7 @@ public class Enemy : PoolableObject, IDamageable
         if (!IsActive) return;
 
         _health -= damage;
-        if (_health <= 0)
-        {
-            OnDead();
-        }
+        if (_health <= 0) OnDead();
     }
 
     #endregion

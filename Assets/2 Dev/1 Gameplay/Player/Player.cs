@@ -8,26 +8,28 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable, ICollectibleListener
 {
-    
     [SerializeField] private Weapon weapon;
-    [SerializeField] int maxHealth;
+    [SerializeField] private int maxHealth;
     [SerializeField] private float health;
-    
+
     [SerializeField] private float relativeSize = 1;
-    [SerializeField] private Vector2 relativeStartPosition = new Vector2(0, -0.5f);
+    [SerializeField] private Vector2 relativeStartPosition = new(0, -0.5f);
     [SerializeField] private AudioData hitSoundData;
-    
+
     [SerializeField] private List<BulletStrategy> lvlBulletStrategies;
     [SerializeField] private int currentBulletStrategy;
-    
-    protected virtual void Awake() => health = maxHealth;
-    
+
+    protected virtual void Awake()
+    {
+        health = maxHealth;
+    }
+
     protected void Die()
     {
         GameManager.Instance.GameOver();
     }
-    
-    void Start()
+
+    private void Start()
     {
         transform.SetRelativeSize(relativeSize, 1);
         transform.SetRelativePosition(relativeStartPosition);
@@ -53,26 +55,24 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
     public void AddHealth(int amount)
     {
         health += amount;
-        if (health > maxHealth)
-        {
-            health = maxHealth;
-        }
+        if (health > maxHealth) health = maxHealth;
     }
 
     public void TakeDamage(float damage)
     {
         AudioManager.Instance.PlayDamageSFX(hitSoundData);
         health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
+        if (health <= 0) Die();
     }
-    
-    public float GetHealthNormalized() => health / (float)maxHealth;
+
+    public float GetHealthNormalized()
+    {
+        return health / (float)maxHealth;
+    }
+
     public void OnCollectibleCollected(CollectibleData data)
     {
-        CollectibleType type = data.Type;
+        var type = data.Type;
         switch (type)
         {
             case CollectibleType.HEALTH:

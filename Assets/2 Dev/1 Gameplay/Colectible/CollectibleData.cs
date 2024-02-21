@@ -11,9 +11,7 @@ namespace _2_Dev._1_Gameplay.Colectible
         [SerializeField] private Sprite sprite;
         [SerializeField] private Color color;
 
-        [Space(5f)]
-
-        [SerializeField] private float health;
+        [Space(5f)] [SerializeField] private float health;
         [SerializeField] private int bulletAddition;
         [SerializeField] private float spreadAddition;
         [SerializeField] private float fireRateAddition;
@@ -26,7 +24,7 @@ namespace _2_Dev._1_Gameplay.Colectible
         public float SpreadAddition => spreadAddition;
         public int BulletAddition => bulletAddition;
         public int ScoreAddition => scoreAddition;
-        
+
         public float FireRateAddition => fireRateAddition;
     }
 }

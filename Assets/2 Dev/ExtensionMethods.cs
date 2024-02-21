@@ -34,6 +34,7 @@ public static class ExtensionMethods
     {
         transform.localScale = Format.ComputeSize(relativeSize, ratio);
     }
+
     /// <summary>
     /// Set the relative position of the SpriteRenderer
     /// </summary>
@@ -43,6 +44,7 @@ public static class ExtensionMethods
     {
         transform.position = Format.ComputePosition(relativePosition);
     }
+
     /// <summary>
     /// Set the position of the SpriteRenderer given a Screen Position
     /// </summary>
@@ -62,11 +64,12 @@ public static class ExtensionMethods
     {
         transform.position += Format.ComputePosition(relativeDelta);
     }
+
     public static void Move(this Rigidbody2D rigidbody2D, Vector2 relativeDelta)
     {
         Format.MoveRigidBodyOptimized(rigidbody2D, relativeDelta);
     }
-    
+
     public static void MovePlayerClamp(this Transform transform, Vector2 relativeDelta)
     {
         var pos = Format.ComputePosition(relativeDelta);
@@ -77,10 +80,12 @@ public static class ExtensionMethods
         newPos.y = Mathf.Clamp(newPos.y, -y, y);
         transform.position = newPos;
     }
+
     public static void MoveX(this Transform transform, float relativeXDelta)
     {
         transform.position += Format.ComputePosition(relativeXDelta, 0);
     }
+
     public static void MoveY(this Transform transform, float relativeYDelta)
     {
         transform.position += Format.ComputePosition(0, relativeYDelta);

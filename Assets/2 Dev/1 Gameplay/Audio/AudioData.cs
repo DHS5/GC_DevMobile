@@ -6,7 +6,7 @@ using UnityEngine;
 public class AudioData : ScriptableObject
 {
     [SerializeField] private AudioClip clip;
-    [SerializeField][Range(0, 1)] private float relativeVolume;
+    [SerializeField] [Range(0, 1)] private float relativeVolume;
 
     public AudioClip Clip => clip;
     public float RelativeVolume => relativeVolume;

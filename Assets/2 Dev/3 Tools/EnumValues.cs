@@ -8,22 +8,23 @@ using UnityEditor;
 #endif
 
 [Serializable]
-public class EnumValues<T, U> : IEnumerable<U> where T : System.Enum
+public class EnumValues<T, U> : IEnumerable<U> where T : Enum
 {
     [SerializeField] private U[] enumValues;
 
-    public U Get(T enumValue) => enumValues[Convert.ToInt32(enumValue)];
+    public U Get(T enumValue)
+    {
+        return enumValues[Convert.ToInt32(enumValue)];
+    }
 
     IEnumerator IEnumerable.GetEnumerator()
     {
         return enumValues.GetEnumerator();
     }
+
     public IEnumerator<U> GetEnumerator()
     {
-        for (int i = 0; i < enumValues.Length; i++)
-        {
-            yield return enumValues[i];
-        }
+        for (var i = 0; i < enumValues.Length; i++) yield return enumValues[i];
     }
 }
 
@@ -32,12 +33,12 @@ public class EnumValues<T, U> : IEnumerable<U> where T : System.Enum
 [CustomPropertyDrawer(typeof(EnumValues<,>))]
 public class EnumValuesDrawer : PropertyDrawer
 {
-    SerializedProperty p_enumValues;
+    private SerializedProperty p_enumValues;
 
-    Type enumType;
+    private Type enumType;
 
-    Array enumValues;
-    string[] enumNames;
+    private Array enumValues;
+    private string[] enumNames;
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
@@ -49,13 +50,14 @@ public class EnumValuesDrawer : PropertyDrawer
         enumValues = Enum.GetValues(enumType);
         enumNames = Enum.GetNames(enumType);
 
-        int arraySize = (int)enumValues.GetValue(enumValues.Length - 1) + 1;
+        var arraySize = (int)enumValues.GetValue(enumValues.Length - 1) + 1;
         p_enumValues.arraySize = arraySize;
 
         EditorGUI.BeginProperty(position, label, property);
 
-        Rect labelRect = new Rect(position.x, position.y, 150f, EditorGUIUtility.singleLineHeight);
-        Rect valueRect = new Rect(position.x + 155f, position.y, position.width - 155f, EditorGUIUtility.singleLineHeight);
+        var labelRect = new Rect(position.x, position.y, 150f, EditorGUIUtility.singleLineHeight);
+        var valueRect = new Rect(position.x + 155f, position.y, position.width - 155f,
+            EditorGUIUtility.singleLineHeight);
 
         int index;
         foreach (var v in enumValues)

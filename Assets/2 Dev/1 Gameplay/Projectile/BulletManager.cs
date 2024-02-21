@@ -17,7 +17,9 @@ public static class BulletManager
     public static void Register(Bullet bullet)
     {
         if (IsActive)
+        {
             _toRegister.Add(bullet);
+        }
 
         else
         {
@@ -25,6 +27,7 @@ public static class BulletManager
             OnBulletsChange();
         }
     }
+
     public static void Unregister(Bullet bullet)
     {
         _toUnregister.Add(bullet);
@@ -32,23 +35,18 @@ public static class BulletManager
 
     private static void DoRegistrations()
     {
-        bool change = false;
+        var change = false;
 
         if (_toRegister.IsValid())
         {
             change = true;
-            foreach (var b in _toRegister)
-            {
-                _bullets.Add(b);
-            }
+            foreach (var b in _toRegister) _bullets.Add(b);
         }
+
         if (_toUnregister.IsValid())
         {
             change = true;
-            foreach (var b in _toUnregister)
-            {
-                _bullets.Remove(b);
-            }
+            foreach (var b in _toUnregister) _bullets.Remove(b);
         }
 
         if (change)
@@ -80,12 +78,8 @@ public static class BulletManager
         _toUnregister.Clear();
 
         foreach (var bullet in _bullets)
-        {
             if (bullet.IsActive)
-            {
                 bullet.Dispose();
-            }
-        }
     }
 
     #endregion
@@ -97,6 +91,7 @@ public static class BulletManager
         UpdateManager.OnFixedUpdate += OnUpdate;
         IsActive = true;
     }
+
     private static void OnEndUpdate()
     {
         IsActive = false;
@@ -105,10 +100,7 @@ public static class BulletManager
 
     private static void OnUpdate(int frameIndex, float deltaTime, float time)
     {
-        foreach (var bullet in _bullets)
-        {
-            bullet.OnUpdate(deltaTime, time);
-        }
+        foreach (var bullet in _bullets) bullet.OnUpdate(deltaTime, time);
 
         DoRegistrations();
     }

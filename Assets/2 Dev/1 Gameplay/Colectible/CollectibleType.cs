@@ -9,6 +9,6 @@
         SPREAD_PLUS,
         SPREAD_REDUCE,
         BULLET_COUNT_PLUS,
-        LEVEL_UP,
+        LEVEL_UP
     }
 }

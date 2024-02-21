@@ -19,7 +19,6 @@ public class Pool : MonoBehaviour
         BULLET = 0,
         ENEMY = 1,
         COLLECTIBLE = 2
-
     }
 
     #region Editor
@@ -28,29 +27,17 @@ public class Pool : MonoBehaviour
 
     private void OnValidate()
     {
-        Vector3 poolPos = poolPosition.position;
+        var poolPos = poolPosition.position;
 
         if (pooledBullets.IsValid())
-        {
             foreach (var bullet in pooledBullets)
-            {
                 bullet.transform.position = poolPos;
-            }
-        }
         if (pooledEnemies.IsValid())
-        {
             foreach (var enemy in pooledEnemies)
-            {
                 enemy.transform.position = poolPos;
-            }
-        }
         if (pooledCollectibles.IsValid())
-        {
             foreach (var collectible in pooledCollectibles)
-            {
                 collectible.transform.position = poolPos;
-            }
-        }
     }
 
 #endif
@@ -80,6 +67,7 @@ public class Pool : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         I = this;
 
         Init();
@@ -89,26 +77,28 @@ public class Pool : MonoBehaviour
 
     #region Global Members
 
-    [Header("Pool")]
-    [SerializeField] private Transform poolPosition;
+    [Header("Pool")] [SerializeField] private Transform poolPosition;
 
-    [Header("Bullet Pool")]
-    [SerializeField] private List<Bullet> pooledBullets;
-    [SerializeField][Range(1, 100000)] private int bulletPoolBaseCapacity = 10000;
-    [SerializeField][Range(1, 10)] private int bulletPoolRefillLimit = 5;
-    [SerializeField][Range(1, 100)] private int bulletPoolRefillCapacity = 10;
-    
-    [Header("Enemy Pool")]
-    [SerializeField] private List<Enemy> pooledEnemies;
-    [SerializeField][Range(1, 100000)] private int enemyPoolBaseCapacity = 10000;
-    [SerializeField][Range(1, 10)] private int enemyPoolRefillLimit = 5;
-    [SerializeField][Range(1, 100)] private int enemyPoolRefillCapacity = 10;
-    
-    [Header("Collectible Pool")]
-    [SerializeField] private List<Collectible> pooledCollectibles;
-    [SerializeField][Range(1, 100000)] private int collectiblePoolBaseCapacity = 10;
-    [SerializeField][Range(1, 10)] private int collectiblePoolRefillLimit = 2;
-    [SerializeField][Range(1, 100)] private int collectiblePoolRefillCapacity = 1;
+    [Header("Bullet Pool")] [SerializeField]
+    private List<Bullet> pooledBullets;
+
+    [SerializeField] [Range(1, 100000)] private int bulletPoolBaseCapacity = 10000;
+    [SerializeField] [Range(1, 10)] private int bulletPoolRefillLimit = 5;
+    [SerializeField] [Range(1, 100)] private int bulletPoolRefillCapacity = 10;
+
+    [Header("Enemy Pool")] [SerializeField]
+    private List<Enemy> pooledEnemies;
+
+    [SerializeField] [Range(1, 100000)] private int enemyPoolBaseCapacity = 10000;
+    [SerializeField] [Range(1, 10)] private int enemyPoolRefillLimit = 5;
+    [SerializeField] [Range(1, 100)] private int enemyPoolRefillCapacity = 10;
+
+    [Header("Collectible Pool")] [SerializeField]
+    private List<Collectible> pooledCollectibles;
+
+    [SerializeField] [Range(1, 100000)] private int collectiblePoolBaseCapacity = 10;
+    [SerializeField] [Range(1, 10)] private int collectiblePoolRefillLimit = 2;
+    [SerializeField] [Range(1, 100)] private int collectiblePoolRefillCapacity = 1;
 
     #endregion
 
@@ -122,34 +112,22 @@ public class Pool : MonoBehaviour
     {
         // Stack Bullets
         if (pooledBullets.IsValid())
-        {
             foreach (var bullet in pooledBullets)
-            {
                 _bulletStack.Push(bullet);
-            }
-        }
-        int numberToCreate = bulletPoolBaseCapacity - pooledBullets.Count;
+        var numberToCreate = bulletPoolBaseCapacity - pooledBullets.Count;
         if (numberToCreate > 0) CreateNewPoolables<Bullet>(PoolableType.BULLET, numberToCreate);
-        
+
         // Stack Enemies
         if (pooledEnemies.IsValid())
-        {
             foreach (var enemy in pooledEnemies)
-            {
                 _enemyStack.Push(enemy);
-            }
-        }
         numberToCreate = enemyPoolBaseCapacity - pooledEnemies.Count;
         if (numberToCreate > 0) CreateNewPoolables<Enemy>(PoolableType.ENEMY, numberToCreate);
-        
+
         // Stack Collectibles
         if (pooledCollectibles.IsValid())
-        {
             foreach (var collectible in pooledCollectibles)
-            {
                 _collectibleStack.Push(collectible);
-            }
-        }
         numberToCreate = collectiblePoolBaseCapacity - pooledCollectibles.Count;
         if (numberToCreate > 0) CreateNewPoolables<Collectible>(PoolableType.COLLECTIBLE, numberToCreate);
     }
@@ -162,7 +140,7 @@ public class Pool : MonoBehaviour
     {
         if (GetStackCount(type) > 0)
         {
-            T poolable = Pop<T>(type);
+            var poolable = Pop<T>(type);
             EvaluateStack(type);
             return poolable;
         }
@@ -179,6 +157,7 @@ public class Pool : MonoBehaviour
             case PoolableType.ENEMY: return _enemyStack.Count;
             case PoolableType.COLLECTIBLE: return _collectibleStack.Count;
         }
+
         return 0;
     }
 
@@ -190,15 +169,23 @@ public class Pool : MonoBehaviour
             case PoolableType.ENEMY: return _enemyStack.Pop() as T;
             case PoolableType.COLLECTIBLE: return _collectibleStack.Pop() as T;
         }
+
         return null;
     }
+
     private static void Push<T>(PoolableType type, T newPoolable) where T : PoolableObject
     {
         switch (type)
         {
-            case PoolableType.BULLET: _bulletStack.Push(newPoolable as Bullet); break;
-            case PoolableType.ENEMY: _enemyStack.Push(newPoolable as Enemy); break;
-            case PoolableType.COLLECTIBLE: _collectibleStack.Push(newPoolable as Collectible); break;
+            case PoolableType.BULLET:
+                _bulletStack.Push(newPoolable as Bullet);
+                break;
+            case PoolableType.ENEMY:
+                _enemyStack.Push(newPoolable as Enemy);
+                break;
+            case PoolableType.COLLECTIBLE:
+                _collectibleStack.Push(newPoolable as Collectible);
+                break;
         }
     }
 
@@ -210,25 +197,19 @@ public class Pool : MonoBehaviour
             case PoolableType.BULLET:
             {
                 if (_bulletStack.Count <= I.bulletPoolRefillLimit)
-                {
                     CreateNewPoolables<Bullet>(type, I.bulletPoolRefillCapacity);
-                }
                 break;
             }
             case PoolableType.ENEMY:
             {
                 if (_enemyStack.Count <= I.enemyPoolRefillLimit)
-                {
                     CreateNewPoolables<Enemy>(type, I.enemyPoolRefillCapacity);
-                }
                 break;
             }
             case PoolableType.COLLECTIBLE:
             {
                 if (_collectibleStack.Count <= I.collectiblePoolRefillLimit)
-                {
                     CreateNewPoolables<Collectible>(type, I.collectiblePoolRefillCapacity);
-                }
                 break;
             }
         }
@@ -237,8 +218,8 @@ public class Pool : MonoBehaviour
     private static void CreateNewPoolables<T>(PoolableType type, int amount) where T : PoolableObject
     {
         T newPoolable;
-        Vector3 poolPos = I.poolPosition.position;
-        for (int i = 0; i < amount; i++)
+        var poolPos = I.poolPosition.position;
+        for (var i = 0; i < amount; i++)
         {
             newPoolable = Instantiate(GetOriginal<T>(type), GetParent(type));
             newPoolable.transform.position = poolPos;
@@ -254,8 +235,10 @@ public class Pool : MonoBehaviour
             case PoolableType.ENEMY: return I.pooledEnemies[0] as T;
             case PoolableType.COLLECTIBLE: return I.pooledCollectibles[0] as T;
         }
+
         return null;
     }
+
     private static Transform GetParent(PoolableType type)
     {
         switch (type)
@@ -264,6 +247,7 @@ public class Pool : MonoBehaviour
             case PoolableType.ENEMY: return I.pooledEnemies[0].transform.parent;
             case PoolableType.COLLECTIBLE: return I.pooledCollectibles[0].transform.parent;
         }
+
         return null;
     }
 

@@ -22,7 +22,10 @@ public class Bullet : PoolableObject
 
     #region Static Accessor
 
-    public static Bullet Get() => Pool.Get<Bullet>(Pool.PoolableType.BULLET);
+    public static Bullet Get()
+    {
+        return Pool.Get<Bullet>(Pool.PoolableType.BULLET);
+    }
 
     #endregion
 
@@ -48,7 +51,7 @@ public class Bullet : PoolableObject
 
     public void OnUpdate(float deltaTime, float time)
     {
-        float lifetime = time - _startTime;
+        var lifetime = time - _startTime;
 
         if (lifetime >= _strategy.Lifetime)
         {
@@ -56,15 +59,16 @@ public class Bullet : PoolableObject
             return;
         }
 
-        float normalizedLifetime = lifetime / _strategy.Lifetime;
+        var normalizedLifetime = lifetime / _strategy.Lifetime;
 
-        float rotateSpeed = _strategy.CurrentRotation(normalizedLifetime);
+        var rotateSpeed = _strategy.CurrentRotation(normalizedLifetime);
         if (rotateSpeed != 0)
         {
             _currentRotation += deltaTime * rotateSpeed;
             bulletRigidbody.MoveRotation(_currentRotation);
         }
-        float moveSpeed = _strategy.CurrentSpeed(normalizedLifetime);
+
+        var moveSpeed = _strategy.CurrentSpeed(normalizedLifetime);
         if (moveSpeed != 0)
             bulletRigidbody.Move(deltaTime * moveSpeed * bulletTransform.up);
     }

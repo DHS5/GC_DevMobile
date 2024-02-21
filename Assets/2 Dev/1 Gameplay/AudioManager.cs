@@ -6,22 +6,24 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
-    [Header("References")]
-    [SerializeField] private AudioData themeMusic;
+    [Header("References")] [SerializeField]
+    private AudioData themeMusic;
+
     [SerializeField] private AudioSource musicSource;
 
-    [Space(5f)]
-
-    [SerializeField] private AudioSource shootSource;
+    [Space(5f)] [SerializeField] private AudioSource shootSource;
     [SerializeField] private AudioSource damageSource;
     [SerializeField] private AudioSource explosionSource;
 
-    [Header("Default values")]
-    [SerializeField] private bool _musicOn = true;
+    [Header("Default values")] [SerializeField]
+    private bool _musicOn = true;
+
     [SerializeField] private bool _soundOn = true;
-    [Space(10f)]
-    [SerializeField][Range(0f, 1f)] private float _musicVolume = 0.5f;
-    [SerializeField][Range(0f, 1f)] private float _soundVolume = 0.5f;
+
+    [Space(10f)] [SerializeField] [Range(0f, 1f)]
+    private float _musicVolume = 0.5f;
+
+    [SerializeField] [Range(0f, 1f)] private float _soundVolume = 0.5f;
 
     private AudioData _currentMusic;
     private AudioData _currentShootSound;
@@ -73,6 +75,7 @@ public class AudioManager : MonoBehaviour
         shootSource.Play();
         shootSource.volume = _soundVolume * _currentShootSound.Volume();
     }
+
     public void PlayDamageSFX(AudioData data)
     {
         if (_currentDamageSound == data) return;
@@ -82,6 +85,7 @@ public class AudioManager : MonoBehaviour
         damageSource.Play();
         damageSource.volume = _soundVolume * _currentDamageSound.Volume();
     }
+
     public void PlayExplosionSFX(AudioData data)
     {
         if (_currentExplosionSound == data) return;
@@ -97,6 +101,7 @@ public class AudioManager : MonoBehaviour
         _musicOn = !_musicOn;
         musicSource.mute = !_musicOn;
     }
+
     public void ToggleSFX()
     {
         _soundOn = !_soundOn;
@@ -120,6 +125,7 @@ public class AudioManager : MonoBehaviour
         _musicVolume = iVolume;
         musicSource.volume = _musicVolume * _currentMusic.Volume();
     }
+
     public void SetSFXVolume(float iVolume)
     {
         _soundVolume = iVolume;
@@ -132,6 +138,7 @@ public class AudioManager : MonoBehaviour
     {
         return _musicVolume;
     }
+
     public float GetSFXVolume()
     {
         return _soundVolume;

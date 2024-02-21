@@ -10,14 +10,14 @@ public class WaveManager : MonoBehaviour
         public int quantity;
         public EnemyType enemyType;
     }
-    
+
     [System.Serializable]
     public class WaveContent
     {
         public float waveDuration;
-        
+
         [SerializeField] [NonReorderable] private EnemiesToSpawn[] enemiesToSpawn;
-        
+
         public EnemiesToSpawn[] GetEnemiesSpawnList()
         {
             return enemiesToSpawn;
@@ -38,6 +38,7 @@ public class WaveManager : MonoBehaviour
     {
         GameManager.OnGameOver += OnGameOver;
     }
+
     private void OnDisable()
     {
         GameManager.OnGameOver -= OnGameOver;
@@ -45,29 +46,27 @@ public class WaveManager : MonoBehaviour
 
     private void SpawnWave()
     {
-        WaveContent wave = waves[currentWave];
-        EnemiesToSpawn[] enemyWave = wave.GetEnemiesSpawnList();
+        var wave = waves[currentWave];
+        var enemyWave = wave.GetEnemiesSpawnList();
 
         if (enemyWave.Length > 0)
         {
-            Sequence[] spawnSequences = new Sequence[enemyWave.Length];
+            var spawnSequences = new Sequence[enemyWave.Length];
             float interval;
             EnemyType enemyType;
 
-            for (int i = 0; i < enemyWave.Length; i++)
-            {
+            for (var i = 0; i < enemyWave.Length; i++)
                 if (enemyWave[i].quantity > 0)
                 {
                     spawnSequences[i] = DOTween.Sequence();
                     interval = enemyWave[i].duration / enemyWave[i].quantity;
                     enemyType = enemyWave[i].enemyType;
-                    for (int j = 0; j < enemyWave[i].quantity; j++)
+                    for (var j = 0; j < enemyWave[i].quantity; j++)
                     {
                         spawnSequences[i].AppendCallback(() => Enemy.Spawn(enemyType));
                         spawnSequences[i].AppendInterval(interval);
                     }
                 }
-            }
         }
 
         currentWave++;
