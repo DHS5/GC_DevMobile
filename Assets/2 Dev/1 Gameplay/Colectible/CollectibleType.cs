@@ -4,8 +4,10 @@
     {
         HEALTH,
         FIRE_RATE,
-        BULLET_COUNT,
-        SPREAD,
+        BULLET_LEVEL_UP,
+        SPREAD_PLUS,
+        SPREAD_REDUCE,
+        BULLET_COUNT_PLUS,
         LEVEL_UP,
     }
 }

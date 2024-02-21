@@ -71,6 +71,17 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
             case CollectibleType.HEALTH:
                 AddHealth((int)data.Health);
                 break;
+            case CollectibleType.SPREAD_PLUS:
+            case CollectibleType.SPREAD_REDUCE:
+            case CollectibleType.FIRE_RATE:
+            case CollectibleType.BULLET_COUNT_PLUS:
+                weapon.LevelUp(data.BulletAddition, data.SpreadAddition, data.FireRateAddition);
+                break;
+            case CollectibleType.BULLET_LEVEL_UP:
+                weapon.LevelUp(data.BulletStrategy);
+                break;
+            case CollectibleType.LEVEL_UP:
+                break;
         }
     }
 }
