@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,6 +48,8 @@ public class Format : MonoBehaviour
     public static Vector2 ScreenBounds { get; private set; }
     public static Vector2 RefDemiBounds { get; private set; }
     public static Vector2 DemiBounds { get; private set; }
+
+    private static Dictionary<Vector2, Vector2> precomputedVectors = new();
 
     #endregion
 
@@ -98,33 +101,39 @@ public class Format : MonoBehaviour
     {
         return new Vector3(relativePosition.x * DemiBounds.x, relativePosition.y * DemiBounds.y, 0);
     }
+
     public static Vector2 ComputeVector2Position(Vector2 relativePosition)
     {
         return new Vector2(relativePosition.x * DemiBounds.x, relativePosition.y * DemiBounds.y);
     }
-    
+
     public static Vector3 ComputePositionClamped(Vector2 relativePosition)
     {
         return new Vector3(Mathf.Clamp(relativePosition.x * DemiBounds.x, -DemiBounds.x, DemiBounds.x), Mathf.Clamp(relativePosition.y * DemiBounds.y, -DemiBounds.y, DemiBounds.y), 0);
     }
+
     public static Vector3 ComputePosition(float relativeX, float relativeY)
     {
         return new Vector3(relativeX * DemiBounds.x, relativeY * DemiBounds.y, 0);
     }
+
     public static Vector3 ComputePositionFromScreenPosition(Vector2 screenPosition)
     {
         return ComputeNormalizedPosition(new Vector2(screenPosition.x / Resolution.x, screenPosition.y / Resolution.y));
     }
+
     public static Vector2 ComputeRelativeDeltaFromScreenDelta(Vector2 screenDelta)
     {
         float deltaX = screenDelta.x / Resolution.x;
         float deltaY = screenDelta.y / Resolution.y;
         return new Vector2(deltaX * 2, deltaY * 2);
     }
+
     public static Vector3 ComputeNormalizedPosition(Vector2 normalizedPosition)
     {
         return new Vector3(normalizedPosition.x * ScreenBounds.x - DemiBounds.x, normalizedPosition.y * ScreenBounds.y - DemiBounds.y, 0);
     }
+
     public static Vector2 GetReferenceRelativePosition(Vector3 basePos)
     {
         float absX = Mathf.Abs(basePos.x);
@@ -136,32 +145,37 @@ public class Format : MonoBehaviour
 
         return new Vector2(x, y);
     }
+
     public static Vector3 ComputeCorrectPosition(Vector3 basePosition)
     {
-        if (RatioDiff == 1) return basePosition;
-        return ComputePosition(GetReferenceRelativePosition(basePosition));
+        return RatioDiff == 1 ? basePosition : ComputePosition(GetReferenceRelativePosition(basePosition));
     }
 
     #endregion
 
-    private static Dictionary<Vector2, Vector2> precomputedVectors = new();
-    private static int maxDictionarySize = 100;
-
     public static void MoveRigidBodyOptimized(Rigidbody2D rigidbody2D, Vector2 relativeDelta)
     {
-        Vector2 computedVector;
-        if (!precomputedVectors.TryGetValue(relativeDelta, out computedVector))
+        if (!precomputedVectors.TryGetValue(relativeDelta, out var computedVector))
         {
             computedVector = ComputeVector2Position(relativeDelta);
             precomputedVectors[relativeDelta] = computedVector;
-            
-            // // Clear the dictionary ?
-            // if (precomputedVectors.Count > maxDictionarySize)
-            // {
-            //     precomputedVectors.Clear();
-            // }
         }
 
         rigidbody2D.MovePosition(rigidbody2D.position + computedVector);
+    }
+
+    public void OnEnable()
+    {
+        GameManager.OnGameOver += ClearComputeCache;
+    }
+    
+    public void OnDisable()
+    {
+        GameManager.OnGameOver -= ClearComputeCache;
+    }
+
+    private static void ClearComputeCache()
+    {
+        precomputedVectors.Clear();
     }
 }
