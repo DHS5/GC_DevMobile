@@ -35,7 +35,7 @@ public class PauseMenu : MonoBehaviour
 
     public void TogglePause()
     {
-        Debug.Log("PAUSE toggle");
+        AudioManager.Instance.PlaySFX("ClickButton");
         if (isPaused)
             Resume();
         else
