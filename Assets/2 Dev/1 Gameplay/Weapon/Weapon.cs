@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected BulletStrategy _bulletStrategy;
     protected float _lastFireTime;
 
+    private float _fireRate;
     private float _spread;
     private float _demiSpread;
     private int _bulletCount;
@@ -26,13 +27,15 @@ public class Weapon : MonoBehaviour
     {
         _weaponStrategy = weaponStrategy;
         _bulletStrategy = bulletStrategy;
+        _fireRate = weaponStrategy.FireRate;
         _spread = weaponStrategy.SpreadAngle;
         _demiSpread = _spread / 2f;
         _bulletCount = weaponStrategy.BulletCount;
         ComputeSpread();
     }
-    public void LevelUp(int bulletCountAddition, float spreadAddition)
+    public void LevelUp(int bulletCountAddition, float spreadAddition, float fireRate)
     {
+        _fireRate = fireRate;
         _bulletCount += bulletCountAddition;
         _spread += spreadAddition;
         _demiSpread = _spread / 2f;
@@ -45,7 +48,7 @@ public class Weapon : MonoBehaviour
 
     private bool IsReadyToFire(float time)
     {
-        return time - _lastFireTime >= _weaponStrategy.FireRate;
+        return time - _lastFireTime >= _fireRate;
     }
 
     public void Shoot()
