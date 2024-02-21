@@ -5,9 +5,9 @@ namespace _2_Dev._1_Gameplay.Colectible
 {
     public class Collectible : PoolableObject
     {
-        [SerializeField] public CollectibleType Type { get; private set; }
-        [SerializeField] public float Value { get; private set; }
-        [SerializeField] public Collider2D Collider { get; private set; }
+        [SerializeField] private CollectibleType Type;
+        [SerializeField] private float Value;
+        [SerializeField] private Collider2D Collider;
 
         public void Init(CollectibleType type, float value)
         {
