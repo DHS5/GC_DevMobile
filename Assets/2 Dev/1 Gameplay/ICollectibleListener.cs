@@ -4,6 +4,6 @@ namespace _2_Dev._1_Gameplay
 {
     public interface ICollectibleListener
     {
-        public void OnCollectibleCollected(CollectibleType type, float value);
+        public void OnCollectibleCollected(CollectibleData data);
     }
 }
