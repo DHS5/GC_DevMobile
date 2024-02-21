@@ -42,6 +42,8 @@ public class Bullet : PoolableObject
         _toUnsimulate = false;
 
         spriteRenderer.sprite = _strategy.Sprite;
+        spriteRenderer.color = _strategy.Color;
+        spriteRenderer.transform.SetRelativeSize(_strategy.Size, 1);
 
         BulletManager.Register(this);
     }
