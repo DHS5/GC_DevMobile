@@ -64,6 +64,8 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
     public float GetHealthNormalized() => health / (float)maxHealth;
     public void OnCollectibleCollected(CollectibleType type, float value)
     {
+        // Debug.Log($"Collected {type} with value {value}");
+        // todo add other collectible types
         switch (type)
         {
             case CollectibleType.HEALTH:
