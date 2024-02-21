@@ -62,6 +62,10 @@ public static class ExtensionMethods
     {
         transform.position += Format.ComputePosition(relativeDelta);
     }
+    public static void Move(this Rigidbody2D rigidbody2D, Vector2 relativeDelta)
+    {
+        rigidbody2D.MovePosition(rigidbody2D.position + Format.ComputeVector2Position(relativeDelta));
+    }
     
     public static void MovePlayerClamp(this Transform transform, Vector2 relativeDelta)
     {

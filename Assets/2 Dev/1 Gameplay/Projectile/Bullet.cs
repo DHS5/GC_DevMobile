@@ -10,6 +10,7 @@ public class Bullet : PoolableObject
     [SerializeField] private Transform bulletTransform;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private Rigidbody2D bulletRigidbody;
 
     private BulletStrategy _strategy;
     private Weapon _shooter;
@@ -58,10 +59,12 @@ public class Bullet : PoolableObject
 
         float rotateSpeed = deltaTime * _strategy.CurrentRotation(normalizedLifetime);
         if (rotateSpeed != 0)
-            bulletTransform.Rotate(Vector3.forward, rotateSpeed);
+            bulletRigidbody.MoveRotation(rotateSpeed);
+            //bulletTransform.Rotate(Vector3.forward, rotateSpeed);
         float moveSpeed = deltaTime * _strategy.CurrentSpeed(normalizedLifetime);
         if (moveSpeed != 0)
-            bulletTransform.Move(bulletTransform.up * moveSpeed);
+            bulletRigidbody.Move(bulletTransform.up * moveSpeed);
+            //bulletTransform.Move(bulletTransform.up * moveSpeed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
