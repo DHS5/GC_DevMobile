@@ -14,6 +14,7 @@ public class Bullet : PoolableObject
 
     private BulletStrategy _strategy;
     private float _startTime;
+    private float _currentRotation;
 
     public bool IsActive { get; private set; }
 
@@ -33,8 +34,8 @@ public class Bullet : PoolableObject
         bulletTransform.position = pos;
 
         bulletRigidbody.simulated = true;
-        //bulletRigidbody.position = pos;
-        bulletRigidbody.rotation = dir;
+        _currentRotation = dir;
+        bulletRigidbody.rotation = _currentRotation;
         _strategy = strategy;
         _startTime = Time.time;
 
@@ -57,12 +58,15 @@ public class Bullet : PoolableObject
 
         float normalizedLifetime = lifetime / _strategy.Lifetime;
 
-        float rotateSpeed = deltaTime * _strategy.CurrentRotation(normalizedLifetime);
+        float rotateSpeed = _strategy.CurrentRotation(normalizedLifetime);
         if (rotateSpeed != 0)
-            bulletRigidbody.MoveRotation(rotateSpeed);
-        float moveSpeed = deltaTime * _strategy.CurrentSpeed(normalizedLifetime);
+        {
+            _currentRotation += deltaTime * rotateSpeed;
+            bulletRigidbody.MoveRotation(_currentRotation);
+        }
+        float moveSpeed = _strategy.CurrentSpeed(normalizedLifetime);
         if (moveSpeed != 0)
-            bulletRigidbody.Move(bulletTransform.up * moveSpeed);
+            bulletRigidbody.Move(deltaTime * moveSpeed * bulletTransform.up);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
