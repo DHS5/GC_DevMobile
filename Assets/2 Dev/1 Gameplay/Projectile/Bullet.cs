@@ -9,7 +9,7 @@ public class Bullet : PoolableObject
 
     [SerializeField] private Transform bulletTransform;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private CircleCollider2D boxCollider;
     [SerializeField] private Rigidbody2D bulletRigidbody;
 
     private BulletStrategy _strategy;

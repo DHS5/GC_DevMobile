@@ -12,8 +12,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected BulletStrategy _bulletStrategy;
     protected float _lastFireTime;
 
+    private float _spread;
     private float _demiSpread;
-    private int bulletCount;
+    private int _bulletCount;
 
     public int BulletLayer => bulletLayer;
 
@@ -25,9 +26,21 @@ public class Weapon : MonoBehaviour
     {
         _weaponStrategy = weaponStrategy;
         _bulletStrategy = bulletStrategy;
-        _demiSpread = weaponStrategy.SpreadAngle / 2f;
-        bulletCount = weaponStrategy.BulletCount;
+        _spread = weaponStrategy.SpreadAngle;
+        _demiSpread = _spread / 2f;
+        _bulletCount = weaponStrategy.BulletCount;
         ComputeSpread();
+    }
+    public void LevelUp(int bulletCountAddition, float spreadAddition)
+    {
+        _bulletCount += bulletCountAddition;
+        _spread += spreadAddition;
+        _demiSpread = _spread / 2f;
+        ComputeSpread();
+    }
+    public void LevelUp(BulletStrategy bulletStrategy)
+    {
+        _bulletStrategy = bulletStrategy;
     }
 
     private bool IsReadyToFire(float time)
@@ -43,7 +56,7 @@ public class Weapon : MonoBehaviour
     {
         if (!IsReadyToFire(time)) return;
 
-        Bullet[] bullets = new Bullet[bulletCount];
+        Bullet[] bullets = new Bullet[_bulletCount];
         Vector3 firePos = firePoint.position;
         float shootRot = firePoint.rotation.eulerAngles.z;
 
@@ -59,11 +72,11 @@ public class Weapon : MonoBehaviour
     private float[] spreads;
     private void ComputeSpread()
     {
-        spreads = new float[bulletCount];
+        spreads = new float[_bulletCount];
 
-        for (int i = 0; i  <bulletCount; i++)
+        for (int i = 0; i < _bulletCount; i++)
         {
-            spreads[i] = bulletCount == 1 ? 0 : Mathf.Lerp(-_demiSpread, _demiSpread, (float)i / (bulletCount - 1));
+            spreads[i] = _bulletCount == 1 ? 0 : Mathf.Lerp(-_demiSpread, _demiSpread, (float)i / (_bulletCount - 1));
         }
     }
 }
