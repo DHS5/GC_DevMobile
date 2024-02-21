@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WeaponPlayerBase
   m_EditorClassIdentifier: 
   fireRate: 0.1
-  bulletCount: 4
+  bulletCount: 3
   spreadAngle: 20
