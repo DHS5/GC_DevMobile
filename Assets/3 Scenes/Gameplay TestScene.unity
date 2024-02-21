@@ -210,7 +210,7 @@ PrefabInstance:
     - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
       propertyPath: waves.Array.data[2].enemiesToSpawn.Array.data[0].enemyType
       value: 
-      objectReference: {fileID: 11400000, guid: c5aa9665309eddf4fb7ef054b0d71f41, type: 2}
+      objectReference: {fileID: 11400000, guid: 35d5cc11c1552f148b70b7ccb1765ec9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -945,6 +945,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
       propertyPath: collectibleChancePercentage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
+      propertyPath: collectibleDatas.Array.data[4].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
+      propertyPath: collectibleDatas.Array.data[6].weight
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3823567834400729821, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
