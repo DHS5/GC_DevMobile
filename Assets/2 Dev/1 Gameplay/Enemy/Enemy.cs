@@ -88,6 +88,7 @@ public class Enemy : PoolableObject, IDamageable
                 OnStaticUpdate(time);
                 break;
         }
+        Debug.Log("enemy shoot");
         weapon.Shoot(time);
     }
 
@@ -101,7 +102,6 @@ public class Enemy : PoolableObject, IDamageable
 
     public override void MoveTo(Vector3 position)
     {
-        //enemyRigidbody.position = position;
         enemyTransform.position = position;
     }
 
