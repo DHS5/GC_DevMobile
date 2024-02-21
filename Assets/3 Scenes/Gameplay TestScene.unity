@@ -201,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
       propertyPath: waves.Array.data[2].enemiesToSpawn.Array.data[0].duration
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
       propertyPath: waves.Array.data[2].enemiesToSpawn.Array.data[0].quantity
