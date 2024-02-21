@@ -81,6 +81,7 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
                 weapon.LevelUp(data.BulletStrategy);
                 break;
             case CollectibleType.LEVEL_UP:
+                GameManager.Instance.AddScore(data.ScoreAddition);
                 break;
         }
     }

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectibleManager : MonoBehaviour
+public class    CollectibleManager : MonoBehaviour
 {
     #region Singleton
 

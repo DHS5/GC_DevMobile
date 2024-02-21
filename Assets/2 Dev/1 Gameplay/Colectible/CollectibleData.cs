@@ -1,5 +1,6 @@
 ﻿using _2_Dev._1_Gameplay.Weapon;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _2_Dev._1_Gameplay.Colectible
 {
@@ -16,6 +17,7 @@ namespace _2_Dev._1_Gameplay.Colectible
         [SerializeField] private int bulletAddition;
         [SerializeField] private float spreadAddition;
         [SerializeField] private float fireRateAddition;
+        [SerializeField] private int scoreAddition;
         [SerializeField] private BulletStrategy bulletStrategy;
 
         public Sprite Sprite => sprite;
@@ -24,6 +26,7 @@ namespace _2_Dev._1_Gameplay.Colectible
         public float Health => health;
         public float SpreadAddition => spreadAddition;
         public int BulletAddition => bulletAddition;
+        public int ScoreAddition => scoreAddition;
         
         public float FireRateAddition => fireRateAddition;
         public BulletStrategy BulletStrategy => bulletStrategy;
