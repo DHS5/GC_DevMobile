@@ -70,9 +70,9 @@ public class Bullet : PoolableObject
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!IsActive) return;
-
         Debug.Log("collide with " + collision.gameObject, collision.gameObject);
+
+        if (!IsActive) return;
 
         if (collision.gameObject.TryGetComponent(out IDamageable damageable))
         {
@@ -87,5 +87,10 @@ public class Bullet : PoolableObject
         BulletManager.Unregister(this);
 
         Pool.Dispose(this, Pool.PoolableType.BULLET);
+    }
+
+    public override void MoveTo(Vector3 position)
+    {
+        bulletRigidbody.MovePosition(position);
     }
 }

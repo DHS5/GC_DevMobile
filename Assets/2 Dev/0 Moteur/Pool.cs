@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PoolableObject : MonoBehaviour { }
+public class PoolableObject : MonoBehaviour
+{
+    public virtual void MoveTo(Vector3 position)
+    {
+        transform.position = position;
+    }
+}
 
 public class Pool : MonoBehaviour
 {
@@ -227,7 +233,7 @@ public class Pool : MonoBehaviour
     {
         if (Exist() && poolable != null)
         {
-            poolable.transform.position = I.poolPosition.position;
+            poolable.MoveTo(I.poolPosition.position);
             Push(type, poolable);
         }
     }

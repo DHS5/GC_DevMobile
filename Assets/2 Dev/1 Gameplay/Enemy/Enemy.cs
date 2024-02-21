@@ -50,6 +50,8 @@ public class Enemy : PoolableObject, IDamageable
         _enemyType = enemyType;
         IsActive = true;
         _health = enemyType.MaxHealth;
+        _toDispose = false;
+        _toUnsimulate = false;
 
         if (enemyType.Movement == EnemyMovement.PATH)
         {
@@ -63,18 +65,34 @@ public class Enemy : PoolableObject, IDamageable
         weapon.SetStrategy(_enemyType.WeaponStrategy, _enemyType.BulletStrategy);
     }
 
+    private bool _toDispose = false;
+    private bool _toUnsimulate = false;
     public void Dispose()
     {
-        enemyRigidbody.simulated = false;
-        IsActive = false;
-        EnemyManager.Unregister(this);
+        splineAnimate.Pause();
+        splineAnimate.Container = null;
 
-        Pool.Dispose(this, Pool.PoolableType.ENEMY);
+        IsActive = false;
+        _toDispose = true;
+        _toUnsimulate = true;
     }
 
 
     public void OnUpdate(float deltaTime, float time)
     {
+        if (_toDispose)
+        {
+            Pool.Dispose(this, Pool.PoolableType.ENEMY);
+            _toDispose = false;
+            return;
+        }
+        if (_toUnsimulate)
+        {
+            EnemyManager.Unregister(this);
+            enemyRigidbody.simulated = false;
+            return;
+        }
+
         switch (_enemyType.Movement)
         {
             case EnemyMovement.PATH:
@@ -91,6 +109,11 @@ public class Enemy : PoolableObject, IDamageable
         {
             weapon.Shoot(time);
         }
+    }
+
+    public override void MoveTo(Vector3 position)
+    {
+        enemyRigidbody.position = position;
     }
 
     #region Damageable
