@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   sprite: {fileID: 21300058, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: 1, g: 0, b: 0, a: 1}
   health: 0
   bulletAddition: 0
   spreadAddition: 15
   fireRateAddition: 0
   scoreAddition: 0
-  bulletStrategy: {fileID: 0}
