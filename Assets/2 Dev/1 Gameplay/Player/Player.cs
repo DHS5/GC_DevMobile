@@ -68,7 +68,7 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
         switch (type)
         {
             case CollectibleType.HEALTH:
-                AddHealth((int)data.Value);
+                AddHealth((int)data.Health);
                 break;
         }
     }
