@@ -80,13 +80,13 @@ public static class BulletManager
 
     private static void OnStartUpdate()
     {
-        UpdateManager.OnUpdate += OnUpdate;
+        UpdateManager.OnFixedUpdate += OnUpdate;
         IsActive = true;
     }
     private static void OnEndUpdate()
     {
         IsActive = false;
-        UpdateManager.OnUpdate -= OnUpdate;
+        UpdateManager.OnFixedUpdate -= OnUpdate;
     }
 
     private static void OnUpdate(int frameIndex, float deltaTime, float time)
