@@ -4,9 +4,7 @@
     {
         HEALTH,
         FIRE_RATE,
-        BULLET_DAMAGE,
-        BULLET_SPEED,
-        BULLET_COUNT,
+        BULLET,
         LEVEL_UP
     }
 }
