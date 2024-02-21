@@ -858,6 +858,14 @@ PrefabInstance:
       propertyPath: relativeStartPosition.y
       value: -0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 2678183460265705488, guid: c51dbbc2c222d4941b478ac373633e98, type: 3}
+      propertyPath: _bulletStrategy
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a4e82a962875c34fba65750623c2783, type: 2}
+    - target: {fileID: 2678183460265705488, guid: c51dbbc2c222d4941b478ac373633e98, type: 3}
+      propertyPath: _weaponStrategy
+      value: 
+      objectReference: {fileID: 11400000, guid: fc83530f83bdf4248a007d66e40b9d14, type: 2}
     - target: {fileID: 4513703884920508342, guid: c51dbbc2c222d4941b478ac373633e98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
