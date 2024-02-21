@@ -201,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
       propertyPath: waves.Array.data[2].enemiesToSpawn.Array.data[0].duration
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
       propertyPath: waves.Array.data[2].enemiesToSpawn.Array.data[0].quantity
@@ -947,82 +947,6 @@ PrefabInstance:
       propertyPath: collectibleChancePercentage
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.size
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[0].weight
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[1].weight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[2].weight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[3].weight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[4].weight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[5].weight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[6].weight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[7].weight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[8].weight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[0].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: 96cff25beaf3ac343bb464afd0e025bb, type: 2}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[1].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: a156c85418425dc4796d3901019b9f83, type: 2}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[2].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: 2b4731445d982ae40a240c72c7bfa15f, type: 2}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[3].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: 38b93a38e3895a3408e3eb9dcad2bc8c, type: 2}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[4].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: 43f1d873f4e55984daabd789c5e1ed81, type: 2}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[5].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: a71d0235153ddac44bac2b058bd65e3f, type: 2}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[6].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: 42ba29cfc1254fc43915a9a95e59e147, type: 2}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[7].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: c6e94a787273b124499005447acb26e5, type: 2}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[8].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: 0476b2265051b9a4493dd2e68d3e8e75, type: 2}
     - target: {fileID: 3823567834400729821, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
       propertyPath: m_Name
       value: CollectibleManager
