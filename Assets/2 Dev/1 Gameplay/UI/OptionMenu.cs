@@ -7,7 +7,7 @@ public class OptionMenu : MonoBehaviour
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Toggle musicToggle;
     [SerializeField] private Toggle sfxToggle;
-    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject previousMenu;
 
     private void Start()
     {
@@ -27,19 +27,20 @@ public class OptionMenu : MonoBehaviour
         AudioManager.Instance.ToggleSFX();
     }
 
-    public void SetMusicVolume(float volume)
+    public void SetMusicVolume()
     {
-        AudioManager.Instance.MusicVolume(volume);
+        Debug.Log(musicSlider.value);
+        AudioManager.Instance.MusicVolume(musicSlider.value);
     }
 
-    public void SetSFXVolume(float volume)
+    public void SetSFXVolume()
     {
-        AudioManager.Instance.SFXVolume(volume);
+        AudioManager.Instance.SFXVolume(sfxSlider.value);
     }
 
     public void exitOptions()
     {
-        mainMenu?.SetActive(true);
+        previousMenu?.SetActive(true);
         gameObject.SetActive(false);
     }
 }

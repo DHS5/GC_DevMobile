@@ -75,12 +75,12 @@ public class AudioManager : MonoBehaviour
 
     public bool IsMusicEnabled()
     {
-        return musicSource.mute;
+        return !musicSource.mute;
     }
 
     public bool AreSFXEnabled()
     {
-        return sfxSource.mute;
+        return !sfxSource.mute;
     }
 
     public void MusicVolume(float iVolume)
