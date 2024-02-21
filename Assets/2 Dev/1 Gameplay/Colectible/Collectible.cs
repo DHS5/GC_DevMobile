@@ -44,7 +44,7 @@ namespace _2_Dev._1_Gameplay.Colectible
 
             if (other.gameObject.TryGetComponent<ICollectibleListener>(out var listener))
             {
-                listener.OnCollectibleCollected(_data.Type, _data.Value);
+                listener.OnCollectibleCollected(_data);
                 Dispose();
             }
         }

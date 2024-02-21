@@ -1,18 +1,27 @@
-﻿using UnityEngine;
-using UnityEngine.Serialization;
+﻿using _2_Dev._1_Gameplay.Weapon;
+using UnityEngine;
 
 namespace _2_Dev._1_Gameplay.Colectible
 {
     public class CollectibleData : ScriptableObject
     {
         [SerializeField] private CollectibleType type;
-        [SerializeField] private float value;
         [SerializeField] private Sprite sprite;
         [SerializeField] private Color color;
+
+        [Space(5f)]
+
+        [SerializeField] private float health;
+        [SerializeField] private int bulletAddition;
+        [SerializeField] private float spreadAddition;
+        [SerializeField] private BulletStrategy bulletStrategy;
 
         public Sprite Sprite => sprite;
         public Color Color => color;
         public CollectibleType Type => type;
-        public float Value => value;
+        public float Health => health;
+        public float SpreadAddition => spreadAddition;
+        public int BulletAddition => bulletAddition;
+        public BulletStrategy BulletStrategy => bulletStrategy;
     }
 }

@@ -62,17 +62,14 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
     }
     
     public float GetHealthNormalized() => health / (float)maxHealth;
-    public void OnCollectibleCollected(CollectibleType type, float value)
+    public void OnCollectibleCollected(CollectibleData data)
     {
-        // Debug.Log($"Collected {type} with value {value}");
-        // todo add other collectible types
+        CollectibleType type = data.Type;
         switch (type)
         {
             case CollectibleType.HEALTH:
-                AddHealth((int)value);
+                AddHealth((int)data.Health);
                 break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
     }
 }
