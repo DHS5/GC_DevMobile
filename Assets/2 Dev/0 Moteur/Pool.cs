@@ -44,6 +44,13 @@ public class Pool : MonoBehaviour
                 enemy.transform.position = poolPos;
             }
         }
+        if (pooledCollectibles.IsValid())
+        {
+            foreach (var collectible in pooledCollectibles)
+            {
+                collectible.transform.position = poolPos;
+            }
+        }
     }
 
 #endif

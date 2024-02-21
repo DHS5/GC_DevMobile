@@ -23,7 +23,9 @@ namespace _2_Dev._1_Gameplay.Colectible
         {
             IsActive = true;
             _data = data;
-            
+
+            spriteRenderer.sprite = data.Sprite;
+            spriteRenderer.color = data.Color;
             boxCollider.enabled = true;
             transform.position = position;
         }
