@@ -1,9 +1,10 @@
 using System;
 using _2_Dev._1_Gameplay;
+using _2_Dev._1_Gameplay.Colectible;
 using DG.Tweening;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable
+public class Player : MonoBehaviour, IDamageable, ICollectibleListener
 {
     
     [SerializeField] private Weapon weapon;
@@ -60,4 +61,15 @@ public class Player : MonoBehaviour, IDamageable
     }
     
     public float GetHealthNormalized() => health / (float)maxHealth;
+    public void OnCollectibleCollected(CollectibleType type, float value)
+    {
+        switch (type)
+        {
+            case CollectibleType.HEALTH:
+                AddHealth((int)value);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
+    }
 }
