@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2465113450938580070}
   - component: {fileID: 3274007844918622227}
   - component: {fileID: 5551122229786524824}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Collectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,9 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa505a41b7f44b4c9fafd96c61f161b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
-  Value: 5
-  Collider: {fileID: 3274007844918622227}
+  boxCollider: {fileID: 3274007844918622227}
+  spriteRenderer: {fileID: 5551122229786524824}
 --- !u!61 &3274007844918622227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -56,7 +55,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3878540288930621607}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

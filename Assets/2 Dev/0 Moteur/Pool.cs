@@ -18,7 +18,7 @@ public class Pool : MonoBehaviour
     {
         BULLET = 0,
         ENEMY = 1,
-        COLLLECTIBLE = 2
+        COLLECTIBLE = 2
 
     }
 
@@ -144,7 +144,7 @@ public class Pool : MonoBehaviour
             }
         }
         numberToCreate = collectiblePoolBaseCapacity - pooledCollectibles.Count;
-        if (numberToCreate > 0) CreateNewPoolables<Enemy>(PoolableType.COLLLECTIBLE, numberToCreate);
+        if (numberToCreate > 0) CreateNewPoolables<Enemy>(PoolableType.COLLECTIBLE, numberToCreate);
     }
 
     #endregion
@@ -170,7 +170,7 @@ public class Pool : MonoBehaviour
         {
             case PoolableType.BULLET: return _bulletStack.Count;
             case PoolableType.ENEMY: return _enemyStack.Count;
-            case PoolableType.COLLLECTIBLE: return _collectibleStack.Count;
+            case PoolableType.COLLECTIBLE: return _collectibleStack.Count;
         }
         return 0;
     }
@@ -181,7 +181,7 @@ public class Pool : MonoBehaviour
         {
             case PoolableType.BULLET: return _bulletStack.Pop() as T;
             case PoolableType.ENEMY: return _enemyStack.Pop() as T;
-            case PoolableType.COLLLECTIBLE: return _collectibleStack.Pop() as T;
+            case PoolableType.COLLECTIBLE: return _collectibleStack.Pop() as T;
         }
         return null;
     }
@@ -191,7 +191,7 @@ public class Pool : MonoBehaviour
         {
             case PoolableType.BULLET: _bulletStack.Push(newPoolable as Bullet); break;
             case PoolableType.ENEMY: _enemyStack.Push(newPoolable as Enemy); break;
-            case PoolableType.COLLLECTIBLE: _collectibleStack.Push(newPoolable as Enemy); break;
+            case PoolableType.COLLECTIBLE: _collectibleStack.Push(newPoolable as Enemy); break;
         }
     }
 
@@ -216,7 +216,7 @@ public class Pool : MonoBehaviour
                 }
                 break;
             }
-            case PoolableType.COLLLECTIBLE:
+            case PoolableType.COLLECTIBLE:
             {
                 if (_collectibleStack.Count <= I.collectiblePoolRefillLimit)
                 {
@@ -245,7 +245,7 @@ public class Pool : MonoBehaviour
         {
             case PoolableType.BULLET: return I.pooledBullets[0] as T;
             case PoolableType.ENEMY: return I.pooledEnemies[0] as T;
-            case PoolableType.COLLLECTIBLE: return I.pooledCollectibles[0] as T;
+            case PoolableType.COLLECTIBLE: return I.pooledCollectibles[0] as T;
         }
         return null;
     }
@@ -255,7 +255,7 @@ public class Pool : MonoBehaviour
         {
             case PoolableType.BULLET: return I.pooledBullets[0].transform.parent;
             case PoolableType.ENEMY: return I.pooledEnemies[0].transform.parent;
-            case PoolableType.COLLLECTIBLE: return I.pooledCollectibles[0].transform.parent;
+            case PoolableType.COLLECTIBLE: return I.pooledCollectibles[0].transform.parent;
         }
         return null;
     }

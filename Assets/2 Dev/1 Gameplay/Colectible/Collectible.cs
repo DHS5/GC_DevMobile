@@ -5,30 +5,46 @@ namespace _2_Dev._1_Gameplay.Colectible
 {
     public class Collectible : PoolableObject
     {
-        [SerializeField] private CollectibleType Type;
-        [SerializeField] private float Value;
-        [SerializeField] private Collider2D Collider;
+        [Header("References")]
+        [SerializeField] private Collider2D boxCollider;
+        [SerializeField] private SpriteRenderer spriteRenderer;
 
-        public void Init(CollectibleType type, float value)
+        private CollectibleData _data;
+        public bool IsActive { get; private set; }
+
+        public static Collectible Get(CollectibleData data, Vector3 position)
         {
-            Type = type;
-            Value = value;
+            Collectible c = Pool.Get<Collectible>(Pool.PoolableType.COLLECTIBLE);
+            c.Init(data, position);
+            return c;
+        }
+
+        public void Init(CollectibleData data, Vector3 position)
+        {
+            IsActive = true;
+            _data = data;
             
-            Collider.enabled = true;
+            boxCollider.enabled = true;
+            transform.position = position;
         }
         
         public void Dispose()
         {
-            Collider.enabled = false;
+            IsActive = false;
+            boxCollider.enabled = false;
             
-            Pool.Dispose(this, Pool.PoolableType.COLLLECTIBLE);
+            Pool.Dispose(this, Pool.PoolableType.COLLECTIBLE);
         }
 
         public void OnCollisionEnter2D(Collision2D other)
         {
-            if (!other.gameObject.TryGetComponent<ICollectibleListener>(out var listener)) return;
-            listener.OnCollectibleCollected(Type, Value);
-            Dispose();
+            if (IsActive) return;
+
+            if (other.gameObject.TryGetComponent<ICollectibleListener>(out var listener))
+            {
+                listener.OnCollectibleCollected(_data.Type, _data.Value);
+                Dispose();
+            }
         }
     }
 }
