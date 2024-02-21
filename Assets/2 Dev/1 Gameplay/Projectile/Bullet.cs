@@ -32,8 +32,8 @@ public class Bullet : PoolableObject
 
         gameObject.layer = shooter.BulletLayer;
 
-        bulletTransform.position = pos;
-        bulletTransform.up = dir;
+        bulletRigidbody.MovePosition(pos);
+        bulletRigidbody.rotation = 0;
         _strategy = strategy;
         _shooter = shooter;
         _startTime = Time.time;
