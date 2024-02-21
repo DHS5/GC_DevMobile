@@ -13,7 +13,6 @@ public class Bullet : PoolableObject
     [SerializeField] private Rigidbody2D bulletRigidbody;
 
     private BulletStrategy _strategy;
-    private Weapon _shooter;
     private float _startTime;
 
     public bool IsActive { get; private set; }
@@ -36,10 +35,7 @@ public class Bullet : PoolableObject
         bulletRigidbody.position = pos;
         bulletRigidbody.rotation = dir;
         _strategy = strategy;
-        _shooter = shooter;
         _startTime = Time.time;
-        _toDispose = false;
-        _toUnsimulate = false;
 
         spriteRenderer.sprite = _strategy.Sprite;
         spriteRenderer.color = _strategy.Color;
@@ -79,8 +75,6 @@ public class Bullet : PoolableObject
         }
     }
 
-    private bool _toDispose = false;
-    private bool _toUnsimulate = false;
     private void Dispose()
     {
         BulletManager.Unregister(this);

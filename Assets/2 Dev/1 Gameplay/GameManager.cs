@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player player;
      
     public Player Player => player;
-    public bool GamePaused;
 
     public static GameManager Instance { get; private set; }
     
@@ -33,7 +32,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         OnGameOver?.Invoke();
-        gameOverUI.SetActive(true);
+        if (gameOverUI) gameOverUI.SetActive(true);
         Time.timeScale = 0;
         DOVirtual.DelayedCall(3, OnGameEnd);
     }
@@ -41,27 +40,6 @@ public class GameManager : MonoBehaviour
     private void OnGameEnd()
     {
         // TODO
-    }
-
-    private void OnEnable()
-    {
-        PauseMenu.OnGamePause += GamePause;
-        PauseMenu.OnGameResume += GameResume;
-    }
-    private void OnDisable()
-    {
-        PauseMenu.OnGamePause -= GamePause;
-        PauseMenu.OnGameResume -= GameResume;
-    }
-
-    private void GamePause()
-    {
-        GamePaused = true;
-    }
-
-    private void GameResume()
-    {
-        GamePaused = false;
     }
 
 

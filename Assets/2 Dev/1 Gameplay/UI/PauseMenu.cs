@@ -13,9 +13,12 @@ public class PauseMenu : MonoBehaviour
     public static event Action OnGamePause;
     public static event Action OnGameResume;
 
+    public static bool GamePaused { get; private set; }
+
     private void Pause()
     {
         isPaused = true;
+        GamePaused = true;
         Time.timeScale = 0f;
         pauseMenuUI.SetActive(true);
         OnGamePause?.Invoke();
@@ -24,6 +27,7 @@ public class PauseMenu : MonoBehaviour
     private void Resume()
     {
         isPaused = false;
+        GamePaused = false;
         Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
         OnGameResume?.Invoke();

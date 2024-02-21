@@ -9,17 +9,22 @@ public class InputReader : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
 
     public event Action<Vector2> OnMove;
-    public event Action OnFire;
 
     private void OnEnable()
     {
         playerInput.actions["Move"].performed += OnInputMove;
         playerInput.actions["Touch"].canceled += OnCanceledTouch;
+
+        PauseMenu.OnGamePause += OnGamePaused;
+        PauseMenu.OnGameResume += OnGameResumed;
     }
     private void OnDisable()
     {
         playerInput.actions["Move"].performed -= OnInputMove;
         playerInput.actions["Touch"].canceled -= OnCanceledTouch;
+
+        PauseMenu.OnGamePause -= OnGamePaused;
+        PauseMenu.OnGameResume -= OnGameResumed;
     }
 
     bool _startTouch = true;
@@ -39,5 +44,18 @@ public class InputReader : MonoBehaviour
 
         _startTouch = false;
         _previousMousePos = current;
+    }
+
+    private void OnGamePaused()
+    {
+        playerInput.actions["Move"].performed -= OnInputMove;
+        playerInput.actions["Touch"].canceled -= OnCanceledTouch;
+    }
+    private void OnGameResumed()
+    {
+        playerInput.actions["Move"].performed += OnInputMove;
+        playerInput.actions["Touch"].canceled += OnCanceledTouch;
+
+        _startTouch = true;
     }
 }
