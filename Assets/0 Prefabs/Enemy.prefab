@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a6f73843af15dc4c9ce7bb0ac1418c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyTransform: {fileID: 2907728579150396179}
   splineAnimate: {fileID: -699907380606048640}
   weapon: {fileID: 3811435687658015615}
   spriteRenderer: {fileID: 576059724892709016}

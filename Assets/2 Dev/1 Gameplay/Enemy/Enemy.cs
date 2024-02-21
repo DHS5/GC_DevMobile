@@ -16,6 +16,7 @@ public class Enemy : PoolableObject, IDamageable
     #region Global Members
 
     [Header("References")]
+    [SerializeField] private Transform enemyTransform;
     [SerializeField] private SplineAnimate splineAnimate;
     [SerializeField] private Weapon weapon;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -50,8 +51,6 @@ public class Enemy : PoolableObject, IDamageable
         _enemyType = enemyType;
         IsActive = true;
         _health = enemyType.MaxHealth;
-        _toDispose = false;
-        _toUnsimulate = false;
 
         if (enemyType.Movement == EnemyMovement.PATH)
         {
@@ -65,34 +64,22 @@ public class Enemy : PoolableObject, IDamageable
         weapon.SetStrategy(_enemyType.WeaponStrategy, _enemyType.BulletStrategy);
     }
 
-    private bool _toDispose = false;
-    private bool _toUnsimulate = false;
     public void Dispose()
     {
         splineAnimate.Pause();
         splineAnimate.Container = null;
 
+        EnemyManager.Unregister(this);
+        enemyRigidbody.simulated = false;
+
         IsActive = false;
-        _toDispose = true;
-        _toUnsimulate = true;
+
+        Pool.Dispose(this, Pool.PoolableType.ENEMY);
     }
 
 
     public void OnUpdate(float deltaTime, float time)
     {
-        if (_toDispose)
-        {
-            Pool.Dispose(this, Pool.PoolableType.ENEMY);
-            _toDispose = false;
-            return;
-        }
-        if (_toUnsimulate)
-        {
-            EnemyManager.Unregister(this);
-            enemyRigidbody.simulated = false;
-            return;
-        }
-
         switch (_enemyType.Movement)
         {
             case EnemyMovement.PATH:
@@ -114,7 +101,8 @@ public class Enemy : PoolableObject, IDamageable
 
     public override void MoveTo(Vector3 position)
     {
-        enemyRigidbody.position = position;
+        //enemyRigidbody.position = position;
+        enemyTransform.position = position;
     }
 
     #region Damageable

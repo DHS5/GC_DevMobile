@@ -42,26 +42,12 @@ public class Bullet : PoolableObject
         _toUnsimulate = false;
 
         spriteRenderer.sprite = _strategy.Sprite;
-        boxCollider.enabled = true;
 
         BulletManager.Register(this);
     }
 
     public void OnUpdate(float deltaTime, float time)
     {
-        if (_toDispose)
-        {
-            Pool.Dispose(this, Pool.PoolableType.BULLET);
-            _toDispose = false;
-            return;
-        }
-        if (_toUnsimulate)
-        {
-            BulletManager.Unregister(this);
-            bulletRigidbody.simulated = false;
-            return;
-        }
-
         float lifetime = time - _startTime;
 
         if (lifetime >= _strategy.Lifetime)
@@ -95,14 +81,17 @@ public class Bullet : PoolableObject
     private bool _toUnsimulate = false;
     private void Dispose()
     {
+        BulletManager.Unregister(this);
+        bulletRigidbody.simulated = false;
+
         IsActive = false;
-        _toDispose = true;
-        _toUnsimulate = true;
+
+        Pool.Dispose(this, Pool.PoolableType.BULLET);
     }
 
     public override void MoveTo(Vector3 position)
     {
-        Debug.Log("bullet move to " + position);
-        bulletRigidbody.MovePosition(position);
+        //bulletRigidbody.MovePosition(position);
+        bulletTransform.position = position;
     }
 }
