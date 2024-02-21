@@ -15,10 +15,13 @@ public class Enemy : PoolableObject, IDamageable
 
     #region Global Members
 
+    [Header("References")]
     [SerializeField] private SplineAnimate splineAnimate;
     [SerializeField] private Weapon weapon;
-    [SerializeField] private float health;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private BoxCollider2D boxCollider;
+
+    private float _health;
 
     private EnemyType _enemyType;
 
@@ -44,6 +47,8 @@ public class Enemy : PoolableObject, IDamageable
 
         _enemyType = enemyType;
         IsActive = true;
+        _health = enemyType.MaxHealth;
+        boxCollider.enabled = true;
 
         if (enemyType.Movement == EnemyMovement.PATH)
         {
@@ -59,6 +64,7 @@ public class Enemy : PoolableObject, IDamageable
 
     public void Dispose()
     {
+        boxCollider.enabled = false;
         IsActive = false;
         EnemyManager.Unregister(this);
 
@@ -85,13 +91,19 @@ public class Enemy : PoolableObject, IDamageable
             weapon.Shoot(time);
         }
     }
-    
-    public void TakeDamage(float damage)
+
+    #region Damageable
+
+    void IDamageable.TakeDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0)
+        if (!IsActive) return;
+
+        _health -= damage;
+        if (_health <= 0)
         {
             Dispose();
         }
     }
+
+    #endregion
 }

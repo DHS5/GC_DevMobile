@@ -98,6 +98,10 @@ public class Format : MonoBehaviour
     {
         return new Vector3(relativePosition.x * DemiBounds.x, relativePosition.y * DemiBounds.y, 0);
     }
+    public static Vector2 ComputeVector2Position(Vector2 relativePosition)
+    {
+        return new Vector2(relativePosition.x * DemiBounds.x, relativePosition.y * DemiBounds.y);
+    }
     
     public static Vector3 ComputePositionClamped(Vector2 relativePosition)
     {

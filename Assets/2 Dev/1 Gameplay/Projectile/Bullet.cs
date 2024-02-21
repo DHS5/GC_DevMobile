@@ -10,6 +10,7 @@ public class Bullet : PoolableObject
     [SerializeField] private Transform bulletTransform;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private Rigidbody2D bulletRigidbody;
 
     private BulletStrategy _strategy;
     private Weapon _shooter;
@@ -25,12 +26,14 @@ public class Bullet : PoolableObject
 
     #endregion
 
-    public void Init(Vector3 pos, Vector3 dir, BulletStrategy strategy, Weapon shooter)
+    public void Init(Vector3 pos, float dir, BulletStrategy strategy, Weapon shooter)
     {
         IsActive = true;
 
-        bulletTransform.position = pos;
-        bulletTransform.up = dir;
+        gameObject.layer = shooter.BulletLayer;
+
+        bulletRigidbody.position = pos;
+        bulletRigidbody.rotation = dir;
         _strategy = strategy;
         _shooter = shooter;
         _startTime = Time.time;
@@ -56,22 +59,23 @@ public class Bullet : PoolableObject
 
         float rotateSpeed = deltaTime * _strategy.CurrentRotation(normalizedLifetime);
         if (rotateSpeed != 0)
-            bulletTransform.Rotate(Vector3.forward, rotateSpeed);
+            bulletRigidbody.MoveRotation(rotateSpeed);
+            //bulletTransform.Rotate(Vector3.forward, rotateSpeed);
         float moveSpeed = deltaTime * _strategy.CurrentSpeed(normalizedLifetime);
         if (moveSpeed != 0)
-            bulletTransform.Move(bulletTransform.up * moveSpeed);
+            bulletRigidbody.Move(bulletTransform.up * moveSpeed);
+            //bulletTransform.Move(bulletTransform.up * moveSpeed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!IsActive) return;
 
-        Debug.Log("collide with " + collision.gameObject);
+        Debug.Log("collide with " + collision.gameObject, collision.gameObject);
 
-        var damageable = collision.gameObject.GetComponent<IDamageable>();
-        if(damageable != null)
+        if (collision.gameObject.TryGetComponent(out IDamageable damageable))
         {
-            damageable.TakeDamage(10);
+            damageable.TakeDamage(_strategy.Damage);
         }
     }
 

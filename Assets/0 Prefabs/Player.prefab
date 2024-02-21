@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93470c191f4387d4384fc044fdad8039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
   firePoint: {fileID: 4404711213172806170}
+  bulletLayer: 8
   _weaponStrategy: {fileID: 11400000, guid: 73624b507e50f994583920c929631b59, type: 2}
   _bulletStrategy: {fileID: 11400000, guid: cee788d1fcd78b34f9892ab55626b157, type: 2}
 --- !u!114 &-4035836479837671531
@@ -253,7 +253,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7715831211876101469}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
