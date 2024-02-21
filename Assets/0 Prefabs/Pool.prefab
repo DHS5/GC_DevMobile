@@ -91,7 +91,8 @@ MonoBehaviour:
   enemyPoolBaseCapacity: 50
   enemyPoolRefillLimit: 5
   enemyPoolRefillCapacity: 10
-  pooledCollectibles: []
+  pooledCollectibles:
+  - {fileID: 6986521603481787181}
   collectiblePoolBaseCapacity: 10
   collectiblePoolRefillLimit: 2
   collectiblePoolRefillCapacity: 1
@@ -273,7 +274,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 339227839269786574, guid: bf3d4f5a23bc5974cacdcd61485879b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 339227839269786574, guid: bf3d4f5a23bc5974cacdcd61485879b8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -325,6 +326,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 339227839269786574, guid: bf3d4f5a23bc5974cacdcd61485879b8, type: 3}
   m_PrefabInstance: {fileID: 4810068696517371723}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6986521603481787181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2465113450938580070, guid: bf3d4f5a23bc5974cacdcd61485879b8, type: 3}
+  m_PrefabInstance: {fileID: 4810068696517371723}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa505a41b7f44b4c9fafd96c61f161b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8699101310710419555
 PrefabInstance:
   m_ObjectHideFlags: 0
