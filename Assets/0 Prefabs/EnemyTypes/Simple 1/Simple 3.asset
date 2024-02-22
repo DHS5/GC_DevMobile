@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880063fe9451b39408e8cf5e33093139, type: 3}
+  m_Name: Simple 3
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  maxHealth: 200
+  movement: 0
+  fixedRelativePosition: {x: 0, y: 0.5}
+  path: 6
+  weaponStrategy: {fileID: 11400000, guid: a24120eb2daa88445b4f72db8c935ae1, type: 2}
+  bulletStrategy: {fileID: 11400000, guid: aa87cc64f719d2c4fb7b483ae1ba38ff, type: 2}
+  score: 0
