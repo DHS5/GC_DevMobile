@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Firerate +
   m_EditorClassIdentifier: 
   type: 1
-  sprite: {fileID: 21300058, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
-  color: {r: 1, g: 0, b: 0, a: 1}
+  sprite: {fileID: 21300000, guid: 25cda4116016bfb40997c20fde51e0f9, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
   health: 0
   bulletAddition: 0
   spreadAddition: 0
