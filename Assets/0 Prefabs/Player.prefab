@@ -289,8 +289,8 @@ MonoBehaviour:
   bulletLayer: 8
   shootSound: 1
   shootSoundData: {fileID: 11400000, guid: 7f959af29d10c624685d4c26929d1bc6, type: 2}
-  _weaponStrategy: {fileID: 11400000, guid: 73624b507e50f994583920c929631b59, type: 2}
-  _bulletStrategy: {fileID: 11400000, guid: cee788d1fcd78b34f9892ab55626b157, type: 2}
+  _weaponStrategy: {fileID: 11400000, guid: fc83530f83bdf4248a007d66e40b9d14, type: 2}
+  _bulletStrategy: {fileID: 11400000, guid: 77948e628a9059a489c5be0f46620b3b, type: 2}
 --- !u!114 &-4035836479837671531
 MonoBehaviour:
   m_ObjectHideFlags: 0
