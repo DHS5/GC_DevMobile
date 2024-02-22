@@ -59,4 +59,18 @@ public class PlayerHUD : MonoBehaviour
     {
         RamUsageText.text = getMemoryUsage;
     }
+    
+    public void DisableDebug()
+    {
+        FPSText.gameObject.SetActive(false);
+        BulletCountText.gameObject.SetActive(false);
+        RamUsageText.gameObject.SetActive(false);
+    }
+    
+    public void EnableDebug()
+    {
+        FPSText.gameObject.SetActive(true);
+        BulletCountText.gameObject.SetActive(true);
+        RamUsageText.gameObject.SetActive(true);
+    }
 }

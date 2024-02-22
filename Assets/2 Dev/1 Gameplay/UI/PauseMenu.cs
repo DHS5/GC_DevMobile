@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     private bool isPaused = false;
     private bool isGodMod = false;
+    private bool isDebug = true;
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject optionsCanvas;
     [SerializeField] private GameObject otherCanvas;
@@ -58,10 +59,19 @@ public class PauseMenu : MonoBehaviour
     public void ToggleGodMod()
     {
         AudioManager.Instance.PlayUISFX(clickSoundData);
-        if (!isGodMod)
-            ActivateGodMod();
-        else
+        if (isGodMod)
             DesactivateGodMod();
+        else
+            ActivateGodMod();
+    }
+    
+    public void ToggleDebug()
+    {
+        AudioManager.Instance.PlayUISFX(clickSoundData);
+        if (isDebug)
+            DesactivateDebug();
+        else
+            ActivateDebug();
     }
 
     private void ActivateGodMod()
@@ -69,12 +79,28 @@ public class PauseMenu : MonoBehaviour
         isGodMod = true;
         GameManager.Instance.isPlayerGodMode = true;
     }
-
+    
     private void DesactivateGodMod()
     {
         isGodMod = false;
         GameManager.Instance.isPlayerGodMode = false;
     }
+    
+    private void ActivateDebug()
+    {
+        isDebug = true;
+        GameManager.Instance.DebugMode = true;
+        PlayerHUD.Instance.EnableDebug();
+    }
+    
+    private void DesactivateDebug()
+    {
+        isDebug = false;
+        GameManager.Instance.DebugMode = true;
+        PlayerHUD.Instance.DisableDebug();
+    }
+    
+    
 
 
     public void ExitGame()

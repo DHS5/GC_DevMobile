@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Player Player => player;
 
     public static GameManager Instance { get; private set; }
+    public bool DebugMode { get; set; }
 
     public static event Action OnGameOver;
 

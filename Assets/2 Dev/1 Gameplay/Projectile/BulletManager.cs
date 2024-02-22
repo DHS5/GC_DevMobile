@@ -114,7 +114,7 @@ public static class BulletManager
     private static void OnUpdate(int frameIndex, float deltaTime, float time)
     {
         foreach (var bullet in _bullets) bullet.OnUpdate(deltaTime, time);
-        if (Time.time - _lastTime > 1)
+        if (GameManager.Instance.DebugMode && Time.time - _lastTime > 1)
         {
             _lastTime = Time.time;
             PlayerHUD.Instance.SetBulletCount(_bullets.Count);
