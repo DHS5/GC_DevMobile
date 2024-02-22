@@ -80,6 +80,7 @@ public class PauseMenu : MonoBehaviour
     public void ExitGame()
     {
         AudioManager.Instance.PlayUISFX(clickSoundData);
+        Resume();
         GameManager.Instance.QuitGame();
         SceneManager.LoadScene(gameSceneName);
     }
