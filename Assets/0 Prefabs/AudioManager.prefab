@@ -439,6 +439,9 @@ MonoBehaviour:
   shootSource: {fileID: 5487838083875472292}
   damageSource: {fileID: 1988130950885369960}
   explosionSource: {fileID: 4848509721405632668}
+  shootAudioData: {fileID: 11400000, guid: 7f959af29d10c624685d4c26929d1bc6, type: 2}
+  damageAudioData: {fileID: 11400000, guid: 29258956e9aba0247a42ad53d731a77c, type: 2}
+  explosionAudioData: {fileID: 11400000, guid: 8d6c2e6d4b4488246bb7ee2aea044262, type: 2}
   _musicOn: 1
   _soundOn: 1
   _musicVolume: 0.1

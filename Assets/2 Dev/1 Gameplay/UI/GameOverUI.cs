@@ -16,7 +16,7 @@ public class GameOverUI : MonoBehaviour
     public void SetScore(int score)
     {
         scoreText.text = $"Total Score: \n{score}";
-        AudioManager.Instance.PlayShootSFX(audioData);
+        AudioManager.Instance.PlayUISFX(audioData);
     }
 
 }

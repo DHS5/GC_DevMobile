@@ -84,17 +84,17 @@ MonoBehaviour:
   poolPosition: {fileID: 2372973338599677894}
   pooledBullets:
   - {fileID: 9153350385946339222}
-  bulletPoolBaseCapacity: 10000
+  bulletPoolBaseCapacity: 3000
   bulletPoolRefillLimit: 5
   bulletPoolRefillCapacity: 10
   pooledEnemies:
   - {fileID: 1717020337831825751}
-  enemyPoolBaseCapacity: 50
+  enemyPoolBaseCapacity: 30
   enemyPoolRefillLimit: 5
   enemyPoolRefillCapacity: 10
   pooledCollectibles:
   - {fileID: 6986521603481787181}
-  collectiblePoolBaseCapacity: 10
+  collectiblePoolBaseCapacity: 50
   collectiblePoolRefillLimit: 2
   collectiblePoolRefillCapacity: 1
   pooledVFXs:

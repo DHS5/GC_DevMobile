@@ -7,7 +7,6 @@ public class VFX : PoolableObject
 
     [SerializeField] private Transform vfxTransform;
     [SerializeField] private Animator animator;
-    [SerializeField] private AudioData explosionAudioData;
 
 
     #region Accessor
@@ -25,7 +24,7 @@ public class VFX : PoolableObject
     {
         MoveTo(position);
         animator.SetTrigger(explosionTriggerHash);
-        AudioManager.Instance.PlayExplosionSFX(explosionAudioData);
+        AudioManager.Instance.PlayExplosionSFX();
         DOVirtual.DelayedCall(1f, Dispose);
     }
 

@@ -42,7 +42,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Options()
     {
-        AudioManager.Instance.PlayShootSFX(clickSoundData);
+        AudioManager.Instance.PlayUISFX(clickSoundData);
         optionsCanvas.SetActive(true);
         otherCanvas.SetActive(false);
     }

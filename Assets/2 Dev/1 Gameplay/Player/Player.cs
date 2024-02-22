@@ -14,7 +14,6 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
 
     [SerializeField] private float relativeSize = 1;
     [SerializeField] private Vector2 relativeStartPosition = new(0, -0.5f);
-    [SerializeField] private AudioData hitSoundData;
 
     [SerializeField] private List<BulletStrategy> lvlBulletStrategies;
     [SerializeField] private int currentBulletStrategy;
@@ -61,7 +60,7 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
 
     public void TakeDamage(float damage)
     {
-        AudioManager.Instance.PlayDamageSFX(hitSoundData);
+        AudioManager.Instance.PlayDamageSFX();
         GameManager.Instance.AddScore(-10);
         if (GameManager.Instance.isPlayerGodMode) return;
         health -= damage;

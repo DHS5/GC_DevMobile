@@ -41,7 +41,7 @@ public class CollectibleManager : MonoBehaviour
 
     #region Initialization
 
-    [SerializeField] private List<CollectibleData> _datas = new();
+    private List<CollectibleData> _datas = new();
 
     private void Init()
     {

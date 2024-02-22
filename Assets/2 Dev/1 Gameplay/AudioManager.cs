@@ -16,6 +16,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource damageSource;
     [SerializeField] private AudioSource explosionSource;
 
+    [Header("Clips")]
+    [SerializeField] private AudioData shootAudioData;
+    [SerializeField] private AudioData damageAudioData;
+    [SerializeField] private AudioData explosionAudioData;
+
     [Header("Default values")] [SerializeField]
     private bool _musicOn = true;
 
@@ -26,11 +31,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] [Range(0f, 1f)] private float _soundVolume = 0.5f;
 
-    private AudioData _currentMusic;
     private AudioData _currentUISound;
-    private AudioData _currentShootSound;
-    private AudioData _currentDamageSound;
-    private AudioData _currentExplosionSound;
 
 
     private void Awake()
@@ -55,34 +56,25 @@ public class AudioManager : MonoBehaviour
         UISource.mute = !_soundOn;
         damageSource.mute = !_soundOn;
         explosionSource.mute = !_soundOn;
+
+        SetSFXVolume(_soundVolume);
+        SetMusicVolume(_musicVolume);
     }
 
     private void Start()
     {
-        PlayMusic(themeMusic);
+        PlayMusic();
     }
 
-    public void PlayMusic(AudioData data)
+    public void PlayMusic()
     {
-        _currentMusic = data;
-        musicSource.clip = data.Clip;
+        musicSource.clip = themeMusic.Clip;
         musicSource.Play();
     }
 
-    public void PlayShootSFX(AudioData data)
+    public void PlayShootSFX()
     {
-        //if (_currentShootSound == data)
-        //{
-        //    shootSource.Play();
-        //    return;
-        //}
-        //
-        //_currentShootSound = data;
-        //shootSource.clip = data.Clip;
-        //shootSource.Play();
-        //shootSource.volume = _soundVolume * _currentShootSound.Volume();
-
-        shootSource.PlayOneShot(data.Clip, _soundVolume * _currentShootSound.Volume());
+        shootSource.PlayOneShot(shootAudioData.Clip);
     }
 
     public void PlayUISFX(AudioData data)
@@ -99,32 +91,14 @@ public class AudioManager : MonoBehaviour
         UISource.volume = _soundVolume * _currentUISound.Volume();
     }
 
-    public void PlayDamageSFX(AudioData data)
+    public void PlayDamageSFX()
     {
-        if (_currentDamageSound == data)
-        {
-            damageSource.Play();
-            return;
-        }
-
-        _currentDamageSound = data;
-        damageSource.clip = data.Clip;
-        damageSource.Play();
-        damageSource.volume = _soundVolume * _currentDamageSound.Volume();
+        damageSource.PlayOneShot(damageAudioData.Clip);
     }
 
-    public void PlayExplosionSFX(AudioData data)
+    public void PlayExplosionSFX()
     {
-        if (_currentExplosionSound == data)
-        {
-            explosionSource.Play();
-            return;
-        }
-
-        _currentExplosionSound = data;
-        explosionSource.clip = data.Clip;
-        explosionSource.Play();
-        explosionSource.volume = _soundVolume * _currentExplosionSound.Volume();
+        explosionSource.PlayOneShot(explosionAudioData.Clip);
     }
 
     public void ToggleMusic()
@@ -155,15 +129,15 @@ public class AudioManager : MonoBehaviour
     public void SetMusicVolume(float iVolume)
     {
         _musicVolume = iVolume;
-        musicSource.volume = _musicVolume * _currentMusic.Volume();
+        musicSource.volume = _musicVolume * themeMusic.Volume();
     }
 
     public void SetSFXVolume(float iVolume)
     {
         _soundVolume = iVolume;
-        shootSource.volume = _soundVolume * _currentShootSound.Volume();
-        damageSource.volume = _soundVolume * _currentDamageSound.Volume();
-        explosionSource.volume = _soundVolume * _currentExplosionSound.Volume();
+        shootSource.volume = _soundVolume * shootAudioData.Volume();
+        damageSource.volume = _soundVolume * damageAudioData.Volume();
+        explosionSource.volume = _soundVolume * explosionAudioData.Volume();
         UISource.volume = _soundVolume * _currentUISound.Volume();
     }
 

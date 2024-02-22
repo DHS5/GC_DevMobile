@@ -9,7 +9,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] [Layer] protected int bulletLayer;
     
     [SerializeField] private bool shootSound = false;
-    [SerializeField] private AudioData shootSoundData;
 
     [SerializeField] protected WeaponStrategy _weaponStrategy;
     [SerializeField] protected BulletStrategy _bulletStrategy;
@@ -67,7 +66,7 @@ public class Weapon : MonoBehaviour
         if (!IsReadyToFire(time)) return;
         
         if (shootSound)
-            AudioManager.Instance.PlayShootSFX(shootSoundData);
+            AudioManager.Instance.PlayShootSFX();
         
         Bullet bullet;
         var firePos = firePoint.position;
