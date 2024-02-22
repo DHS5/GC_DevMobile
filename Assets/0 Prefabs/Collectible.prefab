@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa505a41b7f44b4c9fafd96c61f161b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider: {fileID: 0}
+  circleCollider: {fileID: 131940549667146112}
   spriteRenderer: {fileID: 5551122229786524824}
 --- !u!212 &5551122229786524824
 SpriteRenderer:
