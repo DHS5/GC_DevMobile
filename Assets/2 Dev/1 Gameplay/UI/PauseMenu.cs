@@ -58,7 +58,7 @@ public class PauseMenu : MonoBehaviour
     public void ToggleGodMod()
     {
         AudioManager.Instance.PlayUISFX(clickSoundData);
-        if (isGodMod)
+        if (!isGodMod)
             ActivateGodMod();
         else
             DesactivateGodMod();
