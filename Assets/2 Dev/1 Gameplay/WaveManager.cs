@@ -9,7 +9,7 @@ public class WaveManager : MonoBehaviour
     public struct EnemiesToSpawn
     {
         public float waveStartTime;
-        public float spawnTimeInterval;
+        public float duration;
         public int[] quantities;
         public EnemyType[] enemyTypes;
     }
@@ -75,7 +75,7 @@ public class WaveManager : MonoBehaviour
                 if (enemyWave[i].quantities[_currentLevel] > 0)
                 {
                     seq = DOTween.Sequence();
-                    interval = enemyWave[i].spawnTimeInterval / enemyWave[i].quantities[_currentLevel];
+                    interval = enemyWave[i].duration / enemyWave[i].quantities[_currentLevel];
                     EnemyType enemyType = enemyWave[i].enemyTypes[_currentLevel];
                     if (enemyWave[i].waveStartTime > 0) seq.AppendInterval(enemyWave[i].waveStartTime);
                     for (var j = 0; j < enemyWave[i].quantities[_currentLevel]; j++)
