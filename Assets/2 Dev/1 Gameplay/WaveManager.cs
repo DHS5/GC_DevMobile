@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class WaveManager : MonoBehaviour
     [System.Serializable]
     public struct EnemiesToSpawn
     {
+        public float startTime;
         public float duration;
         public int[] quantities;
         public EnemyType[] enemyTypes;
@@ -46,28 +48,31 @@ public class WaveManager : MonoBehaviour
         GameManager.OnGameOver -= OnGameOver;
     }
 
+    private List<Sequence> _waveSequences = new();
     private void SpawnWave()
     {
+        _waveSequences.Clear();
         var wave = waves[_currentWave];
         var enemyWave = wave.GetEnemiesSpawnList();
+        Sequence seq;
 
         if (enemyWave.Length > 0)
         {
-            var spawnSequences = new Sequence[enemyWave.Length];
             float interval;
-            EnemyType enemyType;
 
             for (var i = 0; i < enemyWave.Length; i++)
                 if (enemyWave[i].quantities[_currentLevel] > 0)
                 {
-                    spawnSequences[i] = DOTween.Sequence();
+                    seq = DOTween.Sequence();
                     interval = enemyWave[i].duration / enemyWave[i].quantities[_currentLevel];
-                    enemyType = enemyWave[i].enemyTypes[_currentLevel];
+                    EnemyType enemyType = enemyWave[i].enemyTypes[_currentLevel];
+                    if (enemyWave[i].startTime > 0) seq.AppendInterval(enemyWave[i].startTime);
                     for (var j = 0; j < enemyWave[i].quantities[_currentLevel]; j++)
                     {
-                        spawnSequences[i].AppendCallback(() => Enemy.Spawn(enemyType));
-                        spawnSequences[i].AppendInterval(interval);
+                        seq.AppendCallback(() => Enemy.Spawn(enemyType));
+                        seq.AppendInterval(interval);
                     }
+                    _waveSequences.Add(seq);
                 }
         }
 
@@ -87,5 +92,10 @@ public class WaveManager : MonoBehaviour
     public void OnGameOver()
     {
         _waveSpawnTween.Kill();
+        foreach (var seq in _waveSequences)
+        {
+            if (seq != null)
+                seq.Kill();
+        }
     }
 }

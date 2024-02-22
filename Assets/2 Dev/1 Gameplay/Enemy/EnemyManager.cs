@@ -82,6 +82,8 @@ public static class EnemyManager
         foreach (var enemy in _enemies)
             if (enemy.IsActive)
                 enemy.Dispose();
+
+        DoRegistrations();
     }
 
     #endregion

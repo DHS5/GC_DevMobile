@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyType", menuName = "Enemy/EnemyType", order = 0)]
 public class EnemyType : ScriptableObject
 {
+    [SerializeField] private Sprite sprite;
     [SerializeField] private float maxHealth = 20;
     [SerializeField] private Enemy.EnemyMovement movement;
     [SerializeField] private Vector2 fixedRelativePosition = new(0, 0.5f);
@@ -12,6 +13,7 @@ public class EnemyType : ScriptableObject
     [SerializeField] private BulletStrategy bulletStrategy;
     [SerializeField] private int score;
 
+    public Sprite Sprite => sprite;
     public float MaxHealth => maxHealth;
     public Enemy.EnemyMovement Movement => movement;
     public EnemyPath Path => path;

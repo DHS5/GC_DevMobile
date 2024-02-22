@@ -36,4 +36,11 @@ public class UpdateManager : MonoBehaviour
         CurrentTime = Time.time;
         OnFixedUpdate?.Invoke(FrameIndex, FixedDelta, CurrentTime);
     }
+
+    public static void Clear()
+    {
+        OnUpdate = null;
+        OnFixedUpdate = null;
+        OnLateUpdate = null;
+    }
 }
