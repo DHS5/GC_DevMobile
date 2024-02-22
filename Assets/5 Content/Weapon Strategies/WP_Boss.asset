@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WP_Boss
   m_EditorClassIdentifier: 
   fireRate: 0.05
-  bulletCount: 8
+  bulletCount: 5
   spreadAngle: 360

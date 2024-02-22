@@ -17,7 +17,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 184c6999525f5634c9fdc1191784b3a8, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
   size: 0.5
-  sfxName: 
   speedOverTime:
     serializedVersion: 2
     m_Curve:
@@ -76,4 +75,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  rotation: 160
+  rotation: 0

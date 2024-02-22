@@ -28,7 +28,7 @@ public class WaveManager : MonoBehaviour
     }
 
     [SerializeField] private int levelNumber = 3;
-    [SerializeField] [NonReorderable] private WaveContent[] waves;
+    [SerializeField] private WaveContent[] waves;
 
     private int _currentWave = 0;
     private int _currentLevel = 0;
