@@ -52,8 +52,9 @@ public class WaveManager : MonoBehaviour
     }
 
     private void NextWave()
-    {
-        Optimization.GCCollect();
+    {        
+        //Optimization.GCCollect();
+        DOVirtual.DelayedCall(waves[_currentWave].waveDelay / 2, Optimization.GCCollect);
         _waveSpawnTween = DOVirtual.DelayedCall(waves[_currentWave].waveDelay, SpawnWave);
     }
 
@@ -64,7 +65,7 @@ public class WaveManager : MonoBehaviour
         var wave = waves[_currentWave];
         var enemyWave = wave.GetEnemiesSpawnList();
         Sequence seq;
-        bool lastWave = _currentLevel == waves.Length - 1;
+        bool lastWave = _currentWave == waves.Length - 1;
 
         if (enemyWave.Length > 0)
         {
