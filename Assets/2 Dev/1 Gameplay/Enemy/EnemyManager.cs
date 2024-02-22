@@ -74,7 +74,7 @@ public static class EnemyManager
         }
     }
 
-    private static void Clear()
+    public static void Clear()
     {
         _toRegister.Clear();
         _toUnregister.Clear();

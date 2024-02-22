@@ -18,7 +18,8 @@ public class Pool : MonoBehaviour
     {
         BULLET = 0,
         ENEMY = 1,
-        COLLECTIBLE = 2
+        COLLECTIBLE = 2,
+        VFX = 3,
     }
 
     #region Editor
@@ -99,6 +100,13 @@ public class Pool : MonoBehaviour
     [SerializeField] [Range(1, 100000)] private int collectiblePoolBaseCapacity = 10;
     [SerializeField] [Range(1, 10)] private int collectiblePoolRefillLimit = 2;
     [SerializeField] [Range(1, 100)] private int collectiblePoolRefillCapacity = 1;
+    
+    [Header("VFX Pool")] [SerializeField]
+    private List<VFX> pooledVFXs;
+
+    [SerializeField] [Range(1, 100000)] private int vfxPoolBaseCapacity = 10;
+    [SerializeField] [Range(1, 10)] private int vfxPoolRefillLimit = 2;
+    [SerializeField] [Range(1, 100)] private int vfxPoolRefillCapacity = 1;
 
     #endregion
 
@@ -107,6 +115,7 @@ public class Pool : MonoBehaviour
     private static Stack<Bullet> _bulletStack = new();
     private static Stack<Enemy> _enemyStack = new();
     private static Stack<Collectible> _collectibleStack = new();
+    private static Stack<VFX> _vfxStack = new();
 
     private void Init()
     {
@@ -130,6 +139,13 @@ public class Pool : MonoBehaviour
                 _collectibleStack.Push(collectible);
         numberToCreate = collectiblePoolBaseCapacity - pooledCollectibles.Count;
         if (numberToCreate > 0) CreateNewPoolables<Collectible>(PoolableType.COLLECTIBLE, numberToCreate);
+        
+        // Stack VFX
+        if (pooledVFXs.IsValid())
+            foreach (var vfx in pooledVFXs)
+                _vfxStack.Push(vfx);
+        numberToCreate = vfxPoolBaseCapacity - pooledVFXs.Count;
+        if (numberToCreate > 0) CreateNewPoolables<VFX>(PoolableType.VFX, numberToCreate);
     }
 
     #endregion
@@ -156,6 +172,7 @@ public class Pool : MonoBehaviour
             case PoolableType.BULLET: return _bulletStack.Count;
             case PoolableType.ENEMY: return _enemyStack.Count;
             case PoolableType.COLLECTIBLE: return _collectibleStack.Count;
+            case PoolableType.VFX: return _vfxStack.Count;
         }
 
         return 0;
@@ -168,6 +185,7 @@ public class Pool : MonoBehaviour
             case PoolableType.BULLET: return _bulletStack.Pop() as T;
             case PoolableType.ENEMY: return _enemyStack.Pop() as T;
             case PoolableType.COLLECTIBLE: return _collectibleStack.Pop() as T;
+            case PoolableType.VFX: return _vfxStack.Pop() as T;
         }
 
         return null;
@@ -185,6 +203,9 @@ public class Pool : MonoBehaviour
                 break;
             case PoolableType.COLLECTIBLE:
                 _collectibleStack.Push(newPoolable as Collectible);
+                break;
+            case PoolableType.VFX:
+                _vfxStack.Push(newPoolable as VFX);
                 break;
         }
     }
@@ -212,6 +233,12 @@ public class Pool : MonoBehaviour
                     CreateNewPoolables<Collectible>(type, I.collectiblePoolRefillCapacity);
                 break;
             }
+            case PoolableType.VFX:
+            {
+                if (_vfxStack.Count <= I.vfxPoolRefillLimit)
+                    CreateNewPoolables<VFX>(type, I.vfxPoolRefillCapacity);
+                break;
+            }
         }
     }
 
@@ -234,6 +261,7 @@ public class Pool : MonoBehaviour
             case PoolableType.BULLET: return I.pooledBullets[0] as T;
             case PoolableType.ENEMY: return I.pooledEnemies[0] as T;
             case PoolableType.COLLECTIBLE: return I.pooledCollectibles[0] as T;
+            case PoolableType.VFX: return I.pooledVFXs[0] as T;
         }
 
         return null;
@@ -246,6 +274,7 @@ public class Pool : MonoBehaviour
             case PoolableType.BULLET: return I.pooledBullets[0].transform.parent;
             case PoolableType.ENEMY: return I.pooledEnemies[0].transform.parent;
             case PoolableType.COLLECTIBLE: return I.pooledCollectibles[0].transform.parent;
+            case PoolableType.VFX: return I.pooledVFXs[0].transform.parent;
         }
 
         return null;
