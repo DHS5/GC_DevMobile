@@ -268,8 +268,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: gp6.keystore'
-  AndroidKeyaliasName: gp6lmao
+  AndroidKeystoreName: '{inproject}: user.keystore'
+  AndroidKeyaliasName: pomlpoml
   AndroidEnableArmv9SecurityFeatures: 1
   AndroidBuildApkPerCpuArchitecture: 1
   AndroidTVCompatibility: 0
