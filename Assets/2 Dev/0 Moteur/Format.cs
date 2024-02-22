@@ -72,7 +72,12 @@ public class Format : MonoBehaviour
         RatioDiff = Ratio / ReferenceRatio;
 
         ResolutionDelta = new Vector2(Resolution.x / referenceResolution.x, Resolution.y / referenceResolution.y);
-        ScaleFactor = Mathf.Min(ResolutionDelta.x, ResolutionDelta.y);
+        float resDeltaXDiff = Mathf.Abs(ResolutionDelta.x - 1);
+        float resDeltaYDiff = Mathf.Abs(ResolutionDelta.y - 1);
+        float ratioDiffDiff = Mathf.Abs(RatioDiff - 1);
+        ScaleFactor = resDeltaXDiff < resDeltaYDiff ? 
+            (resDeltaXDiff < ratioDiffDiff ? ResolutionDelta.x : RatioDiff) :
+            (resDeltaYDiff < ratioDiffDiff ? ResolutionDelta.y : RatioDiff);
 
         RefDemiBounds = new Vector2(referenceBounds.x / 2, referenceBounds.y / 2);
 
@@ -94,7 +99,7 @@ public class Format : MonoBehaviour
 
     public static Vector2 ComputeSize(float relativeSize, float ratio)
     {
-        var factor = relativeSize * ScaleFactor;
+        var factor = relativeSize * ScaleFactor; //
         return new Vector2(ratio * factor, factor);
     }
 
