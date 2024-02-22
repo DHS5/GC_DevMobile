@@ -1899,6 +1899,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
+      propertyPath: _datas.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
+      propertyPath: collectibleChancePercentage
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3823567834400729821, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
       propertyPath: m_Name
       value: CollectibleManager
