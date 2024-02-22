@@ -324,7 +324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2269220286338512522
 RectTransform:
   m_ObjectHideFlags: 0
@@ -409,7 +409,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6883702607166260402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,6 +759,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8719912640417974286}
     m_Modifications:
+    - target: {fileID: 577184032548497264, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c89ceb8c191e94d4ba2a4184db87bba0, type: 3}
     - target: {fileID: 2661070405385796227, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_Name
       value: MusicSlider
@@ -805,23 +809,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5220827253169762896, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.4949495
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5220827253169762896, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781739406481652012, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.4949495
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781739406481652012, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781739406481652012, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.4949495
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7585515230705573990, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_Pivot.x
@@ -932,6 +936,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9000757600743826960}
     m_Modifications:
+    - target: {fileID: 577184032548497264, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c89ceb8c191e94d4ba2a4184db87bba0, type: 3}
     - target: {fileID: 2661070405385796227, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_Name
       value: SFXSlider
@@ -978,23 +986,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5220827253169762896, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.4949495
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5220827253169762896, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781739406481652012, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.4949495
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781739406481652012, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5781739406481652012, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.4949495
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7585515230705573990, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_Pivot.x
@@ -1264,7 +1272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596616417521686783, guid: a9e8eea4d23b6dc478d91d88e40b534b, type: 3}
       propertyPath: m_fontSize
-      value: 74.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2596616417521686783, guid: a9e8eea4d23b6dc478d91d88e40b534b, type: 3}
       propertyPath: m_fontSizeBase

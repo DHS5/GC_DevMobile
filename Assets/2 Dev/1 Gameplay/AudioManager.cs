@@ -139,6 +139,7 @@ public class AudioManager : MonoBehaviour
         shootSource.mute = !_soundOn;
         damageSource.mute = !_soundOn;
         explosionSource.mute = !_soundOn;
+        UISource.mute = !_soundOn;
     }
 
     public bool IsMusicEnabled()
@@ -163,6 +164,7 @@ public class AudioManager : MonoBehaviour
         shootSource.volume = _soundVolume * _currentShootSound.Volume();
         damageSource.volume = _soundVolume * _currentDamageSound.Volume();
         explosionSource.volume = _soundVolume * _currentExplosionSound.Volume();
+        UISource.volume = _soundVolume * _currentUISound.Volume();
     }
 
     public float GetMusicVolume()
