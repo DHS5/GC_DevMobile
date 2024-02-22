@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Group6
-  productName: Le Jeu Du Siecle bench
+  productName: Le Jeu Du Siecle ??
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -139,7 +139,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.3
+  bundleVersion: 0.4
   preloadedAssets:
   - {fileID: 7715831211876101469, guid: c51dbbc2c222d4941b478ac373633e98, type: 3}
   - {fileID: 4538786320529059225, guid: da6306ef2037b3d4abd53585451d60b2, type: 3}

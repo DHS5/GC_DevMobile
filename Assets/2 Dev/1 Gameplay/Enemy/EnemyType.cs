@@ -10,6 +10,7 @@ public class EnemyType : ScriptableObject
     [SerializeField] private EnemyPath path;
     [SerializeField] private WeaponStrategy weaponStrategy;
     [SerializeField] private BulletStrategy bulletStrategy;
+    [SerializeField] private int score;
 
     public float MaxHealth => maxHealth;
     public Enemy.EnemyMovement Movement => movement;
@@ -17,4 +18,5 @@ public class EnemyType : ScriptableObject
     public WeaponStrategy WeaponStrategy => weaponStrategy;
     public BulletStrategy BulletStrategy => bulletStrategy;
     public Vector2 FixedRelativePosition => fixedRelativePosition;
+    public int Score => score;
 }
