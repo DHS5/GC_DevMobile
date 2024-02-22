@@ -2004,6 +2004,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 963631227154639908, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963631227154639908, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519761036917172056, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519761036917172056, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519761036917172056, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454223947167836152, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454223947167836152, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010202040415153284, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010202040415153284, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010202040415153284, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8259782441246006997, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
       propertyPath: m_Name
       value: PauseMenu
