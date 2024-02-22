@@ -109,13 +109,15 @@ public static class BulletManager
     }
 
     private static int _maxBullet;
+    private static float _lastTime;
+
     private static void OnUpdate(int frameIndex, float deltaTime, float time)
     {
         foreach (var bullet in _bullets) bullet.OnUpdate(deltaTime, time);
-        if (_bullets.Count > _maxBullet)
+        if (Time.time - _lastTime > 1)
         {
-            _maxBullet = _bullets.Count;
-            Debug.Log(_maxBullet);
+            _lastTime = Time.time;
+            PlayerHUD.Instance.SetBulletCount(_bullets.Count);
         }
 
         DoRegistrations();

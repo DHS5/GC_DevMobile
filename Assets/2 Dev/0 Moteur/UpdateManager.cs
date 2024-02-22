@@ -10,6 +10,8 @@ public class UpdateManager : MonoBehaviour
     public static int FrameIndex { get; private set; }
     public static float FixedDelta { get; private set; }
     public static float CurrentTime { get; private set; }
+    
+    private static float _lastTime;
 
     public static bool IsActive { get; set; } = true;
 
@@ -28,6 +30,12 @@ public class UpdateManager : MonoBehaviour
 
         OnUpdate?.Invoke(FrameIndex, deltaTime, CurrentTime);
         FrameIndex++;
+        if (Time.time - _lastTime > 1)
+        {
+            _lastTime = Time.time;
+            PlayerHUD.Instance.SetFPS(1 / deltaTime);
+        }
+        
     }
 
     private void LateUpdate()

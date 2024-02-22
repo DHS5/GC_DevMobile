@@ -25,6 +25,8 @@ public class PlayerHUD : MonoBehaviour
 
     [SerializeField] private Image healthBar;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI FPSText;
+    [SerializeField] private TextMeshProUGUI BulletCountText;
 
     private void Init()
     {
@@ -40,5 +42,15 @@ public class PlayerHUD : MonoBehaviour
     public void SetScore(int score)
     {
         scoreText.text = $"Score: {score}";
+    }
+
+    public void SetFPS(float fps)
+    {
+        FPSText.text = $"FPS: {fps:0.0}";
+    }
+
+    public void SetBulletCount(int maxBullet)
+    {
+        BulletCountText.text = $"Bullet Count: {maxBullet}";
     }
 }
