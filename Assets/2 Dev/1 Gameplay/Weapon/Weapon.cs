@@ -35,9 +35,9 @@ public class Weapon : MonoBehaviour
         ComputeSpread();
     }
 
-    public void LevelUp(int bulletCountAddition, float spreadAddition, float fireRate)
+    public void LevelUp(int bulletCountAddition, float spreadAddition, float fireRatePercent)
     {
-        _fireRate = fireRate;
+        _fireRate = _fireRate * fireRatePercent;
         _bulletCount += bulletCountAddition;
         _spread += spreadAddition;
         _demiSpread = _spread / 2f;
