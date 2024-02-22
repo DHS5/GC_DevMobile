@@ -90,7 +90,7 @@ public class WaveManager : MonoBehaviour
             _currentLevel = Mathf.Min(_currentLevel + 1, levelNumber - 1);
             //_waveSpawnTween = DOVirtual.DelayedCall(wave.waveDuration, SpawnWave);
         }
-        GC.Collect();
+        Optimization.GCCollect();
     }
 
     public void OnGameOver()

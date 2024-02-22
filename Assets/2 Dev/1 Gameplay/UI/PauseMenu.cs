@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         pauseMenuUI.SetActive(true);
         OnGamePause?.Invoke();
-        GC.Collect();
+        Optimization.GCCollect();
         UpdateManager.IsActive = false;
     }
 
@@ -34,6 +34,7 @@ public class PauseMenu : MonoBehaviour
         GamePaused = false;
         Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
+        Optimization.GCCollect();
         OnGameResume?.Invoke();
         UpdateManager.IsActive = true;
     }

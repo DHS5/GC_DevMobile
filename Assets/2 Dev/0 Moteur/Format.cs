@@ -174,11 +174,13 @@ public class Format : MonoBehaviour
     public void OnEnable()
     {
         GameManager.OnGameOver += ClearComputeCache;
+        Optimization.OnBeforeGCCollect += ClearComputeCache;
     }
 
     public void OnDisable()
     {
         GameManager.OnGameOver -= ClearComputeCache;
+        Optimization.OnBeforeGCCollect -= ClearComputeCache;
     }
 
     private static void ClearComputeCache()
