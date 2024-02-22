@@ -113,7 +113,7 @@ public class Enemy : PoolableObject, IDamageable
     private float _currentRotation = 0;
     private void OnStaticUpdate(float time)
     {
-        _currentRotation += _enemyType.RotationRate * time;
+        _currentRotation += _enemyType.RotationRate;
         enemyRigidbody.MoveRotation(_currentRotation);
     }
 
