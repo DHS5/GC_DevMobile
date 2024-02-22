@@ -67,8 +67,8 @@ MonoBehaviour:
   - waveDelay: 5
     enemiesToSpawn:
     - waveStartTime: 0
-      duration: 30
-      quantities: 010000000200000003000000
+      duration: 10
+      quantities: 020000000400000006000000
       enemyTypes:
       - {fileID: 11400000, guid: 9b1c5cb095d755a4dac45f0bdde522f8, type: 2}
       - {fileID: 11400000, guid: 9b1c5cb095d755a4dac45f0bdde522f8, type: 2}
@@ -91,13 +91,13 @@ MonoBehaviour:
       - {fileID: 11400000, guid: ae241848a143cdf439cbb34bffea3082, type: 2}
       - {fileID: 11400000, guid: ae241848a143cdf439cbb34bffea3082, type: 2}
       - {fileID: 11400000, guid: ae241848a143cdf439cbb34bffea3082, type: 2}
-    - waveStartTime: 30
+    - waveStartTime: 16
       duration: 15
       quantities: 03000000050000000a000000
       enemyTypes:
-      - {fileID: 11400000, guid: c671c314ebe5bf647b4f4f8e4fd2db1e, type: 2}
-      - {fileID: 11400000, guid: c671c314ebe5bf647b4f4f8e4fd2db1e, type: 2}
-      - {fileID: 11400000, guid: c671c314ebe5bf647b4f4f8e4fd2db1e, type: 2}
+      - {fileID: 11400000, guid: 9b1c5cb095d755a4dac45f0bdde522f8, type: 2}
+      - {fileID: 11400000, guid: 9b1c5cb095d755a4dac45f0bdde522f8, type: 2}
+      - {fileID: 11400000, guid: 9b1c5cb095d755a4dac45f0bdde522f8, type: 2}
     - waveStartTime: 60
       duration: 15
       quantities: 03000000050000000a000000
