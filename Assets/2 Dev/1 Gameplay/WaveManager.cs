@@ -17,7 +17,7 @@ public class WaveManager : MonoBehaviour
     [System.Serializable]
     public class WaveContent
     {
-        public float waveDuration;
+        public float waveDelay;
 
         [SerializeField] [NonReorderable] private EnemiesToSpawn[] enemiesToSpawn;
 
@@ -36,17 +36,25 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnWave();
+        NextWave();
     }
 
     private void OnEnable()
     {
         GameManager.OnGameOver += OnGameOver;
+        EnemyManager.OnAllEnemiesDead += NextWave;
     }
 
     private void OnDisable()
     {
         GameManager.OnGameOver -= OnGameOver;
+        EnemyManager.OnAllEnemiesDead -= NextWave;
+    }
+
+    private void NextWave()
+    {
+        Optimization.GCCollect();
+        _waveSpawnTween = DOVirtual.DelayedCall(waves[_currentWave].waveDelay, SpawnWave);
     }
 
     private List<Sequence> _waveSequences = new();
@@ -71,8 +79,8 @@ public class WaveManager : MonoBehaviour
                     if (enemyWave[i].startTime > 0) seq.AppendInterval(enemyWave[i].startTime);
                     for (var j = 0; j < enemyWave[i].quantities[_currentLevel]; j++)
                     {
-                        if (lastWave && i == 0) seq.AppendCallback(() => Enemy.Spawn(enemyType, SpawnWave));
-                        else seq.AppendCallback(() => Enemy.Spawn(enemyType));
+                        //if (lastWave && i == 0) seq.AppendCallback(() => Enemy.Spawn(enemyType, SpawnWave));
+                        seq.AppendCallback(() => Enemy.Spawn(enemyType));
                         seq.AppendInterval(interval);
                     }
                     _waveSequences.Add(seq);
@@ -82,15 +90,12 @@ public class WaveManager : MonoBehaviour
         if (!lastWave)
         {
             _currentWave++;
-            _waveSpawnTween = DOVirtual.DelayedCall(wave.waveDuration, SpawnWave);
         }
         else
         {
             _currentWave = 0;
             _currentLevel = Mathf.Min(_currentLevel + 1, levelNumber - 1);
-            //_waveSpawnTween = DOVirtual.DelayedCall(wave.waveDuration, SpawnWave);
         }
-        Optimization.GCCollect();
     }
 
     public void OnGameOver()

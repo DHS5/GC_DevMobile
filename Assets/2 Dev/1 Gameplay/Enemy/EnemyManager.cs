@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -79,12 +80,15 @@ public static class EnemyManager
         else if (_hasEnemy && _enemies.Count == 0)
         {
             _hasEnemy = false;
+            OnAllEnemiesDead?.Invoke();
             OnEndUpdate();
         }
     }
 
     public static void Clear()
     {
+        OnAllEnemiesDead = null;
+
         _toRegister.Clear();
         _toUnregister.Clear();
 
@@ -98,6 +102,8 @@ public static class EnemyManager
     #endregion
 
     #region Update
+
+    public static event Action OnAllEnemiesDead;
 
     private static void OnStartUpdate()
     {
