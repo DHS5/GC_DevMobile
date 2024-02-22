@@ -74,12 +74,13 @@ public static class BulletManager
 
     public static void Clear()
     {
-        _toRegister.Clear();
-        _toUnregister.Clear();
-
         foreach (var bullet in _bullets)
+        {
             if (bullet.IsActive)
                 bullet.Dispose();
+        }
+
+        DoRegistrations();
     }
 
     #endregion

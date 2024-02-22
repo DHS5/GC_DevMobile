@@ -12,13 +12,29 @@ public class MapDuplication : MonoBehaviour
         StartMovement();
     }
 
+    private void OnEnable()
+    {
+        GameManager.OnGameOver += OnGameOver;
+    }
+    private void OnDisable()
+    {
+        GameManager.OnGameOver -= OnGameOver;
+    }
+
+    private void OnGameOver()
+    {
+        _movementTween.Kill();
+    }
+
+    Tween _movementTween;
     private void StartMovement()
     {
-        map.transform.DOMoveY(-mapHeight, mapHeight / speed).SetEase(Ease.Linear).OnComplete(RestartMovement);
+        _movementTween = map.transform.DOMoveY(-mapHeight, mapHeight / speed).SetEase(Ease.Linear).OnComplete(RestartMovement);
     }
 
     private void RestartMovement()
     {
+        _movementTween.Kill();
         map.transform.position = Vector3.forward;
         StartMovement();
     }

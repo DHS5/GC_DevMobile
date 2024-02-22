@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+        Time.timeScale = 1f;
+        Debug.Log(EnemyManager.IsActive + " " + BulletManager.IsActive);
     }
 
     public void GameOver()
@@ -36,13 +38,20 @@ public class GameManager : MonoBehaviour
         OnGameOver?.Invoke();
         if (gameOverUI) gameOverUI.SetActive(true);
         Time.timeScale = 0;
+        Clean();
         DOVirtual.DelayedCall(3, OnGameEnd);
+    }
+
+    private void Clean()
+    {
+        BulletManager.Clear();
+        EnemyManager.Clear();
     }
 
     private void OnGameEnd()
     {
-        BulletManager.Clear();
-        EnemyManager.Clear();
+        UpdateManager.Clear();
+        
         SceneManager.LoadScene("MainMenu");
     }
 
