@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WP_BigSpiraleRotating
   m_EditorClassIdentifier: 
   fireRate: 1
-  bulletCount: 15
+  bulletCount: 10
   spreadAngle: 360

@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880063fe9451b39408e8cf5e33093139, type: 3}
   m_Name: ET_HawkerRed
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  relativeSize: 0.7
   maxHealth: 2000
+  rotationRate: 0
   movement: 1
   fixedRelativePosition: {x: 0, y: 0.5}
   path: 1

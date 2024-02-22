@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ET_BombSpiral
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: d7936170b57491647bf2036a0d4a53e6, type: 3}
-  relativeSize: 2
-  maxHealth: 100
+  relativeSize: 1
+  maxHealth: 500
   rotationRate: 0
   movement: 0
   fixedRelativePosition: {x: 0, y: 0.5}
