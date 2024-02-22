@@ -101,8 +101,6 @@ public class Enemy : PoolableObject, IDamageable
     {
         switch (_enemyType.Movement)
         {
-            case EnemyMovement.PATH:
-                break;
             case EnemyMovement.STATIC:
                 OnStaticUpdate(time);
                 break;
@@ -111,11 +109,11 @@ public class Enemy : PoolableObject, IDamageable
         weapon.Shoot(time);
     }
 
+    private float _currentRotation = 0;
     private void OnStaticUpdate(float time)
     {
-        if (weapon != null)
-        {
-        }
+        _currentRotation += 5f;
+        enemyRigidbody.MoveRotation(_currentRotation);
     }
 
     public override void MoveTo(Vector3 position)
