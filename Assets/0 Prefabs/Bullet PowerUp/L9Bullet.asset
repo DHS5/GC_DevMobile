@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 4096
   lifetime: 5
-  sprite: {fileID: 21300000, guid: 184c6999525f5634c9fdc1191784b3a8, type: 3}
+  sprite: {fileID: 21300000, guid: de50c5e3f967a7a41867163e0bceb30b, type: 3}
   color: {r: 0.9924528, g: 0.9924528, b: 0.9924528, a: 1}
   size: 1.15
   speedOverTime:
