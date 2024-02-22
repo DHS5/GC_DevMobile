@@ -67,13 +67,13 @@ public class PauseMenu : MonoBehaviour
     private void ActivateGodMod()
     {
         isGodMod = true;
-        GameManager.Instance.isPlayerGodMod = true;
+        GameManager.Instance.isPlayerGodMode = true;
     }
 
     private void DesactivateGodMod()
     {
         isGodMod = false;
-        GameManager.Instance.isPlayerGodMod = false;
+        GameManager.Instance.isPlayerGodMode = false;
     }
 
 

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private Player player;
 
-    public bool isPlayerGodMod = false;
+    public bool isPlayerGodMode = false;
 
     public Player Player => player;
 
