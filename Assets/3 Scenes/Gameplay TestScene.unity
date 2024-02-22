@@ -1840,10 +1840,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2678183460265705488, guid: c51dbbc2c222d4941b478ac373633e98, type: 3}
-      propertyPath: _bulletStrategy
-      value: 
-      objectReference: {fileID: 11400000, guid: 0ff9d69ac22af324a8082ec5e9e5af7f, type: 2}
     - target: {fileID: 4513703884920508342, guid: c51dbbc2c222d4941b478ac373633e98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
