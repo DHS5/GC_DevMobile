@@ -64,6 +64,7 @@ public class Enemy : PoolableObject, IDamageable
         {
             _doRotate = false;
             splineAnimate.Container = SplineManager.GetSplineContainer(enemyType.Path);
+            splineAnimate.MaxSpeed = enemyType.SpeedOnPath;
             splineAnimate.Restart(true);
         }
         else

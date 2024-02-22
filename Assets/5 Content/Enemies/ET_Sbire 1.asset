@@ -19,6 +19,7 @@ MonoBehaviour:
   movement: 0
   fixedRelativePosition: {x: 0, y: 0.5}
   path: 3
+  speedOnPath: 1
   weaponStrategy: {fileID: 11400000, guid: 352e8d9e54e9beb449dd186f85e095e5, type: 2}
   bulletStrategy: {fileID: 11400000, guid: c12a6183d04002a40b04c3f467af97f2, type: 2}
   score: 3000

@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 160
   lifetime: 5
-  sprite: {fileID: 21300000, guid: cece8d1f9cb155144ad039fd8a40e8e5, type: 3}
+  sprite: {fileID: 21300000, guid: 70eafa75ed7a5d849a6db80d58eea0c1, type: 3}
   color: {r: 0.9924528, g: 0.9924528, b: 0.9924528, a: 1}
   size: 0.7
+  sfxName: 
   speedOverTime:
     serializedVersion: 2
     m_Curve:
