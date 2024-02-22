@@ -46,21 +46,85 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNumber: 3
   waves:
-  - waveDuration: 5
-    enemiesToSpawn: []
-  - waveDuration: 20
+  - waveDelay: 0
     enemiesToSpawn:
-    - duration: 20
-      quantities: 050000000a00000014000000
+    - waveStartTime: 0
+      duration: 10
+      quantities: 020000000400000008000000
       enemyTypes:
-      - {fileID: 11400000, guid: c5aa9665309eddf4fb7ef054b0d71f41, type: 2}
-      - {fileID: 11400000, guid: c5aa9665309eddf4fb7ef054b0d71f41, type: 2}
-      - {fileID: 11400000, guid: c5aa9665309eddf4fb7ef054b0d71f41, type: 2}
-  - waveDuration: 30
+      - {fileID: 11400000, guid: c671c314ebe5bf647b4f4f8e4fd2db1e, type: 2}
+      - {fileID: 11400000, guid: c671c314ebe5bf647b4f4f8e4fd2db1e, type: 2}
+      - {fileID: 11400000, guid: c671c314ebe5bf647b4f4f8e4fd2db1e, type: 2}
+  - waveDelay: 5
     enemiesToSpawn:
-    - duration: 10
-      quantities: 03000000060000000a000000
+    - waveStartTime: 0
+      duration: 20
+      quantities: 070000000f0000001e000000
       enemyTypes:
-      - {fileID: 11400000, guid: 35d5cc11c1552f148b70b7ccb1765ec9, type: 2}
-      - {fileID: 11400000, guid: 35d5cc11c1552f148b70b7ccb1765ec9, type: 2}
-      - {fileID: 11400000, guid: 35d5cc11c1552f148b70b7ccb1765ec9, type: 2}
+      - {fileID: 11400000, guid: 49c4538c97b7c974fb4169b4a8eaf7d7, type: 2}
+      - {fileID: 11400000, guid: 49c4538c97b7c974fb4169b4a8eaf7d7, type: 2}
+      - {fileID: 11400000, guid: 49c4538c97b7c974fb4169b4a8eaf7d7, type: 2}
+  - waveDelay: 5
+    enemiesToSpawn:
+    - waveStartTime: 0
+      duration: 30
+      quantities: 010000000200000003000000
+      enemyTypes:
+      - {fileID: 11400000, guid: 9b1c5cb095d755a4dac45f0bdde522f8, type: 2}
+      - {fileID: 11400000, guid: 9b1c5cb095d755a4dac45f0bdde522f8, type: 2}
+      - {fileID: 11400000, guid: 9b1c5cb095d755a4dac45f0bdde522f8, type: 2}
+  - waveDelay: 5
+    enemiesToSpawn:
+    - waveStartTime: 0
+      duration: 5
+      quantities: 020000000200000002000000
+      enemyTypes:
+      - {fileID: 11400000, guid: e0dd81b024fc6ff4a96b264ba5e09061, type: 2}
+      - {fileID: 11400000, guid: e0dd81b024fc6ff4a96b264ba5e09061, type: 2}
+      - {fileID: 11400000, guid: e0dd81b024fc6ff4a96b264ba5e09061, type: 2}
+  - waveDelay: 5
+    enemiesToSpawn:
+    - waveStartTime: 0
+      duration: 15
+      quantities: 03000000050000000a000000
+      enemyTypes:
+      - {fileID: 11400000, guid: ae241848a143cdf439cbb34bffea3082, type: 2}
+      - {fileID: 11400000, guid: ae241848a143cdf439cbb34bffea3082, type: 2}
+      - {fileID: 11400000, guid: ae241848a143cdf439cbb34bffea3082, type: 2}
+    - waveStartTime: 30
+      duration: 15
+      quantities: 03000000050000000a000000
+      enemyTypes:
+      - {fileID: 11400000, guid: c671c314ebe5bf647b4f4f8e4fd2db1e, type: 2}
+      - {fileID: 11400000, guid: c671c314ebe5bf647b4f4f8e4fd2db1e, type: 2}
+      - {fileID: 11400000, guid: c671c314ebe5bf647b4f4f8e4fd2db1e, type: 2}
+    - waveStartTime: 60
+      duration: 15
+      quantities: 03000000050000000a000000
+      enemyTypes:
+      - {fileID: 11400000, guid: afb9cf2cd2b230f438c49a85c7b7142b, type: 2}
+      - {fileID: 11400000, guid: afb9cf2cd2b230f438c49a85c7b7142b, type: 2}
+      - {fileID: 11400000, guid: afb9cf2cd2b230f438c49a85c7b7142b, type: 2}
+  - waveDelay: 5
+    enemiesToSpawn:
+    - waveStartTime: 0
+      duration: 5
+      quantities: 010000000100000002000000
+      enemyTypes:
+      - {fileID: 11400000, guid: 923d1d003f3ba074fb82a047117384f3, type: 2}
+      - {fileID: 11400000, guid: 923d1d003f3ba074fb82a047117384f3, type: 2}
+      - {fileID: 11400000, guid: 923d1d003f3ba074fb82a047117384f3, type: 2}
+    - waveStartTime: 5
+      duration: 10
+      quantities: 020000000200000002000000
+      enemyTypes:
+      - {fileID: 11400000, guid: e3abac4d6300ae947a4358a99dec9810, type: 2}
+      - {fileID: 11400000, guid: e3abac4d6300ae947a4358a99dec9810, type: 2}
+      - {fileID: 11400000, guid: e3abac4d6300ae947a4358a99dec9810, type: 2}
+    - waveStartTime: 15
+      duration: 10
+      quantities: 020000000200000002000000
+      enemyTypes:
+      - {fileID: 11400000, guid: edeb908db3a730546971c65599d02536, type: 2}
+      - {fileID: 11400000, guid: edeb908db3a730546971c65599d02536, type: 2}
+      - {fileID: 11400000, guid: edeb908db3a730546971c65599d02536, type: 2}
