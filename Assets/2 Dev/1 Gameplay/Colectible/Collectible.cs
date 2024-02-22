@@ -1,12 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _2_Dev._1_Gameplay.Colectible
 {
     public class Collectible : PoolableObject
     {
-        [Header("References")] [SerializeField]
-        private Collider2D boxCollider;
+        [FormerlySerializedAs("boxCollider")] [Header("References")] [SerializeField]
+        private CircleCollider2D circleCollider;
 
         [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -27,14 +28,14 @@ namespace _2_Dev._1_Gameplay.Colectible
 
             spriteRenderer.sprite = data.Sprite;
             spriteRenderer.color = data.Color;
-            boxCollider.enabled = true;
+            circleCollider.enabled = true;
             transform.position = position;
         }
 
         public void Dispose()
         {
             IsActive = false;
-            boxCollider.enabled = false;
+            circleCollider.enabled = false;
 
             Pool.Dispose(this, Pool.PoolableType.COLLECTIBLE);
         }
