@@ -6,7 +6,10 @@ public enum EnemyPath
     FIRST,
     SECOND,
     BOSS,
-    BOSS_PERIPHERAL
+    BOSS_PERIPHERAL,
+    THIRD,
+    FOURTH,
+    FIFTH
 }
 
 public class SplineManager : MonoBehaviour
