@@ -105,7 +105,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: afb9cf2cd2b230f438c49a85c7b7142b, type: 2}
       - {fileID: 11400000, guid: afb9cf2cd2b230f438c49a85c7b7142b, type: 2}
       - {fileID: 11400000, guid: afb9cf2cd2b230f438c49a85c7b7142b, type: 2}
-  - waveDelay: 5
+  - waveDelay: 0
     enemiesToSpawn:
     - waveStartTime: 0
       duration: 5

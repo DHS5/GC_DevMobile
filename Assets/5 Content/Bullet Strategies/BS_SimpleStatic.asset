@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   lifetime: 5
-  sprite: {fileID: 21300000, guid: a28a9db4141be834ca57c19715f00e7a, type: 3}
+  sprite: {fileID: 21300000, guid: 3d5b4423f3c654e4192e8108e0648360, type: 3}
   color: {r: 0.6694627, g: 1, b: 0, a: 1}
   size: 0.5
   speedOverTime:
@@ -41,7 +41,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  speed: 0.2
+  speed: 0.1
   rotationOverTime:
     serializedVersion: 2
     m_Curve:
