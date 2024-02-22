@@ -82,9 +82,11 @@ public class Enemy : PoolableObject, IDamageable
 
     private void OnDead()
     {
+        Vector3 position = enemyTransform.position;
         GameManager.Instance.AddScore(_enemyType.Score);
         var collectibleData = CollectibleManager.Get();
-        if (collectibleData != null) Collectible.Spawn(collectibleData, enemyTransform.position);
+        if (collectibleData != null) Collectible.Spawn(collectibleData, position);
+        VFX.Spawn(position);
         Dispose();
     }
 
