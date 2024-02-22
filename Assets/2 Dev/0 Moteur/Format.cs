@@ -118,7 +118,7 @@ public class Format : MonoBehaviour
 
     public static Vector2 ComputeSize(float relativeSize, float ratio)
     {
-        var factor = relativeSize * ScaleFactor; //
+        var factor = relativeSize * ScaleFactor;
         return new Vector2(ratio * factor, factor);
     }
 
