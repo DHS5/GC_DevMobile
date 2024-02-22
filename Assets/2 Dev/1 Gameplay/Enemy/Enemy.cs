@@ -59,14 +59,17 @@ public class Enemy : PoolableObject, IDamageable
         _health = enemyType.MaxHealth;
         spriteRenderer.sprite = enemyType.Sprite;
         enemyTransform.SetRelativeSize(enemyType.RelativeSize, 1f);
+        
 
         if (enemyType.Movement == EnemyMovement.PATH)
         {
+            _doRotate = false;
             splineAnimate.Container = SplineManager.GetSplineContainer(enemyType.Path);
             splineAnimate.Restart(true);
         }
         else
         {
+            _doRotate = enemyType.RotationRate != 0;
             transform.SetRelativePosition(enemyType.FixedRelativePosition);
         }
 
@@ -100,18 +103,15 @@ public class Enemy : PoolableObject, IDamageable
 
     public void OnUpdate(float deltaTime, float time)
     {
-        switch (_enemyType.Movement)
-        {
-            case EnemyMovement.STATIC:
-                OnStaticUpdate(time);
-                break;
-        }
+        if (_doRotate)
+            OnUpdateRotation();
 
         weapon.Shoot(time);
     }
 
+    private bool _doRotate;
     private float _currentRotation = 0;
-    private void OnStaticUpdate(float time)
+    private void OnUpdateRotation()
     {
         _currentRotation += _enemyType.RotationRate;
         enemyRigidbody.MoveRotation(_currentRotation);
