@@ -239,12 +239,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2980928896504751468, guid: b2ba7a99bbb8f594cbd5fd3b946397e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3162977651854269695, guid: b2ba7a99bbb8f594cbd5fd3b946397e8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3162977651854269695, guid: b2ba7a99bbb8f594cbd5fd3b946397e8, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3303282103991999160, guid: b2ba7a99bbb8f594cbd5fd3b946397e8, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3723879342609930115, guid: b2ba7a99bbb8f594cbd5fd3b946397e8, type: 3}
