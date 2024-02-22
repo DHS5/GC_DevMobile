@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -89,6 +90,7 @@ public class WaveManager : MonoBehaviour
             _currentLevel = Mathf.Min(_currentLevel + 1, levelNumber - 1);
             //_waveSpawnTween = DOVirtual.DelayedCall(wave.waveDuration, SpawnWave);
         }
+        GC.Collect();
     }
 
     public void OnGameOver()
