@@ -82,6 +82,7 @@ public class Enemy : PoolableObject, IDamageable
 
     private void OnDead()
     {
+        GameManager.Instance.AddScore(_enemyType.Score);
         var collectibleData = CollectibleManager.Get();
         if (collectibleData != null) Collectible.Spawn(collectibleData, enemyTransform.position);
         Dispose();
@@ -121,6 +122,7 @@ public class Enemy : PoolableObject, IDamageable
         if (!IsActive) return;
 
         _health -= damage;
+        GameManager.Instance.AddScore((int)damage);
         if (_health <= 0) OnDead();
     }
 

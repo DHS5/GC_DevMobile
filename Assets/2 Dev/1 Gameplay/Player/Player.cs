@@ -64,6 +64,7 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
         AudioManager.Instance.PlayDamageSFX(hitSoundData);
         health -= damage;
         PlayerHUD.Instance.SetHealth(NormalizedHealth);
+        GameManager.Instance.AddScore(-10);
         if (health <= 0) Die();
     }
 
