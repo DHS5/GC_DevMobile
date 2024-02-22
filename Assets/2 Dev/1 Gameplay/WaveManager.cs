@@ -51,7 +51,7 @@ public class WaveManager : MonoBehaviour
         EnemyManager.OnAllEnemiesDead -= NextWave;
     }
 
-    private bool _finishedWave = false;
+    private bool _finishedWave = true;
     private void NextWave()
     {
         if (!_finishedWave) return;
