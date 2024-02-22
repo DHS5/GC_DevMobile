@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNumber: 3
   waves:
-  - waveDelay: 0
+  - waveDelay: 5
     enemiesToSpawn:
     - waveStartTime: 0
       duration: 10
@@ -105,7 +105,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: afb9cf2cd2b230f438c49a85c7b7142b, type: 2}
       - {fileID: 11400000, guid: afb9cf2cd2b230f438c49a85c7b7142b, type: 2}
       - {fileID: 11400000, guid: afb9cf2cd2b230f438c49a85c7b7142b, type: 2}
-  - waveDelay: 0
+  - waveDelay: 5
     enemiesToSpawn:
     - waveStartTime: 0
       duration: 5
