@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class VFX : PoolableObject
 {
+    private static int explosionTriggerHash = Animator.StringToHash("Explosion");
+
     [SerializeField] private Transform vfxTransform;
-    [SerializeField] private ParticleSystem explosionParticleSystem;
+    [SerializeField] private Animator animator;
     [SerializeField] private AudioData explosionAudioData;
 
 
@@ -22,9 +24,9 @@ public class VFX : PoolableObject
     public void Init(Vector3 position)
     {
         MoveTo(position);
-        explosionParticleSystem.Play();
+        animator.SetTrigger(explosionTriggerHash);
         AudioManager.Instance.PlayExplosionSFX(explosionAudioData);
-        DOVirtual.DelayedCall(explosionParticleSystem.main.duration, Dispose);
+        DOVirtual.DelayedCall(1f, Dispose);
     }
 
     public void Dispose()

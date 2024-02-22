@@ -588,6 +588,8 @@ MonoBehaviour:
     enumValues:
     - {fileID: 8143255827935807118}
     - {fileID: 1058502745588078590}
+    - {fileID: 1058502745588078590}
+    - {fileID: 1058502745588078590}
 --- !u!1 &8649928721054076639
 GameObject:
   m_ObjectHideFlags: 0

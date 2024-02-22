@@ -39,6 +39,9 @@ public class Pool : MonoBehaviour
         if (pooledCollectibles.IsValid())
             foreach (var collectible in pooledCollectibles)
                 collectible.transform.position = poolPos;
+        if (pooledVFXs.IsValid())
+            foreach (var vfx in pooledVFXs)
+                vfx.transform.position = poolPos;
     }
 
 #endif
