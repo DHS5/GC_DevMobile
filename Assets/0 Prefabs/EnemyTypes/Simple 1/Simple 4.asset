@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 37db97b27e62f754a9ca0faf029b0f72, type: 3}
   relativeSize: 1.4
-  maxHealth: 120
+  maxHealth: 200
   movement: 0
   fixedRelativePosition: {x: 0, y: 0.5}
   path: 5

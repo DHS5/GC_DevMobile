@@ -11,6 +11,8 @@ public class UpdateManager : MonoBehaviour
     public static float FixedDelta { get; private set; }
     public static float CurrentTime { get; private set; }
 
+    public static bool IsActive { get; set; } = true;
+
     private void Start()
     {
         FrameIndex = 0;
@@ -19,6 +21,8 @@ public class UpdateManager : MonoBehaviour
 
     private void Update()
     {
+        if (!IsActive) return;
+
         var deltaTime = Time.deltaTime;
         CurrentTime = Time.time;
 
@@ -28,6 +32,8 @@ public class UpdateManager : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!IsActive) return;
+
         OnLateUpdate?.Invoke();
     }
 

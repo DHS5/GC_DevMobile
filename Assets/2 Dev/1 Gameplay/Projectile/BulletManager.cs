@@ -14,6 +14,15 @@ public static class BulletManager
     private static List<Bullet> _toRegister = new();
     private static List<Bullet> _toUnregister = new();
 
+    public static void Init()
+    {
+        _toRegister.Clear();
+        _toUnregister.Clear();
+        _hasBullets = false;
+        _bullets.Clear();
+        IsActive = false;
+    }
+
     public static void Register(Bullet bullet)
     {
         if (IsActive)
