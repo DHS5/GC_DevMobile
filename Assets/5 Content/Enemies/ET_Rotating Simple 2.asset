@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: ET_Rotating Simple 2
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: dbe16332b9ce75c40a7d8a097d3a67be, type: 3}
-  relativeSize: 2
+  relativeSize: 0.7
   maxHealth: 500
+  rotationRate: 0
   movement: 0
   fixedRelativePosition: {x: 0, y: 0.5}
   path: 5

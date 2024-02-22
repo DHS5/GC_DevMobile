@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880063fe9451b39408e8cf5e33093139, type: 3}
   m_Name: ET_Sbire 1
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: a11289b4549d1eb48bf82ffb983a61eb, type: 3}
+  sprite: {fileID: 21300000, guid: 88abe73a34bf6a949bcec5538c854e1a, type: 3}
+  relativeSize: 0.7
   maxHealth: 1000
+  rotationRate: 0
   movement: 0
   fixedRelativePosition: {x: 0, y: 0.5}
   path: 3

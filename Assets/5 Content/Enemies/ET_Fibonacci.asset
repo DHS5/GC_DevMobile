@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: ET_Fibonacci
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 8e7bb248d015557479130cca12e4aa8d, type: 3}
-  relativeSize: 2
+  relativeSize: 0.7
   maxHealth: 1000
+  rotationRate: 0
   movement: 0
   fixedRelativePosition: {x: 0, y: 0.5}
   path: 0
