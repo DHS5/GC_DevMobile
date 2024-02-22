@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 880063fe9451b39408e8cf5e33093139, type: 3}
-  m_Name: Fibonacci
+  m_Name: Mine
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 2000
   movement: 0
   fixedRelativePosition: {x: 0, y: 0.5}
   path: 0
-  weaponStrategy: {fileID: 11400000, guid: 007543d6397cf09418b9ec74bf9020ad, type: 2}
-  bulletStrategy: {fileID: 11400000, guid: b7d2871d125d79e43b256d9b863cef78, type: 2}
+  weaponStrategy: {fileID: 11400000, guid: f84e57d8a766b2745914bc75b47bd479, type: 2}
+  bulletStrategy: {fileID: 11400000, guid: a892eed34acc3ed4d8f8089d600b7537, type: 2}
+  score: 500
