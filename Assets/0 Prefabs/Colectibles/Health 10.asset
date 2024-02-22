@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 0
   sprite: {fileID: 21300000, guid: 5bf62cd0253d6da4f92c06547badc97f, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
-  health: 10
+  health: 50
   bulletAddition: 0
   spreadAddition: 0
   fireRateAddition: 0

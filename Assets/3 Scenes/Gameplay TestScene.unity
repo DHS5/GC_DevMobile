@@ -1907,6 +1907,10 @@ PrefabInstance:
       propertyPath: collectibleChancePercentage
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
+      propertyPath: collectibleDatas.Array.data[8].weight
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3823567834400729821, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
       propertyPath: m_Name
       value: CollectibleManager
