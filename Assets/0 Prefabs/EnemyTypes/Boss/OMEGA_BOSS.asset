@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880063fe9451b39408e8cf5e33093139, type: 3}
   m_Name: OMEGA_BOSS
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: cd7576962a900f94aa3da5ebacc8093c, type: 3}
+  sprite: {fileID: 21300000, guid: bf3c1ce79957a7e46b88e206635b00c0, type: 3}
+  relativeSize: 1
   maxHealth: 20000
   movement: 0
   fixedRelativePosition: {x: 0, y: 0}

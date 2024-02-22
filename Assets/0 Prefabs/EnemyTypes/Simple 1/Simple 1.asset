@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880063fe9451b39408e8cf5e33093139, type: 3}
   m_Name: Simple 1
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 2c2ca7854c061ba4e8c795314868b78d, type: 3}
+  relativeSize: 1.2
   maxHealth: 100
   movement: 0
   fixedRelativePosition: {x: 0, y: 0.5}
