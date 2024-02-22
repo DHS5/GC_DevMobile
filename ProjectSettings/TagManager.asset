@@ -42,3 +42,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Down Clouds
+    uniqueID: 4164537853
+    locked: 0
+  - name: Bullets
+    uniqueID: 1598711731
+    locked: 0
+  - name: Planes
+    uniqueID: 3905593401
+    locked: 0
+  - name: Up Clouds
+    uniqueID: 400782255
+    locked: 0
+  - name: Explosions
+    uniqueID: 517772437
+    locked: 0
