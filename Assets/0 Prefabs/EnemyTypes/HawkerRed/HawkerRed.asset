@@ -18,3 +18,4 @@ MonoBehaviour:
   path: 1
   weaponStrategy: {fileID: 11400000, guid: c93b09b20290551459b30ccc8ec456e4, type: 2}
   bulletStrategy: {fileID: 11400000, guid: 2c8ad52f56408fa4b9202771b00fbb27, type: 2}
+  score: 1000
