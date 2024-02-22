@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Simple 5
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
+  relativeSize: 1
   maxHealth: 200
   movement: 0
   fixedRelativePosition: {x: 0, y: 0.5}
   path: 6
   weaponStrategy: {fileID: 11400000, guid: fb2569d1b87e5d543a24b7384de232f0, type: 2}
   bulletStrategy: {fileID: 11400000, guid: aa87cc64f719d2c4fb7b483ae1ba38ff, type: 2}
-  score: 0
+  score: 300

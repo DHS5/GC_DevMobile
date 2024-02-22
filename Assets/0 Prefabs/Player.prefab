@@ -271,7 +271,17 @@ MonoBehaviour:
   relativeSize: 1
   relativeStartPosition: {x: 0, y: -0.5}
   hitSoundData: {fileID: 11400000, guid: 29258956e9aba0247a42ad53d731a77c, type: 2}
-  lvlBulletStrategies: []
+  lvlBulletStrategies:
+  - {fileID: 11400000, guid: 77948e628a9059a489c5be0f46620b3b, type: 2}
+  - {fileID: 11400000, guid: e919709b25f9ca74b96aadba5e3c7c61, type: 2}
+  - {fileID: 11400000, guid: d05429ac807f1cc4fb3d979218d44a50, type: 2}
+  - {fileID: 11400000, guid: 939827291750eb44ba75dc245f5c6dd2, type: 2}
+  - {fileID: 11400000, guid: 06d8d96602ce64544a766c77a31161e8, type: 2}
+  - {fileID: 11400000, guid: fe9987d4e58dc9649a8615b4d1580cba, type: 2}
+  - {fileID: 11400000, guid: 7dc99c19a4f96f94dab61be9dac598c1, type: 2}
+  - {fileID: 11400000, guid: 5942935e0243e9a4badb45aaa2284292, type: 2}
+  - {fileID: 11400000, guid: 8c5eb4d70c21ac34191d40ae993284d3, type: 2}
+  - {fileID: 11400000, guid: 0ff9d69ac22af324a8082ec5e9e5af7f, type: 2}
   currentBulletStrategy: 0
 --- !u!114 &2678183460265705488
 MonoBehaviour:
@@ -287,8 +297,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 4404711213172806170}
   bulletLayer: 8
-  _weaponStrategy: {fileID: 11400000, guid: 73624b507e50f994583920c929631b59, type: 2}
-  _bulletStrategy: {fileID: 11400000, guid: cee788d1fcd78b34f9892ab55626b157, type: 2}
+  _weaponStrategy: {fileID: 11400000, guid: fc83530f83bdf4248a007d66e40b9d14, type: 2}
+  _bulletStrategy: {fileID: 11400000, guid: 77948e628a9059a489c5be0f46620b3b, type: 2}
 --- !u!114 &-4035836479837671531
 MonoBehaviour:
   m_ObjectHideFlags: 0
