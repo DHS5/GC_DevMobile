@@ -49,6 +49,14 @@ public class GameManager : MonoBehaviour
         Clean();
         DOVirtual.DelayedCall(3, OnGameEnd);
     }
+    
+    public void QuitGame()
+    {
+        OnGameOver?.Invoke();
+        Time.timeScale = 0;
+        Clean();
+        OnGameEnd();
+    }
 
     private void Clean()
     {
