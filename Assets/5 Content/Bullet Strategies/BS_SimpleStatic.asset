@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BS_SimpleStatic
   m_EditorClassIdentifier: 
   damage: 1
-  lifetime: 2
+  lifetime: 5
   sprite: {fileID: 21300000, guid: a28a9db4141be834ca57c19715f00e7a, type: 3}
   color: {r: 0.6694627, g: 1, b: 0, a: 1}
   size: 0.5

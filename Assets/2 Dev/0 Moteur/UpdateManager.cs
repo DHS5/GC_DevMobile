@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class UpdateManager : MonoBehaviour
 {
@@ -34,6 +35,16 @@ public class UpdateManager : MonoBehaviour
         {
             _lastTime = Time.time;
             PlayerHUD.Instance.SetFPS(1 / deltaTime);
+            var ramText = "Allocated Memory: " + (Profiler.GetTotalAllocatedMemoryLong() / 1048576) + "MB\nReserved Memory: " + (Profiler.GetTotalReservedMemoryLong() / 1048576) + "MB\nUnused Reserved Memory: " + (Profiler.GetTotalUnusedReservedMemoryLong() / 1048576) + "MB";
+            PlayerHUD.Instance.SetRamUsage(ramText);
+            
+            // //tx.AppendFormat("Time : {0} ms     Current FPS: {1}     AvgFPS: {2}\nGPU memory : {3}    Sys Memory : {4}\n", ms, fps, fpsav, SystemInfo.graphicsMemorySize, SystemInfo.systemMemorySize)
+            //
+            // .AppendFormat("TotalAllocatedMemory : {0}mb\nTotalReservedMemory : {1}mb\nTotalUnusedReservedMemory : {2}mb",
+            //     Profiler.GetTotalAllocatedMemory() / 1048576,
+            //     Profiler.GetTotalReservedMemory() / 1048576,
+            //     Profiler.GetTotalUnusedReservedMemory() / 1048576
+            // );
         }
         
     }

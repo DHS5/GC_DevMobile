@@ -15,7 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 37db97b27e62f754a9ca0faf029b0f72, type: 3}
   relativeSize: 0.7
   maxHealth: 300
-  rotationRate: 20
+  rotationRate: 1
   movement: 1
   fixedRelativePosition: {x: 0.5, y: 0.5}
   path: 0

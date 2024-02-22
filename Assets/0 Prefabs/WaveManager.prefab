@@ -128,3 +128,17 @@ MonoBehaviour:
       - {fileID: 11400000, guid: edeb908db3a730546971c65599d02536, type: 2}
       - {fileID: 11400000, guid: edeb908db3a730546971c65599d02536, type: 2}
       - {fileID: 11400000, guid: edeb908db3a730546971c65599d02536, type: 2}
+    - waveStartTime: 15
+      duration: 15
+      quantities: 020000000300000005000000
+      enemyTypes:
+      - {fileID: 11400000, guid: 98bd2d19d38eb244f934b0bc2666ed78, type: 2}
+      - {fileID: 11400000, guid: 98bd2d19d38eb244f934b0bc2666ed78, type: 2}
+      - {fileID: 11400000, guid: 98bd2d19d38eb244f934b0bc2666ed78, type: 2}
+    - waveStartTime: 15
+      duration: 15
+      quantities: 020000000300000005000000
+      enemyTypes:
+      - {fileID: 11400000, guid: a58956de1de760c469e87bc81be94d39, type: 2}
+      - {fileID: 11400000, guid: a58956de1de760c469e87bc81be94d39, type: 2}
+      - {fileID: 11400000, guid: a58956de1de760c469e87bc81be94d39, type: 2}

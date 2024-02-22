@@ -27,6 +27,7 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI FPSText;
     [SerializeField] private TextMeshProUGUI BulletCountText;
+    [SerializeField] private TextMeshProUGUI RamUsageText;
 
     private void Init()
     {
@@ -52,5 +53,10 @@ public class PlayerHUD : MonoBehaviour
     public void SetBulletCount(int maxBullet)
     {
         BulletCountText.text = $"Bullet Count: {maxBullet}";
+    }
+
+    public void SetRamUsage(string getMemoryUsage)
+    {
+        RamUsageText.text = getMemoryUsage;
     }
 }
