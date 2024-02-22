@@ -1033,6 +1033,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefeatScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 5064633003999739941, guid: f064c3319dd15704096ac9a3d1fd2f05, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8540850598236470110, guid: f064c3319dd15704096ac9a3d1fd2f05, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1040,13 +1044,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4232025042674227418, guid: f064c3319dd15704096ac9a3d1fd2f05, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3163084917407885566}
   m_SourcePrefab: {fileID: 100100000, guid: f064c3319dd15704096ac9a3d1fd2f05, type: 3}
 --- !u!224 &369270704181490361 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 225650311168095303, guid: f064c3319dd15704096ac9a3d1fd2f05, type: 3}
   m_PrefabInstance: {fileID: 449870115477079806}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4361012924357336612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4232025042674227418, guid: f064c3319dd15704096ac9a3d1fd2f05, type: 3}
+  m_PrefabInstance: {fileID: 449870115477079806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3163084917407885566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4361012924357336612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &6815053731810039830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1058,6 +1087,10 @@ PrefabInstance:
     - target: {fileID: 2596616417521686783, guid: a9e8eea4d23b6dc478d91d88e40b534b, type: 3}
       propertyPath: m_text
       value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596616417521686783, guid: a9e8eea4d23b6dc478d91d88e40b534b, type: 3}
+      propertyPath: m_fontSize
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7672371717962652979, guid: a9e8eea4d23b6dc478d91d88e40b534b, type: 3}
       propertyPath: m_Pivot.x
