@@ -1,6 +1,5 @@
 using System;
 using DG.Tweening;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,7 +29,6 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         Time.timeScale = 1f;
-        Debug.Log(EnemyManager.IsActive + " " + BulletManager.IsActive);
     }
 
     public void GameOver()
