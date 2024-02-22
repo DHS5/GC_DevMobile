@@ -42,7 +42,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  speed: 1
+  speed: 0.7
   rotationOverTime:
     serializedVersion: 2
     m_Curve:
