@@ -52,6 +52,10 @@ public class WaveManager : MonoBehaviour
     }
 
     private bool _finishedWave = true;
+    private void FinishedWave()
+    {
+        _finishedWave = true;
+    }
     private void NextWave()
     {
         if (!_finishedWave) return;
@@ -73,6 +77,7 @@ public class WaveManager : MonoBehaviour
         if (enemyWave.Length > 0)
         {
             float interval;
+            int quantity;
 
             for (var i = 0; i < enemyWave.Length; i++)
                 if (enemyWave[i].quantities[_currentLevel] > 0)
@@ -80,13 +85,14 @@ public class WaveManager : MonoBehaviour
                     seq = DOTween.Sequence();
                     interval = enemyWave[i].duration / enemyWave[i].quantities[_currentLevel];
                     EnemyType enemyType = enemyWave[i].enemyTypes[_currentLevel];
+                    quantity = enemyWave[i].quantities[_currentLevel];
                     if (enemyWave[i].waveStartTime > 0) seq.AppendInterval(enemyWave[i].waveStartTime);
-                    for (var j = 0; j < enemyWave[i].quantities[_currentLevel]; j++)
+                    for (var j = 0; j < quantity; j++)
                     {
                         seq.AppendCallback(() => Enemy.Spawn(enemyType));
-                        seq.AppendInterval(interval);
+                        if (j < quantity - 1) seq.AppendInterval(interval);
                     }
-                    seq.AppendCallback(() => _finishedWave = true);
+                    seq.AppendCallback(FinishedWave);
                     _waveSequences.Add(seq);
                 }
         }
