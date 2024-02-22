@@ -80,8 +80,8 @@ public class Bullet : PoolableObject
         if (collision.gameObject.TryGetComponent(out IDamageable damageable))
         {
             damageable.TakeDamage(_strategy.Damage);
-            Dispose();
         }
+        Dispose();
     }
 
     public void Dispose()

@@ -22,7 +22,7 @@ public static class ExtensionMethods
 
     #endregion
 
-    #region Sprite Renderer
+    #region Transform
 
     /// <summary>
     /// Set the relative size (scale) of the SpriteRenderer
