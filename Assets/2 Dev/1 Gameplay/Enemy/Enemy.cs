@@ -53,6 +53,7 @@ public class Enemy : PoolableObject, IDamageable
         _enemyType = enemyType;
         IsActive = true;
         _health = enemyType.MaxHealth;
+        spriteRenderer.sprite = enemyType.Sprite;
 
         if (enemyType.Movement == EnemyMovement.PATH)
         {
