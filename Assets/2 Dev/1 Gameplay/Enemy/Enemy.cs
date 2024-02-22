@@ -40,7 +40,7 @@ public class Enemy : PoolableObject, IDamageable
     public static Enemy Spawn(EnemyType type, Action onDead = null)
     {
         var e = Pool.Get<Enemy>(Pool.PoolableType.ENEMY);
-        e.Init(type);
+        e.Init(type, onDead);
         return e;
     }
 
@@ -58,6 +58,7 @@ public class Enemy : PoolableObject, IDamageable
         IsActive = true;
         _health = enemyType.MaxHealth;
         spriteRenderer.sprite = enemyType.Sprite;
+        enemyTransform.SetRelativeSize(enemyType.RelativeSize, 1f);
 
         if (enemyType.Movement == EnemyMovement.PATH)
         {
