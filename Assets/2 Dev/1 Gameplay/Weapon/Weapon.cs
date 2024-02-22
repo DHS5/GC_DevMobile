@@ -37,7 +37,7 @@ public class Weapon : MonoBehaviour
 
     public void LevelUp(int bulletCountAddition, float spreadAddition, float fireRatePercent)
     {
-        _fireRate = _fireRate * fireRatePercent;
+        if (fireRatePercent != 0) _fireRate *= fireRatePercent;
         _bulletCount += bulletCountAddition;
         _spread += spreadAddition;
         _demiSpread = _spread / 2f;
