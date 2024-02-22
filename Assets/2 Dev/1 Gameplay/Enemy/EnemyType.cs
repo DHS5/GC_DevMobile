@@ -7,6 +7,7 @@ public class EnemyType : ScriptableObject
     [SerializeField] private Sprite sprite;
     [SerializeField] private float relativeSize = 1f;
     [SerializeField] private float maxHealth = 20;
+    [SerializeField] private float rotationRate;
     [SerializeField] private Enemy.EnemyMovement movement;
     [SerializeField] private Vector2 fixedRelativePosition = new(0, 0.5f);
     [SerializeField] private EnemyPath path;
@@ -23,4 +24,5 @@ public class EnemyType : ScriptableObject
     public BulletStrategy BulletStrategy => bulletStrategy;
     public Vector2 FixedRelativePosition => fixedRelativePosition;
     public int Score => score;
+    public float RotationRate => rotationRate;
 }
