@@ -51,16 +51,18 @@ public class WaveManager : MonoBehaviour
         EnemyManager.OnAllEnemiesDead -= NextWave;
     }
 
-    private bool _finishedWave = true;
+    private int _waveToFinish = 0;
+    private int _finishedWave = 0;
     private void FinishedWave()
     {
-        _finishedWave = true;
+        _finishedWave++;
     }
     private void NextWave()
     {
-        if (!_finishedWave) return;
-        _finishedWave = false;
-        //Optimization.GCCollect();
+        if (_finishedWave != _waveToFinish) return;
+        
+        Debug.Log("next wave " + _currentWave + " " + _currentLevel);
+        
         DOVirtual.DelayedCall(waves[_currentWave].waveDelay / 2, Optimization.GCCollect);
         _waveSpawnTween = DOVirtual.DelayedCall(waves[_currentWave].waveDelay, SpawnWave);
     }
@@ -68,6 +70,7 @@ public class WaveManager : MonoBehaviour
     private List<Sequence> _waveSequences = new();
     private void SpawnWave()
     {
+        Debug.Log("spawn wave " + _currentWave + " " + _currentLevel);
         _waveSequences.Clear();
         var wave = waves[_currentWave];
         var enemyWave = wave.GetEnemiesSpawnList();
@@ -79,7 +82,10 @@ public class WaveManager : MonoBehaviour
             float interval;
             int quantity;
 
+            _waveToFinish = enemyWave.Length;
+            _finishedWave = 0;
             for (var i = 0; i < enemyWave.Length; i++)
+            {
                 if (enemyWave[i].quantities[_currentLevel] > 0)
                 {
                     seq = DOTween.Sequence();
@@ -95,6 +101,7 @@ public class WaveManager : MonoBehaviour
                     seq.AppendCallback(FinishedWave);
                     _waveSequences.Add(seq);
                 }
+            }
         }
 
         if (!lastWave)
