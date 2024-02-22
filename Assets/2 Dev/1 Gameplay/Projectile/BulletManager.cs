@@ -108,9 +108,15 @@ public static class BulletManager
         UpdateManager.OnFixedUpdate -= OnUpdate;
     }
 
+    private static int _maxBullet;
     private static void OnUpdate(int frameIndex, float deltaTime, float time)
     {
         foreach (var bullet in _bullets) bullet.OnUpdate(deltaTime, time);
+        if (_bullets.Count > _maxBullet)
+        {
+            _maxBullet = _bullets.Count;
+            Debug.Log(_maxBullet);
+        }
 
         DoRegistrations();
     }
