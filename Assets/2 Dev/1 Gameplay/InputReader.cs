@@ -17,6 +17,7 @@ public class InputReader : MonoBehaviour
 
         PauseMenu.OnGamePause += OnGamePaused;
         PauseMenu.OnGameResume += OnGameResumed;
+        GameManager.OnGameOver += OnGamePaused;
     }
 
     private void OnDisable()
@@ -26,6 +27,7 @@ public class InputReader : MonoBehaviour
 
         PauseMenu.OnGamePause -= OnGamePaused;
         PauseMenu.OnGameResume -= OnGameResumed;
+        GameManager.OnGameOver -= OnGamePaused;
     }
 
     private bool _startTouch = true;
