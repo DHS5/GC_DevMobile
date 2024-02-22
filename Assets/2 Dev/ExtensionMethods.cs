@@ -22,7 +22,7 @@ public static class ExtensionMethods
 
     #endregion
 
-    #region Sprite Renderer
+    #region Transform
 
     /// <summary>
     /// Set the relative size (scale) of the SpriteRenderer
@@ -74,8 +74,8 @@ public static class ExtensionMethods
     {
         var pos = Format.ComputePosition(relativeDelta);
         var newPos = transform.position + pos;
-        var x = Format.DemiBounds.x * .83f;
-        var y = Format.DemiBounds.y * .75f;
+        var x = Format.DemiBounds.x * .85f;
+        var y = Format.DemiBounds.y * .95f;
         newPos.x = Mathf.Clamp(newPos.x, -x, x);
         newPos.y = Mathf.Clamp(newPos.y, -y, y);
         transform.position = newPos;
