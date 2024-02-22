@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f36ddc4172934acf86f9c03147295d91, type: 3}
-  m_Name: BOSS_bullet
+  m_Name: "Static styl\xE9 bullet"
   m_EditorClassIdentifier: 
   damage: 10
   lifetime: 5
@@ -24,17 +24,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.27747354
-      outSlope: -0.27747354
+      inSlope: 3.2474136
+      outSlope: 3.2474136
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.81072176
-      value: 0.77504617
-      inSlope: 0.45550436
-      outSlope: 0.45550436
+      time: 0.24461535
+      value: 1.7943672
+      inSlope: 0.8136549
+      outSlope: 0.8136549
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9850791
+      value: 0.59473914
+      inSlope: 12.770266
+      outSlope: 12.770266
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -42,8 +51,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1.1884823
-      outSlope: 1.1884823
+      inSlope: 27.160635
+      outSlope: 27.160635
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -51,7 +60,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  speed: 0.9
+  speed: 1
   rotationOverTime:
     serializedVersion: 2
     m_Curve:
@@ -76,4 +85,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  rotation: 160
+  rotation: 200
