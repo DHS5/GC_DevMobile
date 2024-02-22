@@ -71,7 +71,11 @@ public class AudioManager : MonoBehaviour
 
     public void PlayShootSFX(AudioData data)
     {
-        if (_currentShootSound == data) return;
+        if (_currentShootSound == data)
+        {
+            shootSource.Play();
+            return;
+        }
 
         _currentShootSound = data;
         shootSource.clip = data.Clip;
@@ -81,6 +85,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlayUISFX(AudioData data)
     {
+        if (_currentUISound == data)
+        {
+            UISource.Play();
+            return;
+        }
+
         _currentUISound = data;
         UISource.clip = data.Clip;
         UISource.Play();
@@ -89,7 +99,11 @@ public class AudioManager : MonoBehaviour
 
     public void PlayDamageSFX(AudioData data)
     {
-        if (_currentDamageSound == data) return;
+        if (_currentDamageSound == data)
+        {
+            damageSource.Play();
+            return;
+        }
 
         _currentDamageSound = data;
         damageSource.clip = data.Clip;
@@ -99,7 +113,11 @@ public class AudioManager : MonoBehaviour
 
     public void PlayExplosionSFX(AudioData data)
     {
-        if (_currentExplosionSound == data) return;
+        if (_currentExplosionSound == data)
+        {
+            explosionSource.Play();
+            return;
+        }
 
         _currentExplosionSound = data;
         explosionSource.clip = data.Clip;
