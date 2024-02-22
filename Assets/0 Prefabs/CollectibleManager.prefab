@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5567644484227948ac503f0edd2a7bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleChancePercentage: 0.05
+  collectibleChancePercentage: 0.2
   collectibleDatas:
   - collectibleData: {fileID: 11400000, guid: 96cff25beaf3ac343bb464afd0e025bb, type: 2}
     weight: 40
@@ -55,12 +55,13 @@ MonoBehaviour:
   - collectibleData: {fileID: 11400000, guid: 38b93a38e3895a3408e3eb9dcad2bc8c, type: 2}
     weight: 10
   - collectibleData: {fileID: 11400000, guid: 43f1d873f4e55984daabd789c5e1ed81, type: 2}
-    weight: 10
+    weight: 1
   - collectibleData: {fileID: 11400000, guid: a71d0235153ddac44bac2b058bd65e3f, type: 2}
     weight: 10
   - collectibleData: {fileID: 11400000, guid: 42ba29cfc1254fc43915a9a95e59e147, type: 2}
-    weight: 10
+    weight: 1
   - collectibleData: {fileID: 11400000, guid: c6e94a787273b124499005447acb26e5, type: 2}
     weight: 10
   - collectibleData: {fileID: 11400000, guid: 0476b2265051b9a4493dd2e68d3e8e75, type: 2}
     weight: 10
+  _datas: []
