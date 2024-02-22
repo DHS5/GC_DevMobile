@@ -59,14 +59,13 @@ public class WaveManager : MonoBehaviour
         if (enemyWave.Length > 0)
         {
             float interval;
-            EnemyType enemyType;
 
             for (var i = 0; i < enemyWave.Length; i++)
                 if (enemyWave[i].quantities[_currentLevel] > 0)
                 {
                     seq = DOTween.Sequence();
                     interval = enemyWave[i].duration / enemyWave[i].quantities[_currentLevel];
-                    enemyType = enemyWave[i].enemyTypes[_currentLevel];
+                    EnemyType enemyType = enemyWave[i].enemyTypes[_currentLevel];
                     if (enemyWave[i].startTime > 0) seq.AppendInterval(enemyWave[i].startTime);
                     for (var j = 0; j < enemyWave[i].quantities[_currentLevel]; j++)
                     {
