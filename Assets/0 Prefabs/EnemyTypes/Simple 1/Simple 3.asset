@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Simple 3
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: e1ffcd0b4903bf943851ad6412aa4a52, type: 3}
-  relativeSize: 1
+  relativeSize: 1.4
   maxHealth: 200
   movement: 0
   fixedRelativePosition: {x: 0, y: 0.5}

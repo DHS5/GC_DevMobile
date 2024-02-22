@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4104d748ba7c9c149bd5279a10749d2b, type: 3}
   m_Name: Simple WP 2
   m_EditorClassIdentifier: 
-  fireRate: 0.5
+  fireRate: 0.7
   bulletCount: 2
   spreadAngle: 5
