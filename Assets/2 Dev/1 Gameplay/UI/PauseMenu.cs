@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     private bool isPaused = false;
+    private bool isGodMod = false;
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject optionsCanvas;
     [SerializeField] private GameObject otherCanvas;
@@ -54,6 +55,27 @@ public class PauseMenu : MonoBehaviour
         else
             Pause();
     }
+    public void ToggleGodMod()
+    {
+        AudioManager.Instance.PlayUISFX(clickSoundData);
+        if (isGodMod)
+            ActivateGodMod();
+        else
+            DesactivateGodMod();
+    }
+
+    private void ActivateGodMod()
+    {
+        isGodMod = true;
+        GameManager.Instance.isPlayerGodMod = true;
+    }
+
+    private void DesactivateGodMod()
+    {
+        isGodMod = false;
+        GameManager.Instance.isPlayerGodMod = false;
+    }
+
 
     public void ExitGame()
     {

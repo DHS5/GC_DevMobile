@@ -614,11 +614,11 @@ PrefabInstance:
     - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
       propertyPath: waves.Array.data[1].enemiesToSpawn.Array.data[0].enemyTypes.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: c671c314ebe5bf647b4f4f8e4fd2db1e, type: 2}
+      objectReference: {fileID: 11400000, guid: afb9cf2cd2b230f438c49a85c7b7142b, type: 2}
     - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
       propertyPath: waves.Array.data[1].enemiesToSpawn.Array.data[0].enemyTypes.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: c671c314ebe5bf647b4f4f8e4fd2db1e, type: 2}
+      objectReference: {fileID: 11400000, guid: afb9cf2cd2b230f438c49a85c7b7142b, type: 2}
     - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
       propertyPath: waves.Array.data[1].enemiesToSpawn.Array.data[0].quantities.Array.data[0]
       value: 2
@@ -3513,33 +3513,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1147787038230968740, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
-      propertyPath: clickSoundData
-      value: 
-      objectReference: {fileID: 11400000, guid: d21bad39e7473d648bb01562db777c1c, type: 2}
-    - target: {fileID: 1844070145779095115, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 700726700132206770}
-    - target: {fileID: 1844070145779095115, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: exitOptions
-      objectReference: {fileID: 0}
-    - target: {fileID: 1844070145779095115, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: OptionMenu, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6591898790901479641, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8259782441246006997, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 8259782441246006997, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9140269683026959155, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
       propertyPath: m_Pivot.x
@@ -3626,17 +3606,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
---- !u!114 &700726700132206770 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1058795026879176149, guid: f724c5b045e1ab2429e25597153d1076, type: 3}
-  m_PrefabInstance: {fileID: 700726700132206769}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa0a2f89bbaf254883cec88f2fef071, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4168325740501085647
 PrefabInstance:
   m_ObjectHideFlags: 0

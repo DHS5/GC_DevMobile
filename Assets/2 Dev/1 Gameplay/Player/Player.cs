@@ -62,10 +62,13 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
     public void TakeDamage(float damage)
     {
         AudioManager.Instance.PlayDamageSFX(hitSoundData);
-        health -= damage;
-        PlayerHUD.Instance.SetHealth(NormalizedHealth);
-        GameManager.Instance.AddScore(-10);
-        if (health <= 0) Die();
+        if (!GameManager.Instance.isPlayerGodMod)
+        {
+            health -= damage;
+            PlayerHUD.Instance.SetHealth(NormalizedHealth);
+            GameManager.Instance.AddScore(-10);
+            if (health <= 0) Die();
+        }
     }
 
     public float NormalizedHealth => health / maxHealth;

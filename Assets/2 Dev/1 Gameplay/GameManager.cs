@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private Player player;
 
+    public bool isPlayerGodMod = false;
+
     public Player Player => player;
 
     public static GameManager Instance { get; private set; }
