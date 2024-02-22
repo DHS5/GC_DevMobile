@@ -72,7 +72,7 @@ public static class BulletManager
         }
     }
 
-    private static void Clear()
+    public static void Clear()
     {
         _toRegister.Clear();
         _toUnregister.Clear();
