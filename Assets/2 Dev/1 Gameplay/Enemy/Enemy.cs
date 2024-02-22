@@ -23,7 +23,6 @@ public class Enemy : PoolableObject, IDamageable
     [SerializeField] private SplineAnimate splineAnimate;
     [SerializeField] private Weapon weapon;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private Rigidbody2D enemyRigidbody;
 
     private float _health;
