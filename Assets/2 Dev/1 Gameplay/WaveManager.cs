@@ -51,8 +51,11 @@ public class WaveManager : MonoBehaviour
         EnemyManager.OnAllEnemiesDead -= NextWave;
     }
 
+    private bool _finishedWave = false;
     private void NextWave()
-    {        
+    {
+        if (!_finishedWave) return;
+        _finishedWave = false;
         //Optimization.GCCollect();
         DOVirtual.DelayedCall(waves[_currentWave].waveDelay / 2, Optimization.GCCollect);
         _waveSpawnTween = DOVirtual.DelayedCall(waves[_currentWave].waveDelay, SpawnWave);
@@ -80,10 +83,10 @@ public class WaveManager : MonoBehaviour
                     if (enemyWave[i].waveStartTime > 0) seq.AppendInterval(enemyWave[i].waveStartTime);
                     for (var j = 0; j < enemyWave[i].quantities[_currentLevel]; j++)
                     {
-                        //if (lastWave && i == 0) seq.AppendCallback(() => Enemy.Spawn(enemyType, SpawnWave));
                         seq.AppendCallback(() => Enemy.Spawn(enemyType));
                         seq.AppendInterval(interval);
                     }
+                    seq.AppendCallback(() => _finishedWave = true);
                     _waveSequences.Add(seq);
                 }
         }
