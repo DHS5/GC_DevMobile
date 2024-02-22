@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sbire WP
   m_EditorClassIdentifier: 
   fireRate: 1
-  bulletCount: 4
+  bulletCount: 6
   spreadAngle: 360
