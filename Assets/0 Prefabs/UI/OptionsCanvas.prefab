@@ -362,6 +362,8 @@ MonoBehaviour:
   musicToggle: {fileID: 8851416033547166797}
   sfxToggle: {fileID: 5320635951024877917}
   previousMenu: {fileID: 0}
+  toggleAudio: {fileID: 11400000, guid: d21bad39e7473d648bb01562db777c1c, type: 2}
+  sliderAudio: {fileID: 11400000, guid: 73df294a35eee714e82f6e6aea8377db, type: 2}
 --- !u!223 &7018702059322638379
 Canvas:
   m_ObjectHideFlags: 0
@@ -767,7 +769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_MaxValue
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_MinValue
@@ -940,7 +942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_MaxValue
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2792650944804031697, guid: cd60f41ca87d0af468866aea5ef6c4d1, type: 3}
       propertyPath: m_MinValue

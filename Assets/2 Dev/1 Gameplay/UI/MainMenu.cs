@@ -8,13 +8,13 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        AudioManager.Instance.PlayShootSFX(clickSoundData);
+        AudioManager.Instance.PlayUISFX(clickSoundData);
         UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
     }
 
     public void Options()
     {
-        AudioManager.Instance.PlayShootSFX(clickSoundData);
+        AudioManager.Instance.PlayUISFX(clickSoundData);
         optionsCanvas.SetActive(true);
         gameObject.SetActive(false);
     }

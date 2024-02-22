@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour
 
     public void TogglePause()
     {
-        AudioManager.Instance.PlayShootSFX(clickSoundData);
+        AudioManager.Instance.PlayUISFX(clickSoundData);
         if (isPaused)
             Resume();
         else
@@ -53,7 +53,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ExitGame()
     {
-        AudioManager.Instance.PlayShootSFX(clickSoundData);
+        AudioManager.Instance.PlayUISFX(clickSoundData);
         SceneManager.LoadScene(gameSceneName);
     }
 }

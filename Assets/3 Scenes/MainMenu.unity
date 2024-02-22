@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -223,6 +223,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 773318954310870738, guid: b2ba7a99bbb8f594cbd5fd3b946397e8, type: 3}
+      propertyPath: toggleAudio
+      value: 
+      objectReference: {fileID: 11400000, guid: d21bad39e7473d648bb01562db777c1c, type: 2}
     - target: {fileID: 783135179056701748, guid: b2ba7a99bbb8f594cbd5fd3b946397e8, type: 3}
       propertyPath: m_text
       value: "J\xE9r\xF4me Cornu, Mathieu Ponal, Robin Douet, Thomas Dhaussy, L\xE9o
@@ -232,6 +236,10 @@ PrefabInstance:
       propertyPath: m_margin.x
       value: 1.1976318
       objectReference: {fileID: 0}
+    - target: {fileID: 1138209017951934020, guid: b2ba7a99bbb8f594cbd5fd3b946397e8, type: 3}
+      propertyPath: clickSoundData
+      value: 
+      objectReference: {fileID: 11400000, guid: d21bad39e7473d648bb01562db777c1c, type: 2}
     - target: {fileID: 1233352524308585567, guid: b2ba7a99bbb8f594cbd5fd3b946397e8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.4949495
@@ -520,6 +528,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2547353338680560710, guid: db1e11ef64bbc3d488009d388846e462, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 6079170896148694560, guid: db1e11ef64bbc3d488009d388846e462, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
