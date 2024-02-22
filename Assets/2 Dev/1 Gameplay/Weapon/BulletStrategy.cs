@@ -12,7 +12,6 @@ namespace _2_Dev._1_Gameplay.Weapon
         [SerializeField] protected Sprite sprite;
         [SerializeField] protected Color color;
         [SerializeField] protected float size;
-        [SerializeField] protected string sfxName;
 
 
         [Space(15f)] [SerializeField] private AnimationCurve speedOverTime;
@@ -25,8 +24,6 @@ namespace _2_Dev._1_Gameplay.Weapon
         public Sprite Sprite => sprite;
         public Color Color => color;
         public float Size => size;
-
-        public string SfxName => sfxName;
 
 
         public float CurrentSpeed(float normalizedTime)
