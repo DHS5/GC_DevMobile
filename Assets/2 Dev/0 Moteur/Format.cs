@@ -76,9 +76,13 @@ public class Format : MonoBehaviour
         {
             ScaleFactor = RatioDiff;
         }
-        else
+        else if (ResolutionDelta.x >= 1f || ResolutionDelta.y >= 1f)
         {
             ScaleFactor = Mathf.Min(ResolutionDelta.x, ResolutionDelta.y);
+        }
+        else
+        {
+            ScaleFactor = Mathf.Max(ResolutionDelta.x, ResolutionDelta.y, RatioDiff);
         }
         //if (ResolutionDelta.x >= 1f && ResolutionDelta.y >= 1f)
         //{
