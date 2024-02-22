@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -40,7 +41,9 @@ public class GameManager : MonoBehaviour
 
     private void OnGameEnd()
     {
-        // TODO
+        BulletManager.Clear();
+        EnemyManager.Clear();
+        SceneManager.LoadScene("MainMenu");
     }
 
 
