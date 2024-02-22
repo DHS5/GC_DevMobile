@@ -18,5 +18,5 @@ MonoBehaviour:
   health: 0
   bulletAddition: 0
   spreadAddition: 0
-  fireRateAddition: 0.3
+  fireRateAddition: 0.8
   scoreAddition: 0
