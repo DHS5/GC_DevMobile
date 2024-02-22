@@ -14,6 +14,15 @@ public static class EnemyManager
     private static List<Enemy> _toRegister = new();
     private static List<Enemy> _toUnregister = new();
 
+    public static void Init()
+    {
+        _toRegister.Clear();
+        _toUnregister.Clear();
+        _hasEnemy = false;
+        _enemies.Clear();
+        IsActive = false;
+    }
+
     public static void Register(Enemy enemy)
     {
         if (IsActive)

@@ -28,7 +28,15 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
+
+        Init();
+    }
+
+    private void Init()
+    {
         Time.timeScale = 1f;
+        BulletManager.Init();
+        EnemyManager.Init();
     }
 
     public void GameOver()
