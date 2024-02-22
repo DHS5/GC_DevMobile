@@ -62,7 +62,7 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
     public void TakeDamage(float damage)
     {
         AudioManager.Instance.PlayDamageSFX(hitSoundData);
-        if (GameManager.Instance.isPlayerGodMod) return;
+        if (GameManager.Instance.isPlayerGodMode) return;
         health -= damage;
         PlayerHUD.Instance.SetHealth(NormalizedHealth);
         GameManager.Instance.AddScore(-10);
