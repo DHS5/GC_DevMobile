@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 010f5cc34238d1f458bcca205d1ecc31, type: 3}
-  m_Name: AD Shoot 1
+  m_Name: AD Slider
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
+  clip: {fileID: 8300000, guid: 23fbc2d4424fb48409ab950adbcb8407, type: 3}
   relativeVolume: 0.3

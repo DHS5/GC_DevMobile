@@ -11,7 +11,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource musicSource;
 
-    [Space(5f)] [SerializeField] private AudioSource shootSource;
+    [Space(5f)][SerializeField] private AudioSource UISource;
+    [SerializeField] private AudioSource shootSource;
     [SerializeField] private AudioSource damageSource;
     [SerializeField] private AudioSource explosionSource;
 
@@ -26,6 +27,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] [Range(0f, 1f)] private float _soundVolume = 0.5f;
 
     private AudioData _currentMusic;
+    private AudioData _currentUISound;
     private AudioData _currentShootSound;
     private AudioData _currentDamageSound;
     private AudioData _currentExplosionSound;
@@ -47,11 +49,12 @@ public class AudioManager : MonoBehaviour
 
     private void Init()
     {
-        musicSource.mute = _musicOn;
+        musicSource.mute = !_musicOn;
 
-        shootSource.mute = _soundOn;
-        damageSource.mute = _soundOn;
-        explosionSource.mute = _soundOn;
+        shootSource.mute = !_soundOn;
+        UISource.mute = !_soundOn;
+        damageSource.mute = !_soundOn;
+        explosionSource.mute = !_soundOn;
     }
 
     private void Start()
@@ -74,6 +77,14 @@ public class AudioManager : MonoBehaviour
         shootSource.clip = data.Clip;
         shootSource.Play();
         shootSource.volume = _soundVolume * _currentShootSound.Volume();
+    }
+
+    public void PlayUISFX(AudioData data)
+    {
+        _currentUISound = data;
+        UISource.clip = data.Clip;
+        UISource.Play();
+        UISource.volume = _soundVolume * _currentUISound.Volume();
     }
 
     public void PlayDamageSFX(AudioData data)

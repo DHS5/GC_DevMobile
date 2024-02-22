@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e9528fdd3db7574195c31a0768c0a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioData: {fileID: 11400000, guid: d5e5bb93ea9415a4084d48b25836b401, type: 2}
   scoreText: {fileID: 6944569555130166881}
 --- !u!223 &5988476842693358596
 Canvas:
