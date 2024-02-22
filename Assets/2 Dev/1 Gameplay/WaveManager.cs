@@ -55,6 +55,7 @@ public class WaveManager : MonoBehaviour
         var wave = waves[_currentWave];
         var enemyWave = wave.GetEnemiesSpawnList();
         Sequence seq;
+        bool lastWave = _currentLevel == waves.Length - 1;
 
         if (enemyWave.Length > 0)
         {
@@ -69,23 +70,24 @@ public class WaveManager : MonoBehaviour
                     if (enemyWave[i].startTime > 0) seq.AppendInterval(enemyWave[i].startTime);
                     for (var j = 0; j < enemyWave[i].quantities[_currentLevel]; j++)
                     {
-                        seq.AppendCallback(() => Enemy.Spawn(enemyType));
+                        if (lastWave && i == 0) seq.AppendCallback(() => Enemy.Spawn(enemyType, SpawnWave));
+                        else seq.AppendCallback(() => Enemy.Spawn(enemyType));
                         seq.AppendInterval(interval);
                     }
                     _waveSequences.Add(seq);
                 }
         }
 
-        _currentWave++;
-        if (_currentWave < waves.Length)
+        if (!lastWave)
         {
+            _currentWave++;
             _waveSpawnTween = DOVirtual.DelayedCall(wave.waveDuration, SpawnWave);
         }
         else
         {
             _currentWave = 0;
             _currentLevel = Mathf.Min(_currentLevel + 1, levelNumber - 1);
-            _waveSpawnTween = DOVirtual.DelayedCall(wave.waveDuration, SpawnWave);
+            //_waveSpawnTween = DOVirtual.DelayedCall(wave.waveDuration, SpawnWave);
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using _2_Dev._1_Gameplay;
@@ -36,7 +37,7 @@ public class Enemy : PoolableObject, IDamageable
 
     #region Static Accessor
 
-    public static Enemy Spawn(EnemyType type)
+    public static Enemy Spawn(EnemyType type, Action onDead = null)
     {
         var e = Pool.Get<Enemy>(Pool.PoolableType.ENEMY);
         e.Init(type);
@@ -45,10 +46,13 @@ public class Enemy : PoolableObject, IDamageable
 
     #endregion
 
-    public void Init(EnemyType enemyType)
+    private Action _onDead;
+
+    public void Init(EnemyType enemyType, Action onDead = null)
     {
         EnemyManager.Register(this);
 
+        _onDead = onDead;
         enemyRigidbody.simulated = true;
         _enemyType = enemyType;
         IsActive = true;
@@ -83,6 +87,7 @@ public class Enemy : PoolableObject, IDamageable
 
     private void OnDead()
     {
+        _onDead?.Invoke();
         Vector3 position = enemyTransform.position;
         GameManager.Instance.AddScore(_enemyType.Score);
         var collectibleData = CollectibleManager.Get();
@@ -96,8 +101,6 @@ public class Enemy : PoolableObject, IDamageable
     {
         switch (_enemyType.Movement)
         {
-            case EnemyMovement.PATH:
-                break;
             case EnemyMovement.STATIC:
                 OnStaticUpdate(time);
                 break;
@@ -106,11 +109,11 @@ public class Enemy : PoolableObject, IDamageable
         weapon.Shoot(time);
     }
 
+    private float _currentRotation = 0;
     private void OnStaticUpdate(float time)
     {
-        if (weapon != null)
-        {
-        }
+        _currentRotation += 5f;
+        enemyRigidbody.MoveRotation(_currentRotation);
     }
 
     public override void MoveTo(Vector3 position)

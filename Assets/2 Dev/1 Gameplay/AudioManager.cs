@@ -71,16 +71,18 @@ public class AudioManager : MonoBehaviour
 
     public void PlayShootSFX(AudioData data)
     {
-        if (_currentShootSound == data)
-        {
-            shootSource.Play();
-            return;
-        }
+        //if (_currentShootSound == data)
+        //{
+        //    shootSource.Play();
+        //    return;
+        //}
+        //
+        //_currentShootSound = data;
+        //shootSource.clip = data.Clip;
+        //shootSource.Play();
+        //shootSource.volume = _soundVolume * _currentShootSound.Volume();
 
-        _currentShootSound = data;
-        shootSource.clip = data.Clip;
-        shootSource.Play();
-        shootSource.volume = _soundVolume * _currentShootSound.Volume();
+        shootSource.PlayOneShot(data.Clip, _soundVolume * _currentShootSound.Volume());
     }
 
     public void PlayUISFX(AudioData data)
