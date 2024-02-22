@@ -72,23 +72,31 @@ public class Format : MonoBehaviour
         RatioDiff = Ratio / ReferenceRatio;
 
         ResolutionDelta = new Vector2(Resolution.x / referenceResolution.x, Resolution.y / referenceResolution.y);
-        if (ResolutionDelta.x >= 1f && ResolutionDelta.y >= 1f)
+        if (RatioDiff >= 1f)
         {
-            if (RatioDiff >= 1f)
-                ScaleFactor = Mathf.Min(ResolutionDelta.x, ResolutionDelta.y, RatioDiff);
-            else
-                ScaleFactor = Mathf.Min(ResolutionDelta.x, ResolutionDelta.y);
+            ScaleFactor = RatioDiff;
         }
         else
         {
-            ScaleFactor = RatioDiff;
-            //float resDeltaXDiff = Mathf.Abs(ResolutionDelta.x - 1);
-            //float resDeltaYDiff = Mathf.Abs(ResolutionDelta.y - 1);
-            //float ratioDiffDiff = Mathf.Abs(RatioDiff - 1);
-            //ScaleFactor = resDeltaXDiff < resDeltaYDiff ?
-            //    (resDeltaXDiff < ratioDiffDiff ? ResolutionDelta.x : RatioDiff) :
-            //    (resDeltaYDiff < ratioDiffDiff ? ResolutionDelta.y : RatioDiff);
+            ScaleFactor = Mathf.Min(ResolutionDelta.x, ResolutionDelta.y);
         }
+        //if (ResolutionDelta.x >= 1f && ResolutionDelta.y >= 1f)
+        //{
+        //    if (RatioDiff >= 1f)
+        //        ScaleFactor = Mathf.Min(ResolutionDelta.x, ResolutionDelta.y, RatioDiff);
+        //    else
+        //        ScaleFactor = Mathf.Min(ResolutionDelta.x, ResolutionDelta.y);
+        //}
+        //else
+        //{
+        //    ScaleFactor = RatioDiff;
+        //    //float resDeltaXDiff = Mathf.Abs(ResolutionDelta.x - 1);
+        //    //float resDeltaYDiff = Mathf.Abs(ResolutionDelta.y - 1);
+        //    //float ratioDiffDiff = Mathf.Abs(RatioDiff - 1);
+        //    //ScaleFactor = resDeltaXDiff < resDeltaYDiff ?
+        //    //    (resDeltaXDiff < ratioDiffDiff ? ResolutionDelta.x : RatioDiff) :
+        //    //    (resDeltaYDiff < ratioDiffDiff ? ResolutionDelta.y : RatioDiff);
+        //}
 
         RefDemiBounds = new Vector2(referenceBounds.x / 2, referenceBounds.y / 2);
 
