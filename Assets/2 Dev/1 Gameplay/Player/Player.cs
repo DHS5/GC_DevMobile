@@ -18,19 +18,15 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
 
     [SerializeField] private List<BulletStrategy> lvlBulletStrategies;
     [SerializeField] private int currentBulletStrategy;
-    
-    private GameManager _gameManager;
-    private AudioManager _audioManager;
-    private PlayerHUD _playerHUD;
 
     protected virtual void Awake()
     {
         health = maxHealth;
     }
 
-    private void Die()
+    protected void Die()
     {
-        _gameManager.GameOver();
+        GameManager.Instance.GameOver();
     }
 
     private void Start()
@@ -39,10 +35,6 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
         transform.SetRelativePosition(relativeStartPosition);
         weapon.SetStrategy();
         currentBulletStrategy = 0;
-        
-        _gameManager = GameManager.Instance;
-        _audioManager = AudioManager.Instance;
-        _playerHUD = PlayerHUD.Instance;
     }
 
     private void OnEnable()
@@ -60,7 +52,7 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
         UpdateManager.OnUpdate -= OnUpdate;
     }
 
-    private void AddHealth(int amount)
+    public void AddHealth(int amount)
     {
         health += amount;
         if (health > maxHealth) health = maxHealth;
@@ -69,15 +61,15 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
 
     public void TakeDamage(float damage)
     {
-        _audioManager.PlayDamageSFX(hitSoundData);
-        _gameManager.AddScore(-10);
-        if (_gameManager.isPlayerGodMode) return;
+        AudioManager.Instance.PlayDamageSFX(hitSoundData);
+        GameManager.Instance.AddScore(-10);
+        if (GameManager.Instance.isPlayerGodMode) return;
         health -= damage;
-        _playerHUD.SetHealth(NormalizedHealth);
+        PlayerHUD.Instance.SetHealth(NormalizedHealth);
         if (health <= 0) Die();
     }
 
-    private float NormalizedHealth => health / maxHealth;
+    public float NormalizedHealth => health / maxHealth;
 
     public void OnCollectibleCollected(CollectibleData data)
     {
@@ -99,7 +91,7 @@ public class Player : MonoBehaviour, IDamageable, ICollectibleListener
                 weapon.LevelUp(lvlBulletStrategies[currentBulletStrategy]);
                 break;
             case CollectibleType.LEVEL_UP:
-                _gameManager.AddScore(data.ScoreAddition);
+                GameManager.Instance.AddScore(data.ScoreAddition);
                 break;
         }
     }
