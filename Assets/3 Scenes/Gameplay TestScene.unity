@@ -692,22 +692,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
-      propertyPath: waves.Array.data[5].enemiesToSpawn.Array.data[2].quantities.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
-      propertyPath: waves.Array.data[5].enemiesToSpawn.Array.data[3].quantities.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
-      propertyPath: waves.Array.data[5].enemiesToSpawn.Array.data[3].quantities.Array.data[1]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
-      propertyPath: waves.Array.data[5].enemiesToSpawn.Array.data[3].quantities.Array.data[2]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8125936521135338927, guid: c85a2951e7a1dde42847fd8e2801778a, type: 3}
       propertyPath: waves.Array.data[6].enemiesToSpawn.Array.data[0].enemyTypes.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 923d1d003f3ba074fb82a047117384f3, type: 2}
@@ -1469,37 +1453,9 @@ PrefabInstance:
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[4].weight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[6].weight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
       propertyPath: collectibleDatas.Array.data[8].weight
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[4].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: a71d0235153ddac44bac2b058bd65e3f, type: 2}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[5].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: 42ba29cfc1254fc43915a9a95e59e147, type: 2}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[6].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: c6e94a787273b124499005447acb26e5, type: 2}
-    - target: {fileID: 2265918997020714255, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
-      propertyPath: collectibleDatas.Array.data[7].collectibleData
-      value: 
-      objectReference: {fileID: 11400000, guid: 0476b2265051b9a4493dd2e68d3e8e75, type: 2}
     - target: {fileID: 3823567834400729821, guid: 287a7d11b43e736498f0bd3d456cd683, type: 3}
       propertyPath: m_Name
       value: CollectibleManager

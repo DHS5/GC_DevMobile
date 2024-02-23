@@ -21,5 +21,5 @@ MonoBehaviour:
   path: 2
   speedOnPath: 1
   weaponStrategy: {fileID: 11400000, guid: ebe42c6d1122fbc40843cee41f95b0b5, type: 2}
-  bulletStrategy: {fileID: 11400000, guid: 374bf87d1b7a2d441a2eeac7cb125080, type: 2}
+  bulletStrategy: {fileID: 11400000, guid: 038a15606a29e4547a56cd2ad69b371c, type: 2}
   score: 20000
