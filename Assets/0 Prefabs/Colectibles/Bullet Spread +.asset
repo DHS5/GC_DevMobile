@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bullet Spread +
   m_EditorClassIdentifier: 
   type: 4
-  sprite: {fileID: 21300000, guid: bdc6c5b80cae69b43b81a3c380c89a0f, type: 3}
+  sprite: {fileID: 21300000, guid: 20a767476e4838a4c8f7de32b8c2db37, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
   health: 0
   bulletAddition: 0

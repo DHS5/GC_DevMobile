@@ -270,7 +270,6 @@ MonoBehaviour:
   health: 0
   relativeSize: 1
   relativeStartPosition: {x: 0, y: -0.5}
-  hitSoundData: {fileID: 11400000, guid: 29258956e9aba0247a42ad53d731a77c, type: 2}
   lvlBulletStrategies:
   - {fileID: 11400000, guid: 77948e628a9059a489c5be0f46620b3b, type: 2}
   - {fileID: 11400000, guid: e919709b25f9ca74b96aadba5e3c7c61, type: 2}
@@ -298,7 +297,6 @@ MonoBehaviour:
   firePoint: {fileID: 4404711213172806170}
   bulletLayer: 8
   shootSound: 1
-  shootSoundData: {fileID: 11400000, guid: 7f959af29d10c624685d4c26929d1bc6, type: 2}
   _weaponStrategy: {fileID: 11400000, guid: fc83530f83bdf4248a007d66e40b9d14, type: 2}
   _bulletStrategy: {fileID: 11400000, guid: 77948e628a9059a489c5be0f46620b3b, type: 2}
 --- !u!114 &-4035836479837671531

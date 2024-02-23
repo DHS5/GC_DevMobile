@@ -19,4 +19,4 @@ MonoBehaviour:
   bulletAddition: 0
   spreadAddition: 0
   fireRateAddition: 0
-  scoreAddition: 10000
+  scoreAddition: 100000
